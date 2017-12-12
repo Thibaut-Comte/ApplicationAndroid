@@ -49,5 +49,5 @@
         android:layout_above="@+id/btnScore"
         android:layout_alignStart="@+id/btnScore"
         android:layout_marginBottom="50dp"
-        android:text="Speed" />
+        android:text="Average" />
 </RelativeLayout>
