@@ -1,5 +1,6 @@
 package com.jonathan.reaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -11,21 +12,44 @@ import android.widget.TextView;
 
 public class Speed extends AppCompatActivity {
 
-    Button btn1;
-    TextView textchrono;
+    Button mBtnStart;
+    TextView mTvTime;
+
+    private Context mContext;
+    private Chronometer mChronometer;
+    private Thread mThreadChrono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
-        btn1 = findViewById(R.id.btn);
-        textchrono = findViewById(R.id.textchrono);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        mContext = this;
+
+        mBtnStart = (Button) findViewById(R.id.btn);
+        mTvTime = (TextView) findViewById(R.id.textchrono);
+
+        mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textchrono.setText("OK");
+
+                if(mChronometer == null){
+                    mChronometer = new Chronometer(mContext);
+                    mThreadChrono = new Thread(mChronometer);
+                    mThreadChrono.start();
+                    mChronometer.start();
+                }
+
+            }
+        });
+    }
+
+    public void updateTimerText(final String time){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mTvTime.setText(time);
             }
         });
     }
