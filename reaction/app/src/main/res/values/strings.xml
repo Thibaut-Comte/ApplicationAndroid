@@ -2,4 +2,5 @@
     <string name="app_name">reaction</string>
     <string name="facebook_app_id">104121943695928</string>
     <string name="fb_login_protocol_scheme">fb104121943695928</string>
+    <string name="Score">Liste des Scores</string>
 </resources>

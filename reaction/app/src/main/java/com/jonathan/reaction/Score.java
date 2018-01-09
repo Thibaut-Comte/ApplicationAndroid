@@ -12,12 +12,12 @@ import android.view.View;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Score extends AppCompatActivity {
 
     private ListView lw;
-    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,8 @@ public class Score extends AppCompatActivity {
         setContentView(R.layout.activity_score);
 
         lw = findViewById(R.id.lw);
-        tv = findViewById(R.id.title);
+
         List<ScoreClass> scores = genererScores();
-        tv.setText("Liste des Scores");
 
         ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
         lw.setAdapter(adapter);
@@ -35,11 +34,12 @@ public class Score extends AppCompatActivity {
 
     private List<ScoreClass> genererScores() {
         List<ScoreClass> scores = new ArrayList<ScoreClass>();
-        scores.add(new ScoreClass(Color.BLACK, "Florent", 57));
         scores.add(new ScoreClass(Color.BLUE, "Kevin", 96));
-        scores.add(new ScoreClass(Color.GREEN, "Logan", 59));
-        scores.add(new ScoreClass(Color.RED, "Mathieu", 25));
         scores.add(new ScoreClass(Color.GRAY, "Willy", 88));
+        scores.add(new ScoreClass(Color.GREEN, "Logan", 59));
+        scores.add(new ScoreClass(Color.BLACK, "Florent", 57));
+        scores.add(new ScoreClass(Color.RED, "Mathieu", 25));
+
         return scores;
     }
 }
