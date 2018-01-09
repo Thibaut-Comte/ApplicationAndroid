@@ -11,20 +11,20 @@ import android.widget.TextView;
 
 public class Speed extends AppCompatActivity {
 
-
     Button btn1;
     TextView textchrono;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
         btn1 = findViewById(R.id.btn);
+        textchrono = findViewById(R.id.textchrono);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 textchrono.setText("OK");
             }
         });
