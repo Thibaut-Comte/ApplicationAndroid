@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class Speed extends AppCompatActivity {
 
 
     Button btn1;
+    TextView textchrono;
 
 
     @Override
@@ -23,8 +25,7 @@ public class Speed extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RelativeLayout rl = (RelativeLayout)findViewById(R.id.realtive);
-                rl.setBackgroundColor(Color.RED);
+                textchrono.setText("OK");
             }
         });
     }
