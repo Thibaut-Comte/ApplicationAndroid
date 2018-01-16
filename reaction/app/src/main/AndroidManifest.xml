@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Menu">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,9 @@
         <activity
             android:name=".Score"
             android:label="@string/Score"/>
-        <activity android:name=".Speed" />
+        <activity android:name=".Speed"
+            android:label="@string/Speed"/>
+
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
