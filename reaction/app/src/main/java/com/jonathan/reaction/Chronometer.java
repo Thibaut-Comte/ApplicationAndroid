@@ -10,6 +10,8 @@ public class Chronometer implements Runnable {
 
     public static final long MILLIS_TO_MINUTES = 60000;
     public static final long MILLIS_TO_HOURS = 3600000;
+    private String mTime;
+
 
     private Context mContext;
     private long mStarTime;
@@ -38,8 +40,8 @@ public class Chronometer implements Runnable {
             int millis = (int) since % 1000;
 
 
-            ((Speed) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
-                    , hours, minutes, seconds, millis));
+            mTime = hours+":"+minutes+":"+seconds+":"+millis;
+            ((Speed) mContext).updateTimerText(mTime);
 
             try {
                 Thread.sleep(15);
