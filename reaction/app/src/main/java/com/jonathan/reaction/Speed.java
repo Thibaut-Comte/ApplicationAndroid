@@ -30,16 +30,17 @@ public class Speed extends AppCompatActivity {
         mBtnStart = (Button) findViewById(R.id.btn);
         mTvTime = (TextView) findViewById(R.id.textchrono);
 
+        if(mChronometer == null){
+            mChronometer = new Chronometer(mContext);
+            mThreadChrono = new Thread(mChronometer);
+            mThreadChrono.start();
+            mChronometer.start();
+        }
+
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(mChronometer == null){
-                    mChronometer = new Chronometer(mContext);
-                    mThreadChrono = new Thread(mChronometer);
-                    mThreadChrono.start();
-                    mChronometer.start();
-                }
 
             }
         });
