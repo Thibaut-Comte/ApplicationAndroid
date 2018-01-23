@@ -7,12 +7,14 @@ package com.jonathan.reaction;
 public class Player {
 
     private String username = "";
+    private float actualscore = 0;
     private float hightscoreSpeed = 0;
     private float hightscoreAverage = 0;
     private float hightscoreStamina = 0;
 
-    public Player(String username, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
+    public Player(String username, float actualscore, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
         this.username = username;
+        this.actualscore = actualscore;
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
@@ -20,9 +22,18 @@ public class Player {
 
     public Player() {
         this.username = "Mario";
+        this.actualscore = 0;
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
+    }
+
+    public float getActualscore() {
+        return actualscore;
+    }
+
+    public void setActualscore(float actualscore) {
+        this.actualscore = actualscore;
     }
 
     public String getUsername() {
