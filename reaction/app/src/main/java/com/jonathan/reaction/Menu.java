@@ -24,10 +24,7 @@ import java.util.Arrays;
 public class Menu extends AppCompatActivity {
 
     Button settings, speed, stamina, score, average;
-    LoginButton loginButton;
-    CallbackManager callbackManager;
-    LoginManager loginManager;
-    boolean loggedIn;
+
 
     Player player = new Player();
 
@@ -36,48 +33,11 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
-
-        if (loggedIn) {
-            loggedIn = AccessToken.getCurrentAccessToken() == null;
-        }
-
 
         settings = findViewById(R.id.btnSettings);
         score = findViewById(R.id.btnScore);
         average = findViewById(R.id.btnAverage);
         speed = findViewById(R.id.btnSpeed);
-
-        callbackManager = CallbackManager.Factory.create();
-        loginButton = findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email");
-
-        //Connexion Facebook
-        loginButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void  onClick(View view) {
-                ;
-            }
-        });
-        loginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Log.i("connexion", "true");
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Log.i("connexion", "cancelled");
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Log.i("connexion", "false");
-                    }
-                });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,11 +79,5 @@ public class Menu extends AppCompatActivity {
         toast.show();
 
 
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
