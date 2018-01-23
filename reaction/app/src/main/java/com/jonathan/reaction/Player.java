@@ -7,19 +7,23 @@ package com.jonathan.reaction;
 public class Player {
 
     private String username = "";
+    private String password = "";
     private float hightscoreSpeed = 0;
     private float hightscoreAverage = 0;
     private float hightscoreStamina = 0;
 
-    public Player(String username, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
+    public Player(String username, String password, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
         this.username = username;
+        this.password = password;
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
+
     }
 
     public Player() {
         this.username = "Mario";
+        this.password = "Luigi";
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
@@ -31,6 +35,14 @@ public class Player {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public float getHightscoreSpeed() {
