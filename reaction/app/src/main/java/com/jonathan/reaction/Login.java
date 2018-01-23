@@ -28,17 +28,21 @@ public class Login extends AppCompatActivity {
         pw = findViewById(R.id.pw);
         connection = findViewById(R.id.connection);
 
-        connection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (login.getText().toString().equals(player.getUsername())&& pw.getText().toString().equals(player.getPassword())) {
-                    Intent i = new Intent(Login.this, Menu.class);
-                    startActivity(i);
-                }
-                else {
-                    error.setText("Login ou mot de passe incorrect");
-                }
-            }
-        });
+
+        Intent i = new Intent(Login.this, Menu.class);
+        startActivity(i);
+
+//        connection.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (login.getText().toString().equals(player.getUsername())&& pw.getText().toString().equals(player.getPassword())) {
+//                    Intent i = new Intent(Login.this, Menu.class);
+//                    startActivity(i);
+//                }
+//                else {
+//                    error.setText("Login ou mot de passe incorrect");
+//                }
+//            }
+//        });
     }
 }
