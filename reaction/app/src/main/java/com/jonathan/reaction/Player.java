@@ -5,7 +5,7 @@ package com.jonathan.reaction;
  */
 
 public class Player {
-
+    
     private String username = "";
     private float actualscore = 0;
     private float hightscoreSpeed = 0;

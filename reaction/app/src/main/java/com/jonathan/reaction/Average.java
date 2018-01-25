@@ -59,6 +59,12 @@ public class Average extends AppCompatActivity {
                 while(i < 10){
                     v.vibrate(150);
                     try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    v.vibrate(150);
+                    try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class Speed extends AppCompatActivity {
 
     TextView mTvTime;
+    TextView mTvTime2;
     RelativeLayout mlw;
 
     private Context mContext;
@@ -30,6 +31,7 @@ public class Speed extends AppCompatActivity {
         mContext = this;
 
         mTvTime = (TextView) findViewById(R.id.textchrono);
+        mTvTime2 = (TextView) findViewById(R.id.tv2);
         mlw = (RelativeLayout) findViewById(R.id.lw);
 
         if(mChronometer == null){
