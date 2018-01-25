@@ -5,7 +5,7 @@ package com.jonathan.reaction;
  */
 
 public class Player {
-
+    
     private String username = "";
 <<<<<<< HEAD
     private String password = "";

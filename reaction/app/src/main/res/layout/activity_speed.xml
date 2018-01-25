@@ -18,5 +18,14 @@
         android:text="00:00:00:000"
         android:textSize="50dp" />
 
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="test"
+        android:textSize="50dp" />
+
 </RelativeLayout>
 
