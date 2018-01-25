@@ -14,6 +14,7 @@ public class Average extends AppCompatActivity {
 
     private Boolean bool = true;
     private RelativeLayout rl;
+    private int i =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,15 @@ public class Average extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                v.vibrate(500);
+                while(i < 10){
+                    v.vibrate(150);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    i++;
+                }
             }
         });
 
