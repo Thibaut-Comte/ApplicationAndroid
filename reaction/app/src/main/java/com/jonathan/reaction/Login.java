@@ -40,30 +40,35 @@ public class Login extends AppCompatActivity {
         connection = findViewById(R.id.connection);
         create = findViewById(R.id.createAccount);
 
-        connection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
-                {
-                    if (login.getText().toString().equals(player.getUsername()) && pw.getText().toString().equals(player.getPassword()))
-                    {
-                        //Ajout au sharedPreferences "player" de la valeur player.getUsername() à la clé "username"
-                        sharedPreferences.edit().putString("username", player.getUsername()).apply();
+        sharedPreferences.edit().putString("username", player.getUsername()).apply();
 
-                        Intent i = new Intent(Login.this, Menu.class);
-                        startActivity(i);
-                    }
-                    else
-                    {
-                        error.setText("Login ou mot de passe incorrect");
-                    }
-                }
-                else
-                {
-                    error.setText("Veuillez renseigner les deux champs svp");
-                }
-            }
-        });
+        Intent i = new Intent(Login.this, Menu.class);
+        startActivity(i);
+
+//        connection.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
+//                {
+//                    if (login.getText().toString().equals(player.getUsername()) && pw.getText().toString().equals(player.getPassword()))
+//                    {
+//                        //Ajout au sharedPreferences "player" de la valeur player.getUsername() à la clé "username"
+//                        sharedPreferences.edit().putString("username", player.getUsername()).apply();
+//
+//                        Intent i = new Intent(Login.this, Menu.class);
+//                        startActivity(i);
+//                    }
+//                    else
+//                    {
+//                        error.setText("Login ou mot de passe incorrect");
+//                    }
+//                }
+//                else
+//                {
+//                    error.setText("Veuillez renseigner les deux champs svp");
+//                }
+//            }
+//        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
