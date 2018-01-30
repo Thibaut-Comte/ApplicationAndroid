@@ -23,6 +23,16 @@ public class Player {
 
     }
 
+
+    public Player(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.actualscore = "";
+        this.hightscoreSpeed = 0;
+        this.hightscoreAverage = 0;
+        this.hightscoreStamina = 0;
+    }
+
     public Player() {
         this.username = "Mario";
         this.password = "Luigi";

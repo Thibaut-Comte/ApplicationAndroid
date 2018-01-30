@@ -2,6 +2,7 @@ package com.jonathan.reaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,11 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        // On récupère le sharedPreferences "player"
+        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        String test2 = sharedPreferences.getString("username", null);
+        Toast.makeText(this, "Bonjour "+test2, Toast.LENGTH_LONG).show();
 
         settings = findViewById(R.id.btnSettings);
         score = findViewById(R.id.btnScore);

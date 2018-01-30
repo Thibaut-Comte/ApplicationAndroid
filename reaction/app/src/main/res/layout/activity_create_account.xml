@@ -8,16 +8,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/tvlogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="79dp"
-            android:layout_marginTop="114dp"
+            android:layout_below="@+id/error"
+            android:layout_marginStart="66dp"
+            android:layout_toEndOf="@+id/error"
             android:text="Login : " />
 
         <EditText
@@ -28,24 +29,43 @@
             android:layout_below="@+id/tvlogin"
             android:layout_marginTop="25dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Entrez votre login" />
+            android:hint="Entrez votre login"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/tvpw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/login"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="20dp"
             android:text="Mot de Passe :" />
+
+        <EditText
+            android:id="@+id/confirmpw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvpw"
+            android:layout_below="@+id/tvconfirmpw"
+            android:layout_marginTop="29dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/tvconfirmpw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/confirmpw"
+            android:layout_centerVertical="true"
+            android:text="Confirmez votre Mot de Passe :" />
 
         <EditText
             android:id="@+id/pw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tvpw"
-            android:layout_below="@+id/tvpw"
-            android:layout_marginTop="22dp"
+            android:layout_above="@+id/confirmpw"
+            android:layout_alignStart="@+id/confirmpw"
+            android:layout_marginBottom="12dp"
             android:ems="10"
             android:inputType="textPassword" />
 
@@ -53,27 +73,18 @@
             android:id="@+id/error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="43dp"
             android:text="" />
 
         <Button
-            android:id="@+id/connection"
+            android:id="@+id/create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/pw"
-            android:layout_marginTop="49dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="51dp"
             android:layout_toEndOf="@+id/tvlogin"
-            android:text="Se Connecter" />
-
-        <Button
-            android:id="@+id/createAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/connection"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:text="Créer un compte" />
+            android:text="Soumettre" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
