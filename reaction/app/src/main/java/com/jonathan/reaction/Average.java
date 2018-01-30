@@ -2,6 +2,7 @@ package com.jonathan.reaction;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ public class Average extends AppCompatActivity {
     private int i =0;
     private Thread mVibrate;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,17 @@ public class Average extends AppCompatActivity {
         Button mBtn_color = findViewById(R.id.btn_color);
         Button mBtn_trg = findViewById(R.id.btn_trg);
         Button mBtn_vrr = findViewById(R.id.btn_vrr);
+        Button mBtn_sound = findViewById(R.id.btn_sound);
+
+        final MediaPlayer OOFSound = MediaPlayer.create(this, R.raw.death);
+
+        mBtn_sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OOFSound.start();
+            }
+        });
+
 
         rl = findViewById(R.id.layoutgene);
 
@@ -46,6 +57,8 @@ public class Average extends AppCompatActivity {
             public void onClick(View view) {
                 if (bool){
                     rl.setBackgroundColor(Color.RED);
+                    OOFSound.start();
+
                 }
                 else{
                     rl.setBackgroundColor(Color.WHITE);

@@ -3,6 +3,7 @@ package com.jonathan.reaction;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,12 +13,15 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class Speed extends AppCompatActivity {
+public class Speed extends AppCompatActivity{
 
     TextView mTvTime;
     TextView mTvTime2;
     RelativeLayout mlw;
     Player player = new Player();
+    Vibrate vrr = new Vibrate();
+
+    int i = 0;
 
     private Context mContext;
     private Chronometer mChronometer;
@@ -42,6 +46,11 @@ public class Speed extends AppCompatActivity {
             mChronometer.start();
         }
 
+        vibration();
+
+    }
+    public void vibration(){
+        new Thread(vrr).start();
 
     }
 
@@ -64,4 +73,7 @@ public class Speed extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
