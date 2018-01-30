@@ -15,6 +15,8 @@ public class Average extends AppCompatActivity {
     private Boolean bool = true;
     private RelativeLayout rl;
     private int i =0;
+    private Thread mVibrate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class Average extends AppCompatActivity {
                 }
             }
         });
+
 
     }
 }

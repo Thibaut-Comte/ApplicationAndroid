@@ -12,13 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".Menu">
-=======
         <activity android:name=".Menu" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
->>>>>>> d66476589a82dceb586db62aa89cc06706d52c4f
+            </intent-filter>
+
 
         </activity>
 
@@ -42,9 +40,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".Average" />
-        <activity android:name=".MainActivity"></activity>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-=======
         <activity android:name=".Average"
             android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
@@ -65,7 +59,6 @@
             android:name=".Speed"
             android:label="@string/Speed"
             android:screenOrientation="portrait"/>
->>>>>>> d66476589a82dceb586db62aa89cc06706d52c4f
     </application>
 
 </manifest>

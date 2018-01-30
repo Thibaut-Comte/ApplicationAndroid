@@ -17,6 +17,7 @@ public class Speed extends AppCompatActivity {
     TextView mTvTime;
     TextView mTvTime2;
     RelativeLayout mlw;
+    Player player = new Player();
 
     private Context mContext;
     private Chronometer mChronometer;
@@ -41,13 +42,7 @@ public class Speed extends AppCompatActivity {
             mChronometer.start();
         }
 
-        mlw.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-                mChronometer.stop();
-                return true;//always return true to consume event
-            }
-        });
+
     }
 
     public void updateTimerText(final String time){
@@ -55,6 +50,17 @@ public class Speed extends AppCompatActivity {
             @Override
             public void run() {
                 mTvTime.setText(time);
+
+                mlw.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View arg0, MotionEvent arg1) {
+                        mChronometer.stop();
+                        return true;//always return true to consume event
+                    }
+                });
+
+                player.setActualscore(time);
+                mTvTime2.setText(player.getActualscore());
             }
         });
     }

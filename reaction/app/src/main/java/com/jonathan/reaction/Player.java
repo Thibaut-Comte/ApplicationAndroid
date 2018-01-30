@@ -5,26 +5,18 @@ package com.jonathan.reaction;
  */
 
 public class Player {
-    
+
     private String username = "";
-<<<<<<< HEAD
     private String password = "";
-=======
-    private float actualscore = 0;
->>>>>>> d66476589a82dceb586db62aa89cc06706d52c4f
+    private String actualscore = "";
     private float hightscoreSpeed = 0;
     private float hightscoreAverage = 0;
     private float hightscoreStamina = 0;
 
-<<<<<<< HEAD
-    public Player(String username, String password, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
+    public Player(String username, String password,String actualscore, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
         this.username = username;
         this.password = password;
-=======
-    public Player(String username, float actualscore, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
-        this.username = username;
         this.actualscore = actualscore;
->>>>>>> d66476589a82dceb586db62aa89cc06706d52c4f
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
@@ -33,21 +25,18 @@ public class Player {
 
     public Player() {
         this.username = "Mario";
-<<<<<<< HEAD
         this.password = "Luigi";
-=======
-        this.actualscore = 0;
->>>>>>> d66476589a82dceb586db62aa89cc06706d52c4f
+        this.actualscore = "";
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
     }
 
-    public float getActualscore() {
+    public String getActualscore() {
         return actualscore;
     }
 
-    public void setActualscore(float actualscore) {
+    public void setActualscore(String actualscore) {
         this.actualscore = actualscore;
     }
 
