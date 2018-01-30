@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,6 @@ public class Speed extends AppCompatActivity{
     TextView mTvTime2;
     RelativeLayout mlw;
     Player player = new Player();
-    Vibrate vrr = new Vibrate();
 
     int i = 0;
 
@@ -29,6 +29,9 @@ public class Speed extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(150);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
@@ -46,13 +49,36 @@ public class Speed extends AppCompatActivity{
             mChronometer.start();
         }
 
-        vibration();
+        Thread vibrateThread= new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+                    while(i < 10){
+                        v.vibrate(150);
+                        try {
+                            Thread.sleep(250);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        v.vibrate(150);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        i++;
+                    }
+                }
+                catch (Throwable t) {
+                    Log.i("Vibration", "Thread  exception "+t);
+                }
+            }
+        });
+
+        vibrateThread.start();
 
     }
-    public void vibration(){
-        new Thread(vrr).start();
 
-    }
 
     public void updateTimerText(final String time){
         runOnUiThread(new Runnable() {
