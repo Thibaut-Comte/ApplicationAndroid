@@ -25,7 +25,6 @@
         android:layout_above="@+id/textchrono"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="59dp"
-        android:text="test"
         android:textSize="50dp" />
 
 </RelativeLayout>
