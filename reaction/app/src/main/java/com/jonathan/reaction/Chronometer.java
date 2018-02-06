@@ -54,7 +54,7 @@ public class Chronometer implements Runnable {
             int millis = (int) since % 1000;
 
             ((Speed) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
-                    , hours, minutes, seconds, millis));
+                    , hours, minutes, seconds, millis), since);
 
             try {
                 Thread.sleep(15);
