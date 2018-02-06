@@ -9,11 +9,11 @@ public class Player {
     private String username = "";
     private String password = "";
     private String actualscore = "";
-    private float hightscoreSpeed = 0;
-    private float hightscoreAverage = 0;
-    private float hightscoreStamina = 0;
+    private long hightscoreSpeed = 0;
+    private long hightscoreAverage = 0;
+    private long hightscoreStamina = 0;
 
-    public Player(String username, String password,String actualscore, float hightscoreSpeed, float hightscoreAverage, float hightscoreStamina) {
+    public Player(String username, String password, String actualscore, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
         this.username = username;
         this.password = password;
         this.actualscore = actualscore;
@@ -66,28 +66,38 @@ public class Player {
         this.password = password;
     }
 
-    public float getHightscoreSpeed() {
+    public long getHightscoreSpeed() {
         return hightscoreSpeed;
     }
 
-    public void setHightscoreSpeed(float hightscoreSpeed) {
+    public void setHightscoreSpeed(int hightscoreSpeed) {
         this.hightscoreSpeed = hightscoreSpeed;
     }
 
-    public float getHightscoreAverage() {
+    public long getHightscoreAverage() {
         return hightscoreAverage;
     }
 
-    public void setHightscoreAverage(float hightscoreAverage) {
+    public void setHightscoreAverage(int hightscoreAverage) {
         this.hightscoreAverage = hightscoreAverage;
     }
 
-    public float getHightscoreStamina() {
+    public long getHightscoreStamina() {
         return hightscoreStamina;
     }
 
-    public void setHightscoreStamina(float hightscoreStamina) {
+    public void setHightscoreStamina(long hightscoreStamina) {
         this.hightscoreStamina = hightscoreStamina;
+    }
+
+    public boolean checkHightscoreSpeed(long score) {
+        if (score > this.hightscoreSpeed) {
+            hightscoreSpeed = score;
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 
