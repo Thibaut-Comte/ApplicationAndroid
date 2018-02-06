@@ -17,7 +17,7 @@ public class Login extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Player player = new Player("Billy", "test");
+    protected Player player = new Player("Billy", "test");
 
 
 
@@ -53,6 +53,7 @@ public class Login extends AppCompatActivity {
 //                    if (login.getText().toString().equals(player.getUsername()) && pw.getText().toString().equals(player.getPassword()))
 //                    {
 //                        //Ajout au sharedPreferences "player" de la valeur player.getUsername() à la clé "username"
+        //player = new Player(login.getText().toString(), pw.getText().toString());
 //                        sharedPreferences.edit().putString("username", player.getUsername()).apply();
 //
 //                        Intent i = new Intent(Login.this, Menu.class);
