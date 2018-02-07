@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -126,12 +127,15 @@ public class Speed extends AppCompatActivity {
                         mChronometer.stop();
                         touch = true;
                         if (since < nombreAleatoire) {
+                            final MediaPlayer OOFSound = MediaPlayer.create(Speed.this, R.raw.death);
+
                             mlw.setBackgroundColor(Color.RED);
+                            OOFSound.start();
                         }
                         if (since > nombreAleatoire) {
                             mlw.setBackgroundColor(Color.BLUE);
                             score = since - nombreAleatoire;
-                            mTvTime2.setText(""+score);
+                            mTvTime2.setText("" + score);
                         }
                         return true;//always return true to consume event
                     }

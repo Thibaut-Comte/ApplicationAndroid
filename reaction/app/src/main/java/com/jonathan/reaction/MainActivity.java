@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Intent i = new Intent(MainActivity.this, Menu.class);
+        startActivity(i);
+
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
         //Nouvelle clé de Hash car celle générée par console ne fonctionne qu'une seule fois ensuite celle générée par le code
