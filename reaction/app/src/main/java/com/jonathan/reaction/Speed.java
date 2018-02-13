@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ²Speed extends AppCompatActivity {
+public class Speed extends AppCompatActivity {
 
     //init des données membres
     TextView mTvTime;
@@ -28,13 +28,14 @@ public class ²Speed extends AppCompatActivity {
     boolean touch = false;//true si touch de l'écran
     boolean game = false;//true si gagner
 
-    long nombreAleatoire = 0;
+    long nombreAleatoire, nombreAleatoireMax = 0;
 
     long score = 0; //score du joueur
 
     private Context mContext;
     private Chronometer mChronometer;
     private Thread mThreadChrono;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -49,7 +50,6 @@ public class ²Speed extends AppCompatActivity {
         mTvTime2 = (TextView) findViewById(R.id.tv2);
         mTvTime = (TextView) findViewById(R.id.textchrono);
         mlw = (RelativeLayout) findViewById(R.id.lw);
-        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String time = "";
 
 /*
@@ -69,8 +69,10 @@ public class ²Speed extends AppCompatActivity {
         }
 
 
-        //Génrère un rand entre 5000 et 10 000
-        nombreAleatoire = 2000 + (long) (Math.random() * ((8000 - 2000) + 1));
+        //Génrère un rand entre 8000 et 2000
+        nombreAleatoireMax = 2000 + (long) (Math.random() * ((8000 - 2001) + 1));
+        nombreAleatoire = 2000 + (long) (Math.random() * ((nombreAleatoireMax - 2000) + 1));
+
 
 
         //Thread pour la vibration
@@ -116,9 +118,12 @@ public class ²Speed extends AppCompatActivity {
 
                 //Affichage sur l'écran
                 mTvTime.setText(time);
+                sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
+                    sharedPreferences.edit().putString("ecran", "vert").apply();
+
                 }
                 //Stop du chrono quand on touche l'écran
                 mlw.setOnTouchListener(new View.OnTouchListener() {
@@ -130,9 +135,12 @@ public class ²Speed extends AppCompatActivity {
                             final MediaPlayer OOFSound = MediaPlayer.create(Speed.this, R.raw.death);
 
                             mlw.setBackgroundColor(Color.RED);
+                            sharedPreferences.edit().putString("ecran", "rouge").apply();
+                            Intent i = new Intent(Speed.this, EndGame.class);
+                            startActivity(i);
                             OOFSound.start();
                             try {
-                                Thread.sleep(15);
+                                Thread.sleep(100);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -141,6 +149,10 @@ public class ²Speed extends AppCompatActivity {
                             mlw.setBackgroundColor(Color.BLUE);
                             score = since - nombreAleatoire;
                             mTvTime2.setText("" + score);
+                            sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+                            sharedPreferences.edit().putLong("score", score).apply();
+                            Intent i = new Intent(Speed.this, EndGame.class);
+                            startActivity(i);
                         }
                         return true;//always return true to consume event
                     }
