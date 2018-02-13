@@ -1,6 +1,7 @@
 package com.jonathan.reaction;
 
 import android.app.PendingIntent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class Score extends AppCompatActivity {
     }
 
     private List<ScoreClass> genererScores() {
+        /*SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        String name = sharedPreferences.getString("name", "error");*/
         List<ScoreClass> scores = new ArrayList<ScoreClass>();
         scores.add(new ScoreClass(Color.DKGRAY, "Jonathan", 253));
         scores.add(new ScoreClass(Color.BLUE, "Valentin", 243));
