@@ -131,6 +131,11 @@ public class Speed extends AppCompatActivity {
 
                             mlw.setBackgroundColor(Color.RED);
                             OOFSound.start();
+                            try {
+                                Thread.sleep(15);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                         if (since > nombreAleatoire) {
                             mlw.setBackgroundColor(Color.BLUE);
