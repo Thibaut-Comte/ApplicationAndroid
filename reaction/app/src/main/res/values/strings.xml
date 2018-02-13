@@ -4,4 +4,6 @@
     <string name="fb_login_protocol_scheme">fb2008884382717534</string>
     <string name="Score">Liste des Scores</string>
     <string name="Speed">Speed</string>
+    <string name="victoire">Bravo ! Voulez-vous améliorer votre score ?</string>
+    <string name="defaite">Dommage vous avez perdu ! Voulez-vous retentez votre chance ?</string>
 </resources>
