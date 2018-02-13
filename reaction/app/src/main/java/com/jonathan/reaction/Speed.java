@@ -20,13 +20,13 @@ public class Speed extends AppCompatActivity {
 
     //init des données membres
     TextView mTvTime;
-    TextView mTvTime2;
     RelativeLayout mlw;
     Player player = new Player();
 
     boolean kill = false;//true si app pause
     boolean touch = false;//true si touch de l'écran
     boolean game = false;//true si gagner
+    boolean sound = false;//true si son joué
 
     long nombreAleatoire, nombreAleatoireMax = 0;
 
@@ -47,7 +47,6 @@ public class Speed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
         mContext = this;
-        mTvTime2 = (TextView) findViewById(R.id.tv2);
         mTvTime = (TextView) findViewById(R.id.textchrono);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         String time = "";
@@ -134,25 +133,25 @@ public class Speed extends AppCompatActivity {
                         if (since < nombreAleatoire) {
                             final MediaPlayer OOFSound = MediaPlayer.create(Speed.this, R.raw.death);
 
-                            mlw.setBackgroundColor(Color.RED);
+                            //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
-                            Intent i = new Intent(Speed.this, EndGame.class);
-                            startActivity(i);
-                            OOFSound.start();
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                            if (!sound){
+                                OOFSound.start();
+                                sound = true;
+                                Intent i = new Intent(Speed.this, EndGame.class);
+                                startActivity(i);
                             }
                         }
                         if (since > nombreAleatoire) {
-                            mlw.setBackgroundColor(Color.BLUE);
+                            //mlw.setBackgroundColor(Color.BLUE);
                             score = since - nombreAleatoire;
-                            mTvTime2.setText("" + score);
                             sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
                             sharedPreferences.edit().putLong("score", score).apply();
-                            Intent i = new Intent(Speed.this, EndGame.class);
-                            startActivity(i);
+                            if (!sound){
+                                sound = true;
+                                Intent i = new Intent(Speed.this, EndGame.class);
+                                startActivity(i);
+                            }
                         }
                         return true;//always return true to consume event
                     }
