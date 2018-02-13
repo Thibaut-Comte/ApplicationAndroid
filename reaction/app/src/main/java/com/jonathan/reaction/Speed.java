@@ -107,7 +107,7 @@ public class Speed extends AppCompatActivity {
 
 
     /**
-     * début thread chorono
+     * début thread chrono
      */
     public void updateTimerText(final String time, final long since) {
         runOnUiThread(new Runnable() {

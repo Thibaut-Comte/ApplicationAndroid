@@ -6,37 +6,4 @@
     android:layout_height="match_parent"
     tools:context="com.jonathan.reaction.Average">
 
-    <Button
-        android:id="@+id/btn_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="215dp" />
-
-    <Button
-        android:id="@+id/btn_trg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="40dp"
-        android:layout_toEndOf="@+id/btn_color"
-        android:text="Triger" />
-
-    <Button
-        android:id="@+id/btn_vrr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="33dp"
-        android:text="VRR" />
-
-    <Button
-        android:id="@+id/btn_sound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btn_trg"
-        android:layout_below="@+id/btn_trg"
-        android:text="OOF" />
 </RelativeLayout>
