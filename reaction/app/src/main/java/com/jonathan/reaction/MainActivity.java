@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                // App code
+                Log.i("Cancel","true");
             }
 
             @Override
-            public void onError(FacebookException exception) {
-                Log.e("APP", exception.toString());
+            public void onError(FacebookException e) {
+                e.printStackTrace();
             }
         });
 

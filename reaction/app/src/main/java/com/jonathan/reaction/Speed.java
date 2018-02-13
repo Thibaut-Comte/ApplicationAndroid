@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class Speed extends AppCompatActivity {
+public class ²Speed extends AppCompatActivity {
 
     //init des données membres
     TextView mTvTime;
