@@ -65,6 +65,7 @@ public class Speed extends AppCompatActivity {
             mThreadChrono = new Thread(mChronometer);
             mThreadChrono.start();
             mChronometer.start();
+            mChronometer.setmode("Speed");
         }
 
 
