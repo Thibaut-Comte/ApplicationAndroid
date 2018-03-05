@@ -63,7 +63,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".EndGame" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".EndGameAverage"></activity>
     </application>
 
 </manifest>
