@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -50,4 +50,11 @@
         android:layout_alignStart="@+id/btnScore"
         android:layout_marginBottom="50dp"
         android:text="Average" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="#AAAAAA"
+        />
 </RelativeLayout>

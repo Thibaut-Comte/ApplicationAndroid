@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,9 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.*;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -26,6 +30,8 @@ import java.util.Random;
 public class Menu extends AppCompatActivity {
 
     Button settings, speed, stamina, score, average;
+
+    ImageView img;
 
 
     Player player = new Player();
@@ -39,12 +45,48 @@ public class Menu extends AppCompatActivity {
         // On récupère le sharedPreferences "player"
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String test2 = sharedPreferences.getString("username", null);
+        String urlAvatar = sharedPreferences.getString("avatar", null);
         Toast.makeText(this, "Bonjour "+test2, Toast.LENGTH_LONG).show();
 
         settings = findViewById(R.id.btnSettings);
         score = findViewById(R.id.btnScore);
         average = findViewById(R.id.btnAverage);
         speed = findViewById(R.id.btnSpeed);
+        img = findViewById(R.id.avatar);
+
+        Log.i("avatar", urlAvatar);
+
+        //Picasso.with(getBaseContext()).load(urlAvatar).into(img);
+
+        new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(
+                    JSONObject object,
+                    GraphResponse response) {
+                // Application code
+
+                try {
+
+
+                    if (object.has("picture")) {
+                        //String profilePicUrl="http://graph.facebook.com/"+object.getString("id")+"/picture?type=large";
+                        String profilePicUrl = object.getJSONObject("picture").getJSONObject("data").getString("url");
+                        profilePicUrl = profilePicUrl.replace("\\", "");
+
+
+                        Picasso.with(Menu.this)
+                                .load(profilePicUrl)
+                                .into(img);
+
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

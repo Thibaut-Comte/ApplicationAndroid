@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -34,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Intent i = new Intent(MainActivity.this, Menu.class);
-        startActivity(i);
-
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
         //Nouvelle clé de Hash car celle générée par console ne fonctionne qu'une seule fois ensuite celle générée par le code
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
 
         loginButton.setReadPermissions("email");
 
@@ -67,9 +64,13 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                String userID = loginResult.getAccessToken().getUserId();
+                String imgUrl = "http://graph.facebook.com/"+userID+"/picture?type=large";
                 sharedPreferences.edit().putString("username", "nada").apply();
+                sharedPreferences.edit().putString("avatar", imgUrl).apply();
                 Intent i = new Intent(MainActivity.this, Menu.class);
                 startActivity(i);
+
 
             }
 
