@@ -22,6 +22,8 @@ public class Player {
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
+        this.lastname = "";
+        this.firstname = "";
 
     }
 
@@ -33,15 +35,17 @@ public class Player {
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
+        this.lastname = "";
+        this.firstname = "";
     }
 
-    public Player(String username, String password, String firstname, String lastname, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
+    public Player(String username, String password, String firstname, String lastname) {
         this.username = username;
         this.password = password;
         this.actualscore = "";
-        this.hightscoreSpeed = hightscoreSpeed;
-        this.hightscoreAverage = hightscoreAverage;
-        this.hightscoreStamina = hightscoreStamina;
+        this.hightscoreSpeed = 0;
+        this.hightscoreAverage = 0;
+        this.hightscoreStamina = 0;
         this.lastname = lastname;
         this.firstname = firstname;
     }
