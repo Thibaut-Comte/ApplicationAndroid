@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
@@ -61,7 +62,11 @@ public class Menu extends AppCompatActivity {
 
         DataB.Recup(getApplicationContext(), DBRef, "hellboy");
 
-        Log.e("debug","SHA1 : "+SHA1.getDigestAlgorithm());
+        try {
+            Log.e("debug","SHA1 : "+DataB.sha(shaone));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 
         // On récupère le sharedPreferences "player"
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
