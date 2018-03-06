@@ -34,6 +34,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
+import static java.security.spec.MGF1ParameterSpec.SHA1;
+
 
 public class Menu extends AppCompatActivity {
 
@@ -41,12 +43,11 @@ public class Menu extends AppCompatActivity {
 
     ImageView img;
 
-    Database DB = new Database();
-
-    HashMap<String,Player> users = new HashMap<>();
+    Database DataB = new Database();
 
     Player player = new Player();
 
+    String shaone = "chaine a transformer en sha1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +57,11 @@ public class Menu extends AppCompatActivity {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
 
-        RecupIds(DBRef);
+        DataB.RecupIds(DBRef);
 
-        final DatabaseReference DBRef2 = DBRef.child("arsenfat");
-        Recup(DBRef2);
+        DataB.Recup(getApplicationContext(), DBRef, "hellboy");
+
+        Log.e("debug","SHA1 : "+SHA1.getDigestAlgorithm());
 
         //Remise à 0 pour average
         SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
@@ -79,6 +81,8 @@ public class Menu extends AppCompatActivity {
         img = findViewById(R.id.avatar);
 
         //Log.i("avatar", urlAvatar);
+
+
 
         //Picasso.with(getBaseContext()).load(urlAvatar).into(img);
 
@@ -154,64 +158,4 @@ public class Menu extends AppCompatActivity {
 
     }
 
-    public void Recup(Query recup)
-    {
-        recup.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //System.out.print(dataSnapshot.getValue());
-                player = dataSnapshot.getValue(Player.class);
-                String text = "";
-
-                if(player.getFirstname().equals("")) {}
-                else
-                {
-                    text = "Bonjour "+player.getLastname()+" "+player.getFirstname();
-                }
-                int duration = Toast.LENGTH_SHORT;
-                Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
-
-    public void RecupIds(Query recup)
-
-    {
-        recup.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //System.out.print(dataSnapshot.getValue());
-//                ArrayList Ids = new ArrayList();
-                Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
-                DB.players.clear();
-//                Log.e("reaction",""+Ids.getClass());
-//                Log.e("reaction",""+Ids);
-                for ( DataSnapshot obj : Ids) {
-                    Log.e("debug","key:"+obj.getKey());
-                    Log.e("debug",""+obj.getValue());
-                    Player truc = obj.getValue(Player.class);
-                    truc.setUsername(obj.getKey());
-                    //users.put(obj.getKey(),obj.getValue(Player.class));
-                    //Player Nplay = new Player(obj.getKey(),truc.getPassword(),
-                    //truc.getHightscoreSpeed(),truc.getHightscoreAverage(),truc.getHightscoreStamina(),
-                    //truc.getFirstname(),truc.getLastname());
-                    DB.players.add(truc);
-                    //Log.e("debug","classTruc:"+truc.getClass());
-                    Log.e("debug","value "+truc.toString());
-                    Log.e("debug","nbObjallUser : "+DB.players.size());
-                    Log.e("debug","NewPlayer : "+truc.toString());
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
 }

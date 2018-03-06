@@ -22,6 +22,8 @@ public class Player {
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
+        this.lastname = "";
+        this.firstname = "";
 
     }
 
@@ -33,15 +35,17 @@ public class Player {
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
+        this.lastname = "";
+        this.firstname = "";
     }
 
-    public Player(String username, String password, String firstname, String lastname, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
+    public Player(String username, String password, String firstname, String lastname) {
         this.username = username;
         this.password = password;
         this.actualscore = "";
-        this.hightscoreSpeed = hightscoreSpeed;
-        this.hightscoreAverage = hightscoreAverage;
-        this.hightscoreStamina = hightscoreStamina;
+        this.hightscoreSpeed = 0;
+        this.hightscoreAverage = 0;
+        this.hightscoreStamina = 0;
         this.lastname = lastname;
         this.firstname = firstname;
     }
@@ -67,8 +71,8 @@ public class Player {
         return username;
     }
 
-    public void setUsername(String firstname) {
-        this.firstname = firstname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstname() {
@@ -84,7 +88,7 @@ public class Player {
     }
 
     public void setLastname(String lastname) {
-        this.username = lastname;
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -129,4 +133,17 @@ public class Player {
 
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", actualscore='" + actualscore + '\'' +
+                ", hightscoreSpeed=" + hightscoreSpeed +
+                ", hightscoreAverage=" + hightscoreAverage +
+                ", hightscoreStamina=" + hightscoreStamina +
+                '}';
+    }
 }
