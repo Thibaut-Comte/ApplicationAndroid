@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "265741152861",
+    "firebase_url": "https://reaction-bf4a1.firebaseio.com",
+    "project_id": "reaction-bf4a1",
+    "storage_bucket": "reaction-bf4a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265741152861:android:4897cbe24a04fd5c",
+        "android_client_info": {
+          "package_name": "com.jonathan.reaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265741152861-6uk9s5bfc8fpp7e5hvhq7fsl0j1djh8g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jonathan.reaction",
+            "certificate_hash": "8f947c4d8f37f9da6129a2d67de1102a248276ce"
+          }
+        },
+        {
+          "client_id": "265741152861-kfikmthpba3tq1srhso1j8oef5e73ogr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnCIB3CmLlrgSE0wgyYQbEqbIhOxJO7kM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265741152861-kfikmthpba3tq1srhso1j8oef5e73ogr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
