@@ -51,10 +51,4 @@
         android:layout_marginBottom="50dp"
         android:text="Average" />
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="#AAAAAA"
-        />
 </RelativeLayout>

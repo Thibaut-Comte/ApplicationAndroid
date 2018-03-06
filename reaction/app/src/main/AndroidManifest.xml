@@ -55,7 +55,7 @@
         </activity>
         android:screenOrientation="portrait" />
         <activity
-            android:name=".Score"
+            android:name=".ScoreSpeed"
             android:label="@string/Score"
             android:screenOrientation="portrait" />
         <activity

@@ -40,7 +40,7 @@ public class CreateAccount extends AppCompatActivity {
                     {
                         player = new Player(login.getText().toString(), pw.getText().toString());
                         Toast.makeText(CreateAccount.this, "Compte créer "+player.getUsername(), Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(CreateAccount.this, Login.class);
+                        Intent i = new Intent(CreateAccount.this, MainActivity.class);
                         startActivity(i);
 
                     } else {

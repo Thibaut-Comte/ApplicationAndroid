@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -38,13 +40,13 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
+        //getItem(position) va récupérer l'item [position] de la List<Player> players
         ScoreClass scoreClass = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.pseudo.setText(scoreClass.getPseudo());
-        viewHolder.score.setText(Integer.toString(scoreClass.getScore()));
-        viewHolder.avatar.setImageDrawable(new ColorDrawable(scoreClass.getColor()));
+        viewHolder.score.setText("Speed : "+Integer.toString(scoreClass.getScore()));
+        Picasso.with(getContext()).load(scoreClass.getUrl()).into(viewHolder.avatar);
 
         return convertView;
     }

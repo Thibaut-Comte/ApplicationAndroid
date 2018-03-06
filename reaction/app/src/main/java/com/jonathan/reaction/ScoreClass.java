@@ -6,22 +6,22 @@ package com.jonathan.reaction;
 
 public class ScoreClass {
 
-    private int color;
+    private String url;
     private String pseudo;
     private int score;
 
-    public ScoreClass(int color, String pseudo, int score) {
-        this.color = color;
+    public ScoreClass(String url, String pseudo, int score) {
+        this.url = url;
         this.pseudo = pseudo;
         this.score = score;
     }
 
-    public int getColor() {
-        return color;
+    public String getUrl() {
+        return url;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getPseudo() {
