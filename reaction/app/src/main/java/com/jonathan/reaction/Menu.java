@@ -163,7 +163,7 @@ public class Menu extends AppCompatActivity {
                 {
                     text = "Bonjour "+player.getLastname()+" "+player.getFirstname();
                 }
-                int duration = Toast.LENGTH_SHORT;
+                int duration = Toast.LENGTH_LONG;
                 Context context = getApplicationContext();
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();

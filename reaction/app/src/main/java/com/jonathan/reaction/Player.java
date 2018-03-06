@@ -67,8 +67,8 @@ public class Player {
         return username;
     }
 
-    public void setUsername(String firstname) {
-        this.firstname = firstname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstname() {
@@ -84,7 +84,7 @@ public class Player {
     }
 
     public void setLastname(String lastname) {
-        this.username = lastname;
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -129,4 +129,17 @@ public class Player {
 
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", actualscore='" + actualscore + '\'' +
+                ", hightscoreSpeed=" + hightscoreSpeed +
+                ", hightscoreAverage=" + hightscoreAverage +
+                ", hightscoreStamina=" + hightscoreStamina +
+                '}';
+    }
 }
