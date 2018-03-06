@@ -12,6 +12,8 @@ public class Player {
     private long hightscoreSpeed = 0;
     private long hightscoreAverage = 0;
     private long hightscoreStamina = 0;
+    private String firstname = "";
+    private String lastname = "";
 
     public Player(String username, String password, String actualscore, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
         this.username = username;
@@ -31,6 +33,17 @@ public class Player {
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
+    }
+
+    public Player(String username, String password, String firstname, String lastname, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
+        this.username = username;
+        this.password = password;
+        this.actualscore = "";
+        this.hightscoreSpeed = hightscoreSpeed;
+        this.hightscoreAverage = hightscoreAverage;
+        this.hightscoreStamina = hightscoreStamina;
+        this.lastname = lastname;
+        this.firstname = firstname;
     }
 
     public Player() {
@@ -54,8 +67,24 @@ public class Player {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.username = lastname;
     }
 
     public String getPassword() {
