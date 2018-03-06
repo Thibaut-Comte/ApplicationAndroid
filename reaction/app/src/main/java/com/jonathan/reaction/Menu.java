@@ -68,6 +68,11 @@ public class Menu extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Remise à 0 pour average
+        SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        SharedPreferences1.edit().putInt("Average", 0).apply();
+
+
         // On récupère le sharedPreferences "player"
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String test2 = sharedPreferences.getString("username", null);
@@ -80,7 +85,7 @@ public class Menu extends AppCompatActivity {
         speed = findViewById(R.id.btnSpeed);
         img = findViewById(R.id.avatar);
 
-        Log.i("avatar", urlAvatar);
+        //Log.i("avatar", urlAvatar);
 
 
 
