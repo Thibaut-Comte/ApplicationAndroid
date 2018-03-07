@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.appevents.AppEventsLogger;
@@ -37,7 +36,6 @@ import java.util.Random;
 
 import static java.security.spec.MGF1ParameterSpec.SHA1;
 
->>>>>>> 0b80da49c682dfe677c0a6fbc7adf53fdfa731b0
 
 public class Menu extends AppCompatActivity {
 
@@ -86,8 +84,6 @@ public class Menu extends AppCompatActivity {
         speed = findViewById(R.id.btnSpeed);
         img = findViewById(R.id.avatar);
 
-<<<<<<< HEAD
-=======
         //Log.i("avatar", urlAvatar);
 
 
@@ -124,7 +120,6 @@ public class Menu extends AppCompatActivity {
         };
 
 
->>>>>>> 0b80da49c682dfe677c0a6fbc7adf53fdfa731b0
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

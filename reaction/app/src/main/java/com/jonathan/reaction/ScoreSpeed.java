@@ -36,24 +36,24 @@ public class ScoreSpeed extends AppCompatActivity {
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ScoreSpeed.this, ScoreSpeed.class);
-                startActivity(i);
+                Intent speed = new Intent(ScoreSpeed.this, ScoreSpeed.class);
+                startActivity(speed);
             }
         });
 
         stamina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ScoreSpeed.this, ScoreStamina.class);
-                startActivity(i);
+                Intent stamina = new Intent(ScoreSpeed.this, ScoreStamina.class);
+                startActivity(stamina);
             }
         });
 
         average.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ScoreSpeed.this, ScoreAverage.class);
-                startActivity(i);
+                Intent average = new Intent(ScoreSpeed.this, ScoreAverage.class);
+                startActivity(average);
             }
         });
 
