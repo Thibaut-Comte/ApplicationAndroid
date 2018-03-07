@@ -80,4 +80,10 @@ public class EndGameAverage extends AppCompatActivity {
         });
 
     }
+
+    public void onBackPressed()
+    {
+        Intent i = new Intent(EndGameAverage.this, Menu.class);
+        startActivity(i);
+    }
 }

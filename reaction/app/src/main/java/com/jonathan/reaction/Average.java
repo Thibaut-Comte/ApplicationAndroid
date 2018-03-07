@@ -173,4 +173,9 @@ public class Average extends AppCompatActivity {
         kill = true;
     }
 
+    public void onBackPressed()
+    {
+        Intent i = new Intent(Average.this, Menu.class);
+        startActivity(i);
+    }
 }
