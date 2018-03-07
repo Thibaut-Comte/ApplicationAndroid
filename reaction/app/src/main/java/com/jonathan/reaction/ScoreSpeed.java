@@ -65,6 +65,12 @@ public class ScoreSpeed extends AppCompatActivity {
         lw.setAdapter(adapter);
     }
 
+    public void onBackPressed()
+    {
+        Intent i = new Intent(ScoreSpeed.this, Menu.class);
+        startActivity(i);
+    }
+
     private List<ScoreClass> genererScores() {
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String name = sharedPreferences.getString("username", "undefined");

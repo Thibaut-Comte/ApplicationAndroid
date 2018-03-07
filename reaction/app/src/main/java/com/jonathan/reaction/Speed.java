@@ -173,4 +173,10 @@ public class Speed extends AppCompatActivity {
         kill = true;
     }
 
+    public void onBackPressed()
+    {
+        Intent i = new Intent(Speed.this, Menu.class);
+        startActivity(i);
+    }
+
 }

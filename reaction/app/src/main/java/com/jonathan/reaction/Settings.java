@@ -1,5 +1,6 @@
 package com.jonathan.reaction;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,5 +53,11 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackPressed()
+    {
+        Intent i = new Intent(Settings.this, Menu.class);
+        startActivity(i);
     }
 }

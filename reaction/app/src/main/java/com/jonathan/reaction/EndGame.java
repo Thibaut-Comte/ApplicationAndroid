@@ -56,4 +56,10 @@ private Button rejouer, menu;
         });
 
     }
+
+    public void onBackPressed()
+    {
+        Intent i = new Intent(EndGame.this, Menu.class);
+        startActivity(i);
+    }
 }

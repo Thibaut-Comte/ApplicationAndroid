@@ -42,7 +42,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
         <activity
             android:name=".Average"
             android:screenOrientation="portrait" />
@@ -56,7 +55,15 @@
         android:screenOrientation="portrait" />
         <activity
             android:name=".ScoreSpeed"
-            android:label="@string/Score"
+            android:label="@string/ScoreSpeed"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScoreStamina"
+            android:label="@string/ScoreStamina"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScoreAverage"
+            android:label="@string/ScoreAverage"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Speed"
