@@ -9,12 +9,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class CreateAccount extends AppCompatActivity {
 
     private TextView tvlogin, tvpw, error;
     private EditText login, pw, confirmpw;
     private Button create;
 
+    private Database DataB = new Database();
 
     Player player;
 
@@ -34,24 +38,34 @@ public class CreateAccount extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
-                {
-                    if (pw.getText().toString().equals(confirmpw.getText().toString()))
-                    {
-                        player = new Player(login.getText().toString(), pw.getText().toString());
-                        Toast.makeText(CreateAccount.this, "Compte créer "+player.getUsername(), Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(CreateAccount.this, MainActivity.class);
-                        startActivity(i);
+                FirebaseDatabase DB = FirebaseDatabase.getInstance();
+                final DatabaseReference DBRef = DB.getReference("users");
 
-                    } else {
-                        error.setText("Mot de passe non identique");
+                boolean loginLibre = true;
+                DataB.RecupDB();
+                for(int i=0;i<DataB.players.size();i++) {
+                    if (login.getText().toString().equals(DataB.players.get(i).getUsername())) {
+                        loginLibre = false;
                     }
-
-                } else {
-                    error.setText("Veuillez renseigner les deux champs svp");
+                }
+                if(loginLibre){
+                    if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0) {
+                        if (pw.getText().toString().equals(confirmpw.getText().toString())) {
+                            player = new Player("", pw.getText().toString());
+                            DBRef.child(login.getText().toString()).setValue(player);
+                            Toast.makeText(CreateAccount.this, "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(CreateAccount.this, MainActivity.class);
+                            startActivity(i);
+                        } else {
+                            error.setText("Mot de passe non identique");
+                        }
+                    } else {
+                        error.setText("Veuillez renseigner les deux champs svp");
+                    }
+                } else{
+                    error.setText("Ce username est déja pris");
                 }
             }
         });
-
     }
 }

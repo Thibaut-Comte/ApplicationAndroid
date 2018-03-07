@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
@@ -23,8 +24,11 @@ public class Database {
 
     void Database() {}
 
-    public void Recup(Context context, DatabaseReference DBRef, String key)
+    public void Recup(Context context, String key)
     {
+        FirebaseDatabase DB = FirebaseDatabase.getInstance();
+        final DatabaseReference DBRef = DB.getReference("users");
+
         final Context contexte = context;
         final DatabaseReference DBRef2 = DBRef.child(key);
         DBRef2.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -34,7 +38,7 @@ public class Database {
                 Player player = dataSnapshot.getValue(Player.class);
                 String text = "";
 
-                if(player.getFirstname().equals("") || player.getLastname().equals("")) {
+                if(player.getFirstname().equals("") && player.getLastname().equals("")) {
                     text = "Bonjour "+dataSnapshot.getKey();
                 }
                 else
@@ -54,9 +58,12 @@ public class Database {
         });
     }
 
-    public void RecupIds(Query recup)
+    public void RecupDB()
     {
-        recup.addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase DB = FirebaseDatabase.getInstance();
+        final DatabaseReference DBRef = DB.getReference("users");
+
+        DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //System.out.print(dataSnapshot.getValue());
@@ -75,6 +82,7 @@ public class Database {
                     //truc.getHightscoreSpeed(),truc.getHightscoreAverage(),truc.getHightscoreStamina(),
                     //truc.getFirstname(),truc.getLastname());
                     players.add(truc);
+                    Log.e("debug","Nouveau player ajoutée à la liste");
                     //Log.e("debug","classTruc:"+truc.getClass());
                     Log.e("debug","value "+truc.toString());
                     Log.e("debug","nbObjallUser : "+players.size());
