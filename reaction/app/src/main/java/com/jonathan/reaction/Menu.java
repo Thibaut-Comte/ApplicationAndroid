@@ -20,21 +20,12 @@ import com.facebook.login.widget.LoginButton;
 import com.facebook.*;
 import com.squareup.picasso.Picasso;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
 import org.json.JSONObject;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
-
-import static java.security.spec.MGF1ParameterSpec.SHA1;
 
 
 public class Menu extends AppCompatActivity {
@@ -54,12 +45,9 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        FirebaseDatabase DB = FirebaseDatabase.getInstance();
-        final DatabaseReference DBRef = DB.getReference("users");
+        DataB.RecupDB();
 
-        DataB.RecupIds(DBRef);
-
-        DataB.Recup(getApplicationContext(), DBRef, "hellboy");
+        DataB.Recup(getApplicationContext(), "hellboy");
 
         try {
             Log.e("debug","SHA1 : "+DataB.sha(shaone));
