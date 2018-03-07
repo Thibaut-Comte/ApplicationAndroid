@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         create = findViewById(R.id.createAccount);
 
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+
+        Intent intent = new Intent(MainActivity.this, Menu.class);
+        startActivity(intent);
 
         //Nouvelle clé de Hash car celle générée par console ne fonctionne qu'une seule fois ensuite celle générée par le code
         // ci-dessous va prendre le relais
