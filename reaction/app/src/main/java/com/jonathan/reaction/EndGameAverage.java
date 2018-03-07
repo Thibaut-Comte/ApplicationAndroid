@@ -41,11 +41,11 @@ public class EndGameAverage extends AppCompatActivity {
                 nmbr = nmbr + 1;
                 Ascore = sharedPreferences.getLong("Ascore", 0);
                 sharedPreferences.edit().putInt("Average", nmbr).apply();
-                result.setText(R.string.victoire);
                 Mscore = sharedPreferences.getLong("score", 0);
                 Ascore = Ascore*(nmbr - 1);
                 Ascore = (Ascore + Mscore) / nmbr;
-                score.setText(""+Mscore+" "+nmbr+"score: "+Ascore);
+                score.setText(""+Mscore);
+                result.setText("Game: "+nmbr+" of 10   Average: "+Ascore);
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
             } if(nmbr == 10)
             {

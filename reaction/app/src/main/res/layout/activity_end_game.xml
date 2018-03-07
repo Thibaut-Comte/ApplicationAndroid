@@ -17,7 +17,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="57dp"
-            android:text="Perdu !" />
+            android:text="Perdu !"
+            android:textSize="50dp"/>
 
         <TextView
             android:id="@+id/result"
