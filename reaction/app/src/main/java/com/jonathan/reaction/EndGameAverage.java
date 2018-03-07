@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class EndGameAverage extends AppCompatActivity {
 
-    private TextView score, result, Twtry;
+    private TextView score, result;
     private Button rejouer, menu;
     private int nmbr = 0;
     private long Ascore = 0;
@@ -25,7 +27,6 @@ public class EndGameAverage extends AppCompatActivity {
         result = findViewById(R.id.result);
         rejouer = findViewById(R.id.rejouer);
         menu = findViewById(R.id.menu);
-        Twtry = findViewById(R.id.Twtry);
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String victoire = sharedPreferences.getString("victoire", "error system");
@@ -44,22 +45,20 @@ public class EndGameAverage extends AppCompatActivity {
                 Mscore = sharedPreferences.getLong("score", 0);
                 Ascore = Ascore*(nmbr - 1);
                 Ascore = (Ascore + Mscore) / nmbr;
-                score.setText(""+Mscore);
-                //Twtry.setText(""+nmbr+"score: "+Ascore); //crash Attempt to invoke virtual method 'void android.widget.TextView.setText(java.lang.CharSequence)' on a null object reference
+                score.setText(""+Mscore+" "+nmbr+"score: "+Ascore);
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
-            }else if(nmbr == 10)
+            } if(nmbr == 10)
             {
                 //Si 10 try on été fais
-                //Twtry.setText("Fin");
                 result.setText("Your average score is: "+Ascore);
-
+                sharedPreferences.edit().putInt("Average", 0).apply();
+                //check si hightscore et mise en BDD
             }
 
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
             result.setText(R.string.defaite);
-            sharedPreferences.edit().putInt("Average", -1).apply();
-
+            sharedPreferences.edit().putInt("Average", 0).apply();
         }
 
 

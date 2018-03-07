@@ -139,7 +139,7 @@ public class Average extends AppCompatActivity {
                             if (!sound) {
                                 OOFSound.start();
                                 sound = true;
-                                Intent i = new Intent(Average.this, EndGame.class);
+                                Intent i = new Intent(Average.this, EndGameAverage.class);
                                 startActivity(i);
                             }
                         }
