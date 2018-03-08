@@ -68,7 +68,7 @@ public class ScoreAverage extends AppCompatActivity {
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String name = sharedPreferences.getString("username", "undefined");
         String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
-        int scoreP = sharedPreferences.getInt("scoreP", 0);
+        int scoreP = sharedPreferences.getInt("scoreAverage", 0);
 
         List<ScoreClass> scores = new ArrayList<ScoreClass>();
         scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", "Thibaut", 253));

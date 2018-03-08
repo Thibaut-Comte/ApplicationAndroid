@@ -51,10 +51,12 @@ public class Menu extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
-        //Remise à 0 pour average et stamina
+        //Remise à 0 pour average
         SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         SharedPreferences1.edit().putInt("Average", 0).apply();
         SharedPreferences1.edit().putInt("Stamina", 0).apply();
+        SharedPreferences1.edit().putInt("StaminaLives", 3).apply();
+
 
         // On récupère le sharedPreferences "player"
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
@@ -146,7 +148,7 @@ public class Menu extends AppCompatActivity {
         });
 
         Context context = getApplicationContext();
-        CharSequence text = "Welcom back "+player.getUsername();
+        CharSequence text = "Welcome back "+player.getUsername();
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);

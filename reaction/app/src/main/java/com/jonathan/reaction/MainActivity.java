@@ -20,6 +20,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -91,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
                         //Ajout au sharedPreferences "player" de la valeur player.getUsername() à la clé "username"
                         player = new Player(login.getText().toString(), pw.getText().toString());
                         sharedPreferences.edit().putString("username", "Paul").apply();
-                        sharedPreferences.edit().putString("avatarP", "https://www.image.ie/images/no-image.png").apply();
-                        sharedPreferences.edit().putInt("scoreP", 49).apply();
+                        sharedPreferences.edit().putString("avatarP", "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/14732274_1482356538458018_1995408217779014922_n.jpg?oh=fe46f9b9783c8bf4ac586fcee33aabf0&oe=5B052DB9").apply();
+                        sharedPreferences.edit().putInt("scoreSpeed", 49).apply();
+                        sharedPreferences.edit().putInt("scoreStamina", 59).apply();
+                        sharedPreferences.edit().putInt("scoreAverage", 75).apply();
                         Intent i = new Intent(MainActivity.this, Menu.class);
                         startActivity(i);
                     }
@@ -128,9 +132,11 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 String userID = loginResult.getAccessToken().getUserId();
                 String imgUrl = "http://graph.facebook.com/"+userID+"/picture?type=large";
+                Log.i("id", userID);
                 sharedPreferences.edit().putString("username", "Bill").apply();
-                sharedPreferences.edit().putString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg").apply();
+                sharedPreferences.edit().putString("avatarP", "http://graph.facebook.com/"+userID+"/picture?type=large").apply();
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
+
                 Intent i = new Intent(MainActivity.this, Menu.class);
                 startActivity(i);
 

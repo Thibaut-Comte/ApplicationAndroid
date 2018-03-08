@@ -14,16 +14,32 @@ import org.w3c.dom.Text;
 public class Settings extends AppCompatActivity {
 
     private Switch sound, vibrate;
+    private SharedPreferences sharedPreferences;
+    private Boolean soundTest, vibrateTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        soundTest = sharedPreferences.getBoolean("sound", true);
+        vibrateTest = sharedPreferences.getBoolean("vibrate", true);
+
 
         sound = findViewById(R.id.sound);
         vibrate = findViewById(R.id.vibrate);
 
+        //Met les boutons sur on ou off suivant les valeurs en mémoire
+        if (!soundTest) {
+            sound.setChecked(false);
+        }
+
+        if (!vibrateTest) {
+            vibrate.setChecked(false);
+        }
+
+        //Assignation de on ou off pour le reste de l'appli
         sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +71,7 @@ public class Settings extends AppCompatActivity {
 
     }
 
+    //Action de l'appui du bouton "physique" retour
     public void onBackPressed()
     {
         Intent i = new Intent(Settings.this, Menu.class);
