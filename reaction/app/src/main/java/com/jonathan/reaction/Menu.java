@@ -55,10 +55,10 @@ public class Menu extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //Remise à 0 pour average
+        //Remise à 0 pour average et stamina
         SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         SharedPreferences1.edit().putInt("Average", 0).apply();
-
+        SharedPreferences1.edit().putInt("Stamina", 0).apply();
 
         // On récupère le sharedPreferences "player"
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
@@ -71,6 +71,7 @@ public class Menu extends AppCompatActivity {
         average = findViewById(R.id.btnAverage);
         speed = findViewById(R.id.btnSpeed);
         img = findViewById(R.id.avatar);
+        stamina = findViewById(R.id.btnStamina);
 
         //Log.i("avatar", urlAvatar);
 
@@ -136,6 +137,14 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Speed.class);
+                startActivity(intent);
+            }
+        });
+
+        stamina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, Stamina.class);
                 startActivity(intent);
             }
         });

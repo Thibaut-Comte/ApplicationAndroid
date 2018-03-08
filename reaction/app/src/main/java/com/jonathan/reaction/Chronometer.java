@@ -70,6 +70,10 @@ public class Chronometer implements Runnable {
                 ((Average) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
                         , hours, minutes, seconds, millis), since);
             }
+            if (mode.equals("Stamina")) {
+                ((Stamina) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
+                        , hours, minutes, seconds, millis), since);
+            }
             try {
                 Thread.sleep(15);
             } catch (InterruptedException e) {

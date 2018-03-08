@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class Average extends AppCompatActivity {
+public class Stamina extends AppCompatActivity {
 
     //init des données membres
     TextView mTvTime;
@@ -39,40 +39,29 @@ public class Average extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        SharedPreferences sharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(150);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_average);
+        setContentView(R.layout.activity_stamina);
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         String time = "";
 
-/*
-        time = sharedPreferences.getString("actualscore", "Pas cool");
-        if (sharedPreferences.contains("actualscore")) {
-            mTvTime2.setText(time);
-
-        } else {
-            mTvTime2.setText("");
-        }
-*/
         if (mChronometer == null) {
             mChronometer = new Chronometer(mContext);
             mThreadChrono = new Thread(mChronometer);
             mThreadChrono.start();
             mChronometer.start();
-            mChronometer.setmode("Average");
-
+            mChronometer.setmode("Stamina");
         }
 
 
         //Génrère un rand entre 8000 et 2000
         nombreAleatoireMax = 2000 + (long) (Math.random() * ((8000 - 2001) + 1));
         nombreAleatoire = 2000 + (long) (Math.random() * ((nombreAleatoireMax - 2000) + 1));
+
 
 
         //Thread pour la vibration
@@ -132,14 +121,14 @@ public class Average extends AppCompatActivity {
                         mChronometer.stop();
                         touch = true;
                         if (since < nombreAleatoire) {
-                            final MediaPlayer OOFSound = MediaPlayer.create(Average.this, R.raw.death);
+                            final MediaPlayer OOFSound = MediaPlayer.create(Stamina.this, R.raw.death);
 
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
-                            if (!sound) {
+                            if (!sound){
                                 OOFSound.start();
                                 sound = true;
-                                Intent i = new Intent(Average.this, EndGameAverage.class);
+                                Intent i = new Intent(Stamina.this, EndGameStamina.class);
                                 startActivity(i);
                             }
                         }
@@ -148,9 +137,9 @@ public class Average extends AppCompatActivity {
                             score = since - nombreAleatoire;
                             sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
                             sharedPreferences.edit().putLong("score", score).apply();
-                            if (!sound) {
+                            if (!sound){
                                 sound = true;
-                                Intent i = new Intent(Average.this, EndGameAverage.class);
+                                Intent i = new Intent(Stamina.this, EndGameStamina.class);
                                 startActivity(i);
                             }
                         }
@@ -171,6 +160,12 @@ public class Average extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         kill = true;
+    }
+
+    public void onBackPressed()
+    {
+        Intent i = new Intent(Stamina.this, Menu.class);
+        startActivity(i);
     }
 
 }

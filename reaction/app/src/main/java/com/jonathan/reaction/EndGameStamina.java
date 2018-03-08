@@ -8,25 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+public class EndGameStamina extends AppCompatActivity {
 
-public class EndGameAverage extends AppCompatActivity {
-
-    private TextView score, result;
+    private TextView score, result, twlvl;
     private Button rejouer, menu;
-    private int nmbr = 0;
-    private long Ascore = 0;
-    private long Mscore = 0;
+    private int lvl = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end_game_average);
+        setContentView(R.layout.activity_end_game_stamina);
 
         score = findViewById(R.id.score);
         result = findViewById(R.id.result);
         rejouer = findViewById(R.id.rejouer);
         menu = findViewById(R.id.menu);
+        twlvl = findViewById(R.id.lvl);
+
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String victoire = sharedPreferences.getString("victoire", "error system");
 
@@ -34,30 +32,18 @@ public class EndGameAverage extends AppCompatActivity {
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("vert"))
         {
-            nmbr = sharedPreferences.getInt("Average", 0);
-            if (nmbr < 10) {
-                // Si on est en dessous des 10 try
-                nmbr = nmbr + 1;
-                Ascore = sharedPreferences.getLong("Ascore", 0);
-                sharedPreferences.edit().putInt("Average", nmbr).apply();
-                Mscore = sharedPreferences.getLong("score", 0);
-                Ascore = Ascore*(nmbr - 1);
-                Ascore = (Ascore + Mscore) / nmbr;
-                score.setText(""+Mscore);
-                result.setText("Game: "+nmbr+" of 10   Average: "+Ascore);
-                sharedPreferences.edit().putLong("Ascore", Ascore).apply();
-            } if(nmbr == 10)
-            {
-                //Si 10 try on été fais
-                result.setText("Your average score is: "+Ascore);
-                sharedPreferences.edit().putInt("Average", 0).apply();
-                //check si hightscore et mise en BDD
-            }
-
+            result.setText(R.string.victoire);
+            score.setText(""+sharedPreferences.getLong("score", 0));
+            lvl = sharedPreferences.getInt("Stamina", 0);
+            lvl = lvl+1;
+            sharedPreferences.edit().putInt("Stamina", lvl).apply();
+            twlvl.setText(""+lvl);
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
+            lvl = sharedPreferences.getInt("Stamina", 0);
+            score.setText(""+lvl);
             result.setText(R.string.defaite);
-            sharedPreferences.edit().putInt("Average", 0).apply();
+            sharedPreferences.edit().putInt("Stamina", 0).apply();
         }
 
 
@@ -65,7 +51,7 @@ public class EndGameAverage extends AppCompatActivity {
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EndGameAverage.this, Average.class);
+                Intent i = new Intent(EndGameStamina.this, Stamina.class);
                 startActivity(i);
             }
         });
@@ -73,7 +59,7 @@ public class EndGameAverage extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EndGameAverage.this, Menu.class);
+                Intent i = new Intent(EndGameStamina.this, Menu.class);
                 startActivity(i);
             }
         });
@@ -82,7 +68,7 @@ public class EndGameAverage extends AppCompatActivity {
 
     public void onBackPressed()
     {
-        Intent i = new Intent(EndGameAverage.this, Menu.class);
+        Intent i = new Intent(EndGameStamina.this, Menu.class);
         startActivity(i);
     }
 }
