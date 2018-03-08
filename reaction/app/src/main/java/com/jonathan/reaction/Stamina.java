@@ -39,9 +39,6 @@ public class Stamina extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(150);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stamina);
         mContext = this;
