@@ -13,6 +13,7 @@ public class EndGameStamina extends AppCompatActivity {
     private TextView score, result, twlvl;
     private Button rejouer, menu;
     private int lvl = 0;
+    private int lives = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +31,28 @@ public class EndGameStamina extends AppCompatActivity {
 
 
         //Gestion du résultat de l'utilisateur
-        if (sharedPreferences.getString("ecran", "").equals("vert"))
-        {
+        if (sharedPreferences.getString("ecran", "").equals("vert")) {
             result.setText(R.string.victoire);
-            score.setText(""+sharedPreferences.getLong("score", 0));
+            score.setText("" + sharedPreferences.getLong("score", 0));
             lvl = sharedPreferences.getInt("Stamina", 0);
-            lvl = lvl+1;
+            lvl = lvl + 1;
             sharedPreferences.edit().putInt("Stamina", lvl).apply();
-            twlvl.setText(""+lvl);
-        } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
-        {
+            twlvl.setText("" + lvl);
+        } else if (sharedPreferences.getString("ecran", "").equals("rouge")) {
+            lives = sharedPreferences.getInt("StaminaLives", lives);
+            if (lives == 0) {
+                //Lose
+                sharedPreferences.edit().putInt("StaminaLives", 0).apply();
+                result.setText(R.string.defaite);
+            }
+            if (lives > 0) {
+                // - une vie
+                lives = lives - 1;
+                sharedPreferences.edit().putInt("StaminaLives", lives).apply();
+                result.setText("You just lot one life, only " + lives + " left");
+            }
             lvl = sharedPreferences.getInt("Stamina", 0);
-            score.setText(""+lvl);
-            result.setText(R.string.defaite);
-            sharedPreferences.edit().putInt("Stamina", 0).apply();
+            score.setText("" + lvl);
         }
 
 
@@ -66,8 +75,7 @@ public class EndGameStamina extends AppCompatActivity {
 
     }
 
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent i = new Intent(EndGameStamina.this, Menu.class);
         startActivity(i);
     }
