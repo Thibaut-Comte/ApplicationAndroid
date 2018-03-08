@@ -41,14 +41,8 @@ public class CreateAccount extends AppCompatActivity {
                 FirebaseDatabase DB = FirebaseDatabase.getInstance();
                 final DatabaseReference DBRef = DB.getReference("users");
 
-                boolean loginLibre = true;
-                DataB.RecupDB();
-                for(int i=0;i<DataB.players.size();i++) {
-                    if (login.getText().toString().equals(DataB.players.get(i).getUsername())) {
-                        loginLibre = false;
-                    }
-                }
-                if(loginLibre){
+                DataB.usernameExist(login.getText().toString());
+                if(DataB.isExist()){
                     if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0) {
                         if (pw.getText().toString().equals(confirmpw.getText().toString())) {
                             player = new Player("", pw.getText().toString());

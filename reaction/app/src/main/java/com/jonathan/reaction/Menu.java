@@ -24,7 +24,6 @@ import org.json.JSONObject;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Random;
 
 
@@ -45,15 +44,12 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        DataB.RecupDB();
-
-        DataB.Recup(getApplicationContext(), "hellboy");
-
-        try {
-            Log.e("debug","SHA1 : "+DataB.sha(shaone));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+//        // hashage du mdp
+//        try {
+//            Log.e("debug","SHA1 : "+DataB.sha(shaone));
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
 
         //Remise à 0 pour average et stamina
         SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
