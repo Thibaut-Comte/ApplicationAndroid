@@ -24,6 +24,8 @@ public class ScoreSpeed extends AppCompatActivity {
 
     Button speed, stamina, average;
 
+    Database DataB = new Database();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,10 @@ public class ScoreSpeed extends AppCompatActivity {
         speed = findViewById(R.id.speed);
         stamina = findViewById(R.id.stamina);
         average = findViewById(R.id.average);
+
+        DataB.RecupDB();
+
+        DataB.Recup("hellboy");
 
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
