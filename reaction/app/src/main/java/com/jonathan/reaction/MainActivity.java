@@ -16,12 +16,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -31,7 +35,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
-    LoginButton loginButton;
     CallbackManager callbackManager;
     LoginManager loginManager;
     boolean loggedIn;
@@ -122,19 +125,24 @@ public class MainActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
-        final LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-
-        loginButton.setReadPermissions("email");
+        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
 
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+
+                //Assignation du profile facebook dans l'objet Profile pour pouvoir utiliser ses attributs
+                Profile p = Profile.getCurrentProfile();
+
+                p.getProfilePictureUri(200,200);
+
                 String userID = loginResult.getAccessToken().getUserId();
-                String imgUrl = "http://graph.facebook.com/"+userID+"/picture?type=large";
-                Log.i("id", userID);
-                sharedPreferences.edit().putString("username", "Bill").apply();
-                sharedPreferences.edit().putString("avatarP", "http://graph.facebook.com/"+userID+"/picture?type=large").apply();
+                Log.e("id", userID);
+                Log.e("token", ""+loginResult.getAccessToken().getToken());
+                sharedPreferences.edit().putString("username", p.getName()).apply();
+                sharedPreferences.edit().putString("avatarP", p.getProfilePictureUri(200, 200).toString()).apply();
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
 
                 Intent i = new Intent(MainActivity.this, Menu.class);
@@ -154,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        loginButton.setReadPermissions("email");
     }
 
 
