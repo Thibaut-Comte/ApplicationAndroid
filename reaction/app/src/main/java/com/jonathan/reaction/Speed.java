@@ -36,13 +36,15 @@ public class Speed extends AppCompatActivity {
     private Chronometer mChronometer;
     private Thread mThreadChrono;
     private SharedPreferences sharedPreferences;
+    private Boolean vibrateTest, soundTest;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(150);
+        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        vibrateTest = sharedPreferences.getBoolean("vibrate", true);
+        soundTest = sharedPreferences.getBoolean("sound", true);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
@@ -102,8 +104,11 @@ public class Speed extends AppCompatActivity {
             }
         });
 
-        //On start le thread vibration à la fin du oncreate
-        vibrateThread.start();
+
+        if (vibrateTest) {
+            //On start le thread vibration à la fin du oncreate
+            vibrateThread.start();
+        }
 
     }
 
@@ -119,6 +124,7 @@ public class Speed extends AppCompatActivity {
                 //Affichage sur l'écran
                 mTvTime.setText(time);
                 sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+                soundTest = sharedPreferences.getBoolean("sound", true);
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
@@ -137,8 +143,10 @@ public class Speed extends AppCompatActivity {
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
                             if (!sound){
-                                OOFSound.start();
-                                sound = true;
+                                if (soundTest) {
+                                    OOFSound.start();
+                                    sound = true;
+                                }
                                 Intent i = new Intent(Speed.this, EndGame.class);
                                 startActivity(i);
                             }

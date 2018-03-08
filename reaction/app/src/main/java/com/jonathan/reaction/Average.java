@@ -34,15 +34,15 @@ public class Average extends AppCompatActivity {
     private Chronometer mChronometer;
     private Thread mThreadChrono;
     private SharedPreferences sharedPreferences;
+    private Boolean vibrateTest, soundTest;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        SharedPreferences sharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(150);
+        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        vibrateTest = sharedPreferences.getBoolean("vibrate", true);
+        soundTest = sharedPreferences.getBoolean("sound", true);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average);
@@ -102,8 +102,10 @@ public class Average extends AppCompatActivity {
             }
         });
 
-        //On start le thread vibration à la fin du oncreate
-        vibrateThread.start();
+        if (vibrateTest) {
+            //On start le thread vibration à la fin du oncreate
+            vibrateThread.start();
+        }
 
     }
 
@@ -137,8 +139,10 @@ public class Average extends AppCompatActivity {
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
                             if (!sound) {
-                                OOFSound.start();
-                                sound = true;
+                                if (sound) {
+                                    OOFSound.start();
+                                    sound = true;
+                                }
                                 Intent i = new Intent(Average.this, EndGameAverage.class);
                                 startActivity(i);
                             }
