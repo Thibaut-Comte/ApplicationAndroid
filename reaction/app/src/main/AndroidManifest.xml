@@ -81,6 +81,10 @@
             android:label="@string/Stamina"/>
         <activity android:name=".EndGameStamina"
             android:label="@string/Stamina"/>
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider{2008884382717534}"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>
