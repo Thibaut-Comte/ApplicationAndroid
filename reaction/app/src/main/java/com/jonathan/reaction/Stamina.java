@@ -27,6 +27,11 @@ public class Stamina extends AppCompatActivity {
     boolean sound = false;//true si son joué
 
     long nombreAleatoire, nombreAleatoireMax = 0;
+    long losetime = 0;
+    long[] losetimetab = new long[]{
+            750,500,450,400,375,350
+    };
+    int lvl = 0;
 
     long score = 0; //score du joueur
 
@@ -58,7 +63,6 @@ public class Stamina extends AppCompatActivity {
         //Génrère un rand entre 8000 et 2000
         nombreAleatoireMax = 2000 + (long) (Math.random() * ((8000 - 2001) + 1));
         nombreAleatoire = 2000 + (long) (Math.random() * ((nombreAleatoireMax - 2000) + 1));
-
 
 
         //Thread pour la vibration
@@ -106,10 +110,22 @@ public class Stamina extends AppCompatActivity {
                 mTvTime.setText(time);
                 sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
+                lvl = sharedPreferences.getInt("Stamina", 0);
+                if (lvl < 6)
+                {
+                    losetime = (losetimetab[lvl]) + nombreAleatoire;
+                }else{
+                    losetime = (losetimetab[5] - (10*(lvl-5))) + nombreAleatoire;
+                }
+
+
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
                     sharedPreferences.edit().putString("ecran", "vert").apply();
-
+                }
+                if (since > losetime) {
+                    mlw.setBackgroundColor(Color.BLUE);
+                    sharedPreferences.edit().putString("ecran", "rouge").apply();
                 }
                 //Stop du chrono quand on touche l'écran
                 mlw.setOnTouchListener(new View.OnTouchListener() {
@@ -117,24 +133,25 @@ public class Stamina extends AppCompatActivity {
                     public boolean onTouch(View arg0, MotionEvent arg1) {
                         mChronometer.stop();
                         touch = true;
-                        if (since < nombreAleatoire) {
+                        if (since < nombreAleatoire || losetime < since) {
+                            //lose
                             final MediaPlayer OOFSound = MediaPlayer.create(Stamina.this, R.raw.death);
 
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
-                            if (!sound){
+                            if (!sound) {
                                 OOFSound.start();
                                 sound = true;
                                 Intent i = new Intent(Stamina.this, EndGameStamina.class);
                                 startActivity(i);
                             }
                         }
-                        if (since > nombreAleatoire) {
-                            //mlw.setBackgroundColor(Color.BLUE);
+                        if (losetime > since && since > nombreAleatoire) {
+                            //win
                             score = since - nombreAleatoire;
                             sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
                             sharedPreferences.edit().putLong("score", score).apply();
-                            if (!sound){
+                            if (!sound) {
                                 sound = true;
                                 Intent i = new Intent(Stamina.this, EndGameStamina.class);
                                 startActivity(i);
@@ -159,8 +176,7 @@ public class Stamina extends AppCompatActivity {
         kill = true;
     }
 
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent i = new Intent(Stamina.this, Menu.class);
         startActivity(i);
     }
