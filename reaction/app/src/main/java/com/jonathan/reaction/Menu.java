@@ -65,6 +65,7 @@ public class Menu extends AppCompatActivity {
         Picasso.with(getBaseContext()).load(profilepicture).into(pp);
 
         //Remise à 0 pour average
+        sharedPreferences.edit().putInt("Speed", 0).apply();
         sharedPreferences.edit().putInt("Average", 0).apply();
         sharedPreferences.edit().putInt("Stamina", 0).apply();
         sharedPreferences.edit().putInt("StaminaLives", 3).apply();
@@ -91,7 +92,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Settings.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
@@ -100,7 +100,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, ScoreSpeed.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
@@ -109,7 +108,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Average.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
@@ -118,7 +116,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Speed.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
@@ -127,7 +124,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Menu.this, Stamina.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });

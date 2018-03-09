@@ -104,7 +104,7 @@ public class Average extends AppCompatActivity {
 
         if (vibrateTest) {
             //On start le thread vibration à la fin du oncreate
-            vibrateThread.start();
+            //vibrateThread.start(); Désa par choix
         }
 
     }

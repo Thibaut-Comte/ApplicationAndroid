@@ -71,8 +71,10 @@
             android:label="@string/Speed"
             android:screenOrientation="portrait" />
         <activity android:name=".CreateAccount" />
-        <activity android:name=".EndGame" />
-        <activity android:name=".Settings" />
+        <activity android:name=".EndGame"
+            android:label="@string/Speed"/>
+        <activity android:name=".Settings"
+            android:label="@string/Settings"/>
         <activity android:name=".EndGameAverage"
             android:label="@string/Average"/>
         <activity android:name=".Stamina"
