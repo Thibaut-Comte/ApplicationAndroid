@@ -31,6 +31,8 @@ public class Menu extends AppCompatActivity {
 
     Button settings, speed, stamina, score, average;
 
+    ImageView pp;
+
     ImageView img;
 
     Database DataB = new Database();
@@ -44,6 +46,9 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        String profilepicture = sharedPreferences.getString("avatarP", "http://");
+
 //        // hashage du mdp
 //        try {
 //            Log.e("debug","SHA1 : "+DataB.sha(shaone));
@@ -51,15 +56,17 @@ public class Menu extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
+
+        pp = findViewById(R.id.pp);
+        Picasso.with(getBaseContext()).load(profilepicture).into(pp);
+
         //Remise à 0 pour average
-        SharedPreferences SharedPreferences1 = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-        SharedPreferences1.edit().putInt("Average", 0).apply();
-        SharedPreferences1.edit().putInt("Stamina", 0).apply();
-        SharedPreferences1.edit().putInt("StaminaLives", 3).apply();
+        sharedPreferences.edit().putInt("Average", 0).apply();
+        sharedPreferences.edit().putInt("Stamina", 0).apply();
+        sharedPreferences.edit().putInt("StaminaLives", 3).apply();
 
 
         // On récupère le sharedPreferences "player"
-        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String test2 = sharedPreferences.getString("username", null);
         String urlAvatar = sharedPreferences.getString("avatar", null);
         Toast.makeText(this, "Bonjour "+test2, Toast.LENGTH_LONG).show();

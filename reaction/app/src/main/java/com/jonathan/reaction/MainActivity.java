@@ -83,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences.edit().putString("username", player.getUsername()).apply();
 
-        /* Intent i = new Intent(MainActivity.this, Menu.class);
-        startActivity(i); */
-
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
