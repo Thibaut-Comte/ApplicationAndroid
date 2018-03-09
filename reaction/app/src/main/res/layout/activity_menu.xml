@@ -30,7 +30,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/com_facebook_auth_dialog_cancel_background" />
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/com_facebook_button_background" />
 
             </LinearLayout>
         </LinearLayout>
@@ -48,10 +49,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/welcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -138,6 +139,8 @@
                 android:layout_width="2dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="60dp"
                 android:text="Settings" />
         </LinearLayout>
 

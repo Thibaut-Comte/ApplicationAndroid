@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -39,6 +40,8 @@ public class Menu extends AppCompatActivity {
 
     Player player = new Player();
 
+    TextView welcome;
+
     String shaone = "chaine a transformer en sha1";
 
     @Override
@@ -48,6 +51,7 @@ public class Menu extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String profilepicture = sharedPreferences.getString("avatarP", "http://");
+        String username = sharedPreferences.getString("username", "undefined");
 
 //        // hashage du mdp
 //        try {
@@ -77,41 +81,10 @@ public class Menu extends AppCompatActivity {
         speed = findViewById(R.id.btnSpeed);
         img = findViewById(R.id.avatar);
         stamina = findViewById(R.id.btnStamina);
-
-        //Log.i("avatar", urlAvatar);
-
+        welcome = findViewById(R.id.welcome);
 
 
-        //Picasso.with(getBaseContext()).load(urlAvatar).into(img);
-
-        new GraphRequest.GraphJSONObjectCallback() {
-            @Override
-            public void onCompleted(
-                    JSONObject object,
-                    GraphResponse response) {
-                // Application code
-
-                try {
-
-
-                    if (object.has("picture")) {
-                        //String profilePicUrl="http://graph.facebook.com/"+object.getString("id")+"/picture?type=large";
-                        String profilePicUrl = object.getJSONObject("picture").getJSONObject("data").getString("url");
-                        profilePicUrl = profilePicUrl.replace("\\", "");
-
-
-                        Picasso.with(Menu.this)
-                                .load(profilePicUrl)
-                                .into(img);
-
-                    }
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
+        welcome.setText("Bienvenu "+username);
 
 
         settings.setOnClickListener(new View.OnClickListener() {
