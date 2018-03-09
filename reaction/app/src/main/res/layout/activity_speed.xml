@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="00:00:00:000"
+        android:textColor="@android:color/black"
         android:textSize="50dp" />
 
 </RelativeLayout>
