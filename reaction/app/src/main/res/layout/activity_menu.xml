@@ -76,9 +76,11 @@
 
                 <Button
                     android:id="@+id/btnSpeed"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:backgroundTint="?android:attr/colorPrimary"
                     android:text="Speed" />
             </LinearLayout>
 
@@ -90,9 +92,11 @@
 
                 <Button
                     android:id="@+id/btnAverage"
+                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:backgroundTint="?android:attr/colorPrimary"
                     android:text="@string/Average" />
             </LinearLayout>
         </LinearLayout>
@@ -114,7 +118,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Stamina" />
+                    android:backgroundTint="?android:attr/colorPrimary"
+                    android:text="Stamina"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,7 +134,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Scores" />
+                    android:backgroundTint="?android:attr/colorPrimary"
+                    android:text="Scores"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
 
@@ -145,7 +153,9 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:layout_weight="1"
-                android:text="Settings" />
+                android:backgroundTint="?android:attr/colorPrimary"
+                android:text="Settings"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
