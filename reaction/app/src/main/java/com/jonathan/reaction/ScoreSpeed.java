@@ -43,6 +43,7 @@ public class ScoreSpeed extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent speed = new Intent(ScoreSpeed.this, ScoreSpeed.class);
+                speed.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(speed);
             }
         });
@@ -51,6 +52,7 @@ public class ScoreSpeed extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent stamina = new Intent(ScoreSpeed.this, ScoreStamina.class);
+                stamina.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(stamina);
             }
         });
@@ -59,6 +61,7 @@ public class ScoreSpeed extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent average = new Intent(ScoreSpeed.this, ScoreAverage.class);
+                average.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(average);
             }
         });
@@ -74,6 +77,7 @@ public class ScoreSpeed extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(ScoreSpeed.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

@@ -18,5 +18,30 @@
         android:text="00:00:00:000"
         android:textSize="50dp" />
 
+    <ImageView
+        android:id="@+id/heatrh1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/heatrh"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/hearth" />
+
+    <ImageView
+        android:id="@+id/heatrh2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/heatrh1"
+        android:layout_toEndOf="@+id/heatrh1"
+        app:srcCompat="@drawable/hearth" />
+
+    <ImageView
+        android:id="@+id/heatrh"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@+id/heatrh1"
+        app:srcCompat="@drawable/hearth" />
+
 </RelativeLayout>
 

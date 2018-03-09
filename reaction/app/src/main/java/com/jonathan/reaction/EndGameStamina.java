@@ -40,12 +40,13 @@ public class EndGameStamina extends AppCompatActivity {
             twlvl.setText("" + lvl);
         } else if (sharedPreferences.getString("ecran", "").equals("rouge")) {
             lives = sharedPreferences.getInt("StaminaLives", lives);
-            if (lives == 0) {
+            if (lives == 1) {
                 //Lose
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 result.setText(R.string.defaite);
+                rejouer.setVisibility(View.INVISIBLE);
             }
-            if (lives > 0) {
+            if (lives > 1) {
                 // - une vie
                 lives = lives - 1;
                 sharedPreferences.edit().putInt("StaminaLives", lives).apply();
@@ -61,6 +62,7 @@ public class EndGameStamina extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGameStamina.this, Stamina.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -69,6 +71,7 @@ public class EndGameStamina extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGameStamina.this, Menu.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -77,6 +80,7 @@ public class EndGameStamina extends AppCompatActivity {
 
     public void onBackPressed() {
         Intent i = new Intent(EndGameStamina.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 }
