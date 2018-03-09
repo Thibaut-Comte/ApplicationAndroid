@@ -148,6 +148,7 @@ public class Speed extends AppCompatActivity {
                                     sound = true;
                                 }
                                 Intent i = new Intent(Speed.this, EndGame.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }
@@ -159,6 +160,7 @@ public class Speed extends AppCompatActivity {
                             if (!sound){
                                 sound = true;
                                 Intent i = new Intent(Speed.this, EndGame.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }
@@ -184,6 +186,7 @@ public class Speed extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(Speed.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

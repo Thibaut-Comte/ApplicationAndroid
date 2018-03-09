@@ -29,6 +29,7 @@ public class ScoreStamina extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreStamina.this, ScoreSpeed.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -37,6 +38,7 @@ public class ScoreStamina extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreStamina.this, ScoreStamina.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -45,6 +47,7 @@ public class ScoreStamina extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreStamina.this, ScoreAverage.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -60,6 +63,7 @@ public class ScoreStamina extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(ScoreStamina.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

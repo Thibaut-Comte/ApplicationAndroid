@@ -75,6 +75,7 @@ public class Settings extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(Settings.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 }

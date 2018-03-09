@@ -66,6 +66,7 @@ public class EndGameAverage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGameAverage.this, Average.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -74,6 +75,7 @@ public class EndGameAverage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGameAverage.this, Menu.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -83,6 +85,7 @@ public class EndGameAverage extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(EndGameAverage.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 }

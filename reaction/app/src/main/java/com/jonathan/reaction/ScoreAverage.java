@@ -30,6 +30,7 @@ public class ScoreAverage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreAverage.this, ScoreSpeed.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -38,6 +39,7 @@ public class ScoreAverage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreAverage.this, ScoreStamina.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -46,6 +48,7 @@ public class ScoreAverage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ScoreAverage.this, ScoreAverage.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -61,6 +64,7 @@ public class ScoreAverage extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i = new Intent(ScoreAverage.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

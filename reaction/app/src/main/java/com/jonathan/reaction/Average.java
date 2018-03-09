@@ -144,6 +144,7 @@ public class Average extends AppCompatActivity {
                                     sound = true;
                                 }
                                 Intent i = new Intent(Average.this, EndGameAverage.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }
@@ -155,6 +156,7 @@ public class Average extends AppCompatActivity {
                             if (!sound) {
                                 sound = true;
                                 Intent i = new Intent(Average.this, EndGameAverage.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }

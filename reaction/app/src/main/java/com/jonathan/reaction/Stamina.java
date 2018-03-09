@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class Stamina extends AppCompatActivity {
     TextView mTvTime;
     RelativeLayout mlw;
     Player player = new Player();
+    ImageView hearth, hearth1, hearth2;
 
     boolean kill = false;//true si app pause
     boolean touch = false;//true si touch de l'écran
@@ -29,9 +31,11 @@ public class Stamina extends AppCompatActivity {
     long nombreAleatoire, nombreAleatoireMax = 0;
     long losetime = 0;
     long[] losetimetab = new long[]{
-            750,500,450,400,375,350
+            750, 500, 450, 400, 375, 350
     };
     int lvl = 0;
+    int life = 0;
+    boolean vibrateTest = true;
 
     long score = 0; //score du joueur
 
@@ -49,6 +53,9 @@ public class Stamina extends AppCompatActivity {
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
         mlw = (RelativeLayout) findViewById(R.id.lw);
+        hearth = (ImageView) findViewById(R.id.heatrh);
+        hearth1 = (ImageView) findViewById(R.id.heatrh1);
+        hearth2 = (ImageView) findViewById(R.id.heatrh2);
         String time = "";
 
         if (mChronometer == null) {
@@ -92,8 +99,27 @@ public class Stamina extends AppCompatActivity {
             }
         });
 
-        //On start le thread vibration à la fin du oncreate
-        vibrateThread.start();
+        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        life = sharedPreferences.getInt("StaminaLives", 0);
+        vibrateTest = sharedPreferences.getBoolean("vibrate", true);
+
+        if (life == 3) {
+            hearth.setVisibility(View.VISIBLE);
+            hearth1.setVisibility(View.VISIBLE);
+            hearth2.setVisibility(View.VISIBLE);
+        } else if (life == 2) {
+            hearth.setVisibility(View.VISIBLE);
+            hearth1.setVisibility(View.VISIBLE);
+            hearth2.setVisibility(View.INVISIBLE);
+        }else if (life == 1){
+            if (vibrateTest) {
+                //On start le thread vibration à la fin du oncreate
+                vibrateThread.start();
+            }
+            hearth.setVisibility(View.VISIBLE);
+            hearth1.setVisibility(View.INVISIBLE);
+            hearth2.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -111,11 +137,10 @@ public class Stamina extends AppCompatActivity {
                 sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
                 lvl = sharedPreferences.getInt("Stamina", 0);
-                if (lvl < 6)
-                {
+                if (lvl < 6) {
                     losetime = (losetimetab[lvl]) + nombreAleatoire;
-                }else{
-                    losetime = (losetimetab[5] - (10*(lvl-5))) + nombreAleatoire;
+                } else {
+                    losetime = (losetimetab[5] - (10 * (lvl - 5))) + nombreAleatoire;
                 }
 
 
@@ -143,6 +168,7 @@ public class Stamina extends AppCompatActivity {
                                 OOFSound.start();
                                 sound = true;
                                 Intent i = new Intent(Stamina.this, EndGameStamina.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }
@@ -154,6 +180,7 @@ public class Stamina extends AppCompatActivity {
                             if (!sound) {
                                 sound = true;
                                 Intent i = new Intent(Stamina.this, EndGameStamina.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(i);
                             }
                         }
@@ -178,6 +205,7 @@ public class Stamina extends AppCompatActivity {
 
     public void onBackPressed() {
         Intent i = new Intent(Stamina.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

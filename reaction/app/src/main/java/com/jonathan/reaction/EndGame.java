@@ -43,6 +43,7 @@ private Button rejouer, menu;
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGame.this, Speed.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -51,6 +52,7 @@ private Button rejouer, menu;
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(EndGame.this, Menu.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
             }
         });
@@ -60,6 +62,7 @@ private Button rejouer, menu;
     public void onBackPressed()
     {
         Intent i = new Intent(EndGame.this, Menu.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 }
