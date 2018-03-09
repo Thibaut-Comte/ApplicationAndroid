@@ -3,14 +3,18 @@ package com.jonathan.reaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -38,26 +42,50 @@ public class CreateAccount extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase DB = FirebaseDatabase.getInstance();
-                final DatabaseReference DBRef = DB.getReference("users");
+                if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0) {
+                    if (pw.getText().toString().equals(confirmpw.getText().toString())) {
 
-                DataB.usernameExist(login.getText().toString());
-                if(DataB.isExist()){
-                    if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0) {
-                        if (pw.getText().toString().equals(confirmpw.getText().toString())) {
-                            player = new Player("", pw.getText().toString());
-                            DBRef.child(login.getText().toString()).setValue(player);
-                            Toast.makeText(CreateAccount.this, "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(CreateAccount.this, MainActivity.class);
-                            startActivity(i);
-                        } else {
-                            error.setText("Mot de passe non identique");
-                        }
+                        FirebaseDatabase DB = FirebaseDatabase.getInstance();
+                        final DatabaseReference DBRef = DB.getReference("users");
+
+                        DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
+                                boolean found = false;
+                                String userName = login.getText().toString();
+                                String pwd = pw.getText().toString();
+
+                                for ( DataSnapshot obj : Ids) {
+                                    Log.e("debug", userName + " " + obj.getKey());
+                                    if(userName.equals(obj.getKey())) {
+                                        Log.e("debug", "Trouvé");
+                                        found = true;
+                                    }
+                                }
+                                if (!found) {
+                                    Player player = new Player("", pwd);
+                                    DBRef.child(userName).setValue(player);
+                                    Toast.makeText(getBaseContext(), "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(getBaseContext(), Menu.class);
+                                    startActivity(i);
+                                }
+                                else
+                                {
+                                    error.setText("ce username existe déja");
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+
                     } else {
-                        error.setText("Veuillez renseigner les deux champs svp");
+                        error.setText("Mot de passe non identique");
                     }
-                } else{
-                    error.setText("Ce username est déja pris");
+                } else {
+                    error.setText("Veuillez renseigner les deux champs svp");
                 }
             }
         });

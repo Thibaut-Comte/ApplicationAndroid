@@ -1,6 +1,9 @@
 package com.jonathan.reaction;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +23,6 @@ import java.util.ArrayList;
 public class Database implements Runnable {
     ArrayList<Player> players = new ArrayList<Player>();
     Player user = new Player();
-    boolean userExist;
 
     void Database() {}
 
@@ -91,13 +93,7 @@ public class Database implements Runnable {
         });
     }
 
-    public boolean isExist() {
-        Log.e("debug","Exist?"+this.userExist);
-        return userExist;
-    }
-
-    public void usernameExist(final String userName)
-    {
+    public void isUsernameExist(final Context context, final String userName, final String pw) {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
 
@@ -105,11 +101,23 @@ public class Database implements Runnable {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
-                userExist = true;
+                boolean found = false;
                 for ( DataSnapshot obj : Ids) {
-                    if(userName.equals(obj.getKey())) {userExist = false;}
+                    Log.e("debug", userName + " " + obj.getKey());
+                    if(userName.equals(obj.getKey())) {
+                        Log.e("debug", "Trouvé");
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    Player player = new Player("", pw);
+                    DBRef.child(userName).setValue(player);
+                    Toast.makeText(context, "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(context, Menu.class);
+                    context.startActivity(i);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
