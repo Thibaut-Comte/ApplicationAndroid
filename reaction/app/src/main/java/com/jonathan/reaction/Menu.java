@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.appevents.AppEventsLogger;
@@ -62,7 +64,18 @@ public class Menu extends AppCompatActivity {
 
 
         pp = findViewById(R.id.pp);
-        Picasso.with(getBaseContext()).load(profilepicture).into(pp);
+
+        //Création et assignation de l'image d'accueil avec ses spécificités
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.fitCenter();
+        requestOptions.override(500, 500);
+        requestOptions.circleCrop();
+
+        Glide.with(getBaseContext())
+                .load(profilepicture)
+                .apply(requestOptions)
+                .into(pp);
+
 
         //Remise à 0 pour average
         sharedPreferences.edit().putInt("Average", 0).apply();
@@ -84,7 +97,7 @@ public class Menu extends AppCompatActivity {
         welcome = findViewById(R.id.welcome);
 
 
-        welcome.setText("Bienvenu "+username);
+        welcome.setText(username);
 
 
         settings.setOnClickListener(new View.OnClickListener() {
