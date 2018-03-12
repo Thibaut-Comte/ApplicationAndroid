@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -133,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 //Assignation du profile facebook dans l'objet Profile pour pouvoir utiliser ses attributs
                 Profile p = Profile.getCurrentProfile();
 
-                p.getProfilePictureUri(200,200);
-
                 String userID = loginResult.getAccessToken().getUserId();
                 Log.e("id", userID);
                 Log.e("token", ""+loginResult.getAccessToken().getToken());
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("email", "publish_actions");
     }
 
 
