@@ -46,14 +46,13 @@
             android:name=".Average"
             android:label="@string/Average"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        android:screenOrientation="portrait" />
         <activity
             android:name=".ScoreSpeed"
             android:label="@string/ScoreSpeed"
@@ -70,15 +69,23 @@
             android:name=".Speed"
             android:label="@string/Speed"
             android:screenOrientation="portrait" />
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".EndGame" />
-        <activity android:name=".Settings" />
+        <activity android:name=".CreateAccount"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EndGame"
+            android:label="@string/Speed"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Settings"
+            android:label="@string/Settings"
+            android:screenOrientation="portrait"/>
         <activity android:name=".EndGameAverage"
-            android:label="@string/Average"/>
+            android:label="@string/Average"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Stamina"
-            android:label="@string/Stamina"/>
+            android:label="@string/Stamina"
+            android:screenOrientation="portrait"/>
         <activity android:name=".EndGameStamina"
-            android:label="@string/Stamina"/>
+            android:label="@string/Stamina"
+            android:screenOrientation="portrait"/>
 
         <provider android:authorities="com.facebook.app.FacebookContentProvider{2008884382717534}"
             android:name="com.facebook.FacebookContentProvider"

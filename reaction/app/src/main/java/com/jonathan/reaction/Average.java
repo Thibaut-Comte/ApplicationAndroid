@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class Average extends AppCompatActivity {
 
     //init des données membres
-    TextView mTvTime;
+    TextView mTvTime, lvl;
     RelativeLayout mlw;
     Player player = new Player();
 
@@ -29,6 +29,8 @@ public class Average extends AppCompatActivity {
     long nombreAleatoire, nombreAleatoireMax = 0;
 
     long score = 0; //score du joueur
+
+    int nmbr = 0;
 
     private Context mContext;
     private Chronometer mChronometer;
@@ -49,6 +51,7 @@ public class Average extends AppCompatActivity {
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
         mlw = (RelativeLayout) findViewById(R.id.lw);
+        lvl = (TextView) findViewById(R.id.twlvl);
         String time = "";
 
 /*
@@ -73,6 +76,9 @@ public class Average extends AppCompatActivity {
         //Génrère un rand entre 8000 et 2000
         nombreAleatoireMax = 2000 + (long) (Math.random() * ((8000 - 2001) + 1));
         nombreAleatoire = 2000 + (long) (Math.random() * ((nombreAleatoireMax - 2000) + 1));
+
+        nmbr = sharedPreferences.getInt("Average", 0);
+        lvl.setText(""+nmbr+" of 10");
 
 
         //Thread pour la vibration
@@ -104,7 +110,7 @@ public class Average extends AppCompatActivity {
 
         if (vibrateTest) {
             //On start le thread vibration à la fin du oncreate
-            vibrateThread.start();
+            //vibrateThread.start(); Désa par choix
         }
 
     }

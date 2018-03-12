@@ -16,6 +16,20 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="00:00:00:000"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
         android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/twlvl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:text="0 of 10"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black" />
 
 </RelativeLayout>
