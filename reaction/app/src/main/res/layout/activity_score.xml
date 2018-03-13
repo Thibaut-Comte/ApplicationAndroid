@@ -28,6 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/press_start_2p"
                     android:text="Score Speed" />
             </LinearLayout>
 
@@ -42,6 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/press_start_2p"
                     android:text="Score Stamina" />
             </LinearLayout>
 
@@ -56,6 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/press_start_2p"
                     android:text="Score Average" />
             </LinearLayout>
         </LinearLayout>
