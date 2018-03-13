@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.NoSuchAlgorithmException;
+
 public class CreateAccount extends AppCompatActivity {
 
     private TextView tvlogin, tvpw, error;
@@ -64,6 +66,11 @@ public class CreateAccount extends AppCompatActivity {
                                     }
                                 }
                                 if (!found) {
+                                    try {
+                                        pwd =  DataB.sha(pwd);
+                                    } catch (NoSuchAlgorithmException e) {
+                                        e.printStackTrace();
+                                    }
                                     Player player = new Player("", pwd);
                                     DBRef.child(userName).setValue(player);
                                     Toast.makeText(getBaseContext(), "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
