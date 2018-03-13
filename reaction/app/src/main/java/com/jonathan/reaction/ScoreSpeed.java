@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ScoreSpeed extends AppCompatActivity {
@@ -117,6 +118,16 @@ public class ScoreSpeed extends AppCompatActivity {
                     scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreSpeed()));
                     Log.e("debug", "nb_elem_scores : "+scores.size());
                 }
+                Collections.sort(scores,new Comparator<ScoreClass>() {
+                    @Override
+                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
+                        if(scoreClass.getScore() < t1.getScore())
+                        {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
                 lw.setAdapter(adapter);
 
