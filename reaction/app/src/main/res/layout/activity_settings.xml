@@ -31,6 +31,7 @@
                 android:layout_weight="1"
                 android:text="Options"
                 android:textAlignment="center"
+                android:fontFamily="@font/press_start_2p"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black" />
         </LinearLayout>
@@ -47,6 +48,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:checked="true"
+                android:fontFamily="@font/press_start_2p"
                 android:text="Sound" />
 
         </LinearLayout>
@@ -63,6 +65,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:checked="true"
+
+                android:fontFamily="@font/press_start_2p"
                 android:text="Vibration" />
 
         </LinearLayout>

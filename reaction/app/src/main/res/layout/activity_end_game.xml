@@ -12,6 +12,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="57dp"
             android:text="Perdu !"
+            android:fontFamily="@font/press_start_2p"
             android:textSize="50dp"/>
 
         <TextView
@@ -21,6 +22,7 @@
             android:layout_below="@+id/score"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="122dp"
+            android:fontFamily="@font/press_start_2p"
             android:text="TextView" />
 
         <Button
@@ -31,6 +33,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="111dp"
             android:layout_marginStart="33dp"
+            android:fontFamily="@font/press_start_2p"
             android:text="Rejouer" />
 
         <Button
@@ -41,6 +44,7 @@
             android:layout_alignBottom="@+id/rejouer"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="33dp"
+            android:fontFamily="@font/press_start_2p"
             android:text="Menu" />
 
     <Button
@@ -50,5 +54,6 @@
         android:layout_alignEnd="@+id/result"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
+        android:fontFamily="@font/press_start_2p"
         android:text="Share" />
 </RelativeLayout>

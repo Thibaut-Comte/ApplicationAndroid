@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.share.model.ShareLinkContent;
@@ -52,13 +53,14 @@ View main;
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Bitmap b = Screenshot.takeScreenShotRootView(main);
-                    SharePhoto photo = new SharePhoto.Builder()
-                            .setBitmap(b)
-                            .build();
-                    SharePhotoContent content = new SharePhotoContent.Builder()
-                            .addPhoto(photo)
-                            .build();
+                Toast.makeText(EndGame.this, "Coucou twa", Toast.LENGTH_SHORT).show();
+                Bitmap b = Screenshot.takeScreenShotRootView(main);
+                SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(b)
+                        .build();
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
                 }
 
         });

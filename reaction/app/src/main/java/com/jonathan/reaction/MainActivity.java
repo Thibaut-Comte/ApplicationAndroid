@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -61,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
-        Intent intent = new Intent(MainActivity.this, Menu.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(MainActivity.this, Menu.class);
+        startActivity(intent);*/
 
         //Nouvelle clé de Hash car celle générée par console ne fonctionne qu'une seule fois ensuite celle générée par le code
         // ci-dessous va prendre le relais
@@ -80,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (NoSuchAlgorithmException e) {
 //
 //        }
-
 
         sharedPreferences.edit().putString("username", player.getUsername()).apply();
 
@@ -138,13 +138,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("id", userID);
                 Log.e("token", ""+loginResult.getAccessToken().getToken());
                 sharedPreferences.edit().putString("username", p.getName()).apply();
-                sharedPreferences.edit().putString("avatarP", p.getProfilePictureUri(200, 200).toString()).apply();
+                sharedPreferences.edit().putString("avatarP", p.getProfilePictureUri(500, 500).toString()).apply();
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
+                sharedPreferences.edit().putString("token", loginResult.getAccessToken().getToken());
 
                 Intent i = new Intent(MainActivity.this, Menu.class);
                 startActivity(i);
-
-
             }
 
             @Override
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        loginButton.setReadPermissions("email", "publish_actions");
+        loginButton.setReadPermissions("email");
     }
 
 

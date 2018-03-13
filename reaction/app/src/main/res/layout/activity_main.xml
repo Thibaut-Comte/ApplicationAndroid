@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.jonathan.reaction.MainActivity">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +27,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="43dp"
                 android:text=""
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -59,6 +62,7 @@
                 android:layout_alignStart="@+id/login"
                 android:layout_centerVertical="true"
                 android:text="Login : "
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -79,6 +83,7 @@
                 android:ems="10"
                 android:hint="Entrez votre login"
                 android:inputType="textPersonName"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
 
         </LinearLayout>
@@ -97,6 +102,7 @@
                 android:layout_alignStart="@+id/login"
                 android:layout_centerVertical="true"
                 android:text="Mot de Passe :"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -116,6 +122,7 @@
                 android:layout_marginTop="22dp"
                 android:ems="10"
                 android:inputType="textPassword"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
