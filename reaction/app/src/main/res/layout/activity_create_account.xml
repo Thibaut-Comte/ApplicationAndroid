@@ -25,6 +25,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="43dp"
                 android:text=""
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -42,6 +43,7 @@
                 android:layout_below="@+id/login"
                 android:layout_marginTop="20dp"
                 android:text="Login : "
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -59,6 +61,7 @@
                 android:layout_below="@+id/tvlogin"
                 android:layout_marginTop="25dp"
                 android:ems="10"
+                android:fontFamily="@font/press_start_2p"
                 android:hint="Entrez votre login"
                 android:inputType="textPersonName"
                 android:layout_marginLeft="5dp"/>
@@ -78,6 +81,7 @@
                 android:layout_below="@+id/login"
                 android:layout_marginTop="20dp"
                 android:text="Mot de Passe :"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -95,6 +99,7 @@
                 android:layout_below="@+id/tvconfirmpw"
                 android:layout_marginTop="29dp"
                 android:ems="10"
+                android:fontFamily="@font/press_start_2p"
                 android:inputType="textPassword"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
@@ -112,6 +117,7 @@
                 android:layout_alignStart="@+id/confirmpw"
                 android:layout_centerVertical="true"
                 android:text="Confirmez votre Mot de Passe :"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -130,6 +136,7 @@
                 android:layout_marginBottom="12dp"
                 android:ems="10"
                 android:inputType="textPassword"
+                android:fontFamily="@font/press_start_2p"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
@@ -146,6 +153,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="51dp"
                 android:layout_toEndOf="@+id/tvlogin"
+                android:fontFamily="@font/press_start_2p"
                 android:text="Soumettre" />
         </LinearLayout>
     </LinearLayout>

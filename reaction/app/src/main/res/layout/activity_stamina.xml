@@ -17,7 +17,8 @@
         android:layout_centerVertical="true"
         android:text="00:00:00:000"
         android:textColor="@android:color/black"
-        android:textSize="50dp" />
+        android:fontFamily="@font/press_start_2p"
+        android:textSize="30dp" />
 
     <ImageView
         android:id="@+id/heatrh1"

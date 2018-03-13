@@ -11,10 +11,11 @@
         android:id="@+id/pseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:layout_alignTop="@+id/avatar"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/avatar"
-        android:layout_alignTop="@+id/avatar"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         tools:text="Pseudo" />
 
@@ -25,6 +26,7 @@
         android:textColor="@android:color/black"
         android:layout_alignLeft="@+id/pseudo"
         android:layout_below="@+id/pseudo"
+        android:fontFamily="@font/press_start_2p"
         tools:text="Mon score" />
 
 </RelativeLayout>

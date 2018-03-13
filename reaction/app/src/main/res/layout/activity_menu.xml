@@ -56,6 +56,7 @@
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#000000"
+                    android:fontFamily="@font/press_start_2p"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -80,6 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/press_start_2p"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:text="Speed" />
             </LinearLayout>
@@ -96,6 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/press_start_2p"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:text="@string/Average" />
             </LinearLayout>
@@ -120,6 +123,7 @@
                     android:layout_gravity="center"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:text="Stamina"
+                    android:fontFamily="@font/press_start_2p"
                     android:textColor="@android:color/white" />
             </LinearLayout>
 
@@ -136,6 +140,7 @@
                     android:layout_gravity="center"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:text="Scores"
+                    android:fontFamily="@font/press_start_2p"
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
@@ -155,6 +160,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="?android:attr/colorPrimary"
                 android:text="Settings"
+                android:fontFamily="@font/press_start_2p"
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
