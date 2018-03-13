@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout
+    android:id="@+id/mainA"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jonathan.reaction.EndGame">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <TextView
             android:id="@+id/score"
@@ -52,5 +48,14 @@
             android:fontFamily="@font/press_start_2p"
             android:text="Menu" />
 
+        <Button
+            android:id="@+id/shareA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/result"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/press_start_2p"
+            android:text="Share" />
+
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>

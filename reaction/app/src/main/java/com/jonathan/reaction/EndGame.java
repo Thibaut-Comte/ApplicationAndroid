@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +22,9 @@ public class EndGame extends AppCompatActivity {
 
 private TextView score, result;
 private Button rejouer, menu, share;
-ShareDialog shareDialog;
-CallbackManager callbackManager;
-View main;
+private ShareDialog shareDialog;
+private CallbackManager callbackManager;
+private View main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +54,18 @@ View main;
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EndGame.this, "Coucou twa", Toast.LENGTH_SHORT).show();
                 Bitmap b = Screenshot.takeScreenShotRootView(main);
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(b)
-                        .build();
-                SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
-                        .build();
+
+                if (shareDialog.canShow(SharePhotoContent.class)) {
+
+                    SharePhoto photo = new SharePhoto.Builder()
+                            .setBitmap(b)
+                            .build();
+                    SharePhotoContent content = new SharePhotoContent.Builder()
+                            .addPhoto(photo)
+                            .build();
+                    shareDialog.show(content);
+                }
                 }
 
         });
@@ -112,8 +117,14 @@ View main;
     }
 
     @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        try {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
+
 }
