@@ -31,6 +31,11 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -44,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvlogin, tvpw, error;
     private EditText login, pw;
     private Button connection, create;
+    Database DataB = new Database();
 
     protected Player player = new Player("Billy", "test");
 
@@ -89,22 +95,47 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
-                    if (login.getText().toString().equals(player.getUsername()) && pw.getText().toString().equals(player.getPassword()))
-                    {
-                        //Ajout au sharedPreferences "player" de la valeur player.getUsername() à la clé "username"
-                        player = new Player(login.getText().toString(), pw.getText().toString());
-                        sharedPreferences.edit().putString("username", "Paul").apply();
-                        sharedPreferences.edit().putString("avatarP", "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/14732274_1482356538458018_1995408217779014922_n.jpg?oh=fe46f9b9783c8bf4ac586fcee33aabf0&oe=5B052DB9").apply();
-                        sharedPreferences.edit().putInt("scoreSpeed", 49).apply();
-                        sharedPreferences.edit().putInt("scoreStamina", 59).apply();
-                        sharedPreferences.edit().putInt("scoreAverage", 75).apply();
-                        Intent i = new Intent(MainActivity.this, Menu.class);
-                        startActivity(i);
-                    }
-                    else
-                    {
-                        error.setText("Login ou mot de passe incorrect");
-                    }
+                    FirebaseDatabase DB = FirebaseDatabase.getInstance();
+                    final DatabaseReference DBRef = DB.getReference("users");
+
+                    DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
+                            boolean connOk = false;
+                            String userName = login.getText().toString();
+                            String pwd = pw.getText().toString();
+                            try {
+                                pwd =  DataB.sha(pwd);
+                            } catch (NoSuchAlgorithmException e) {
+                                e.printStackTrace();
+                            }
+
+                            for ( DataSnapshot obj : Ids) {
+                                if(userName.equals(obj.getKey())) {
+                                    Player truc = obj.getValue(Player.class);
+                                    if(pwd.equals(truc.getPassword()))
+                                    {
+                                        connOk = true;
+                                    }
+                                }
+                            }
+                            if (connOk) {
+                                Player player = new Player("", pwd);
+                                Toast.makeText(getBaseContext(), "Connecté", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getBaseContext(), Menu.class);
+                                startActivity(i);
+                            }
+                            else
+                            {
+                                error.setText("ce couple username/password n'existe pas");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
                 }
                 else
                 {

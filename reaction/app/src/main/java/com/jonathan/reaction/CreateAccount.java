@@ -59,9 +59,7 @@ public class CreateAccount extends AppCompatActivity {
                                 String pwd = pw.getText().toString();
 
                                 for ( DataSnapshot obj : Ids) {
-                                    Log.e("debug", userName + " " + obj.getKey());
                                     if(userName.equals(obj.getKey())) {
-                                        Log.e("debug", "Trouvé");
                                         found = true;
                                     }
                                 }

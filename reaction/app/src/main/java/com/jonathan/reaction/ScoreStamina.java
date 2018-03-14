@@ -83,33 +83,23 @@ public class ScoreStamina extends AppCompatActivity {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
 
-        Log.e("debug", "nb_elem_scores : "+scores.size());
-
         DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("debug","debut ajout score depuis Firebase");
-                Log.e("debug","premier score ?");
-                Log.e("debug", "username : "+scores.get(0).getPseudo());
-                Log.e("debug", "highScoreSpeed : "+scores.get(0).getScore());
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
                 for ( DataSnapshot obj : Ids) {
                     Player truc = obj.getValue(Player.class);
 
-                    Log.e("debug","ajout d'un player dans scores");
-                    Log.e("debug", "username : "+obj.getKey());
-                    Log.e("debug", "highScoreSpeed : "+(int)truc.getHightscoreStamina());
                     scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreStamina()));
-                    Log.e("debug", "nb_elem_scores : "+scores.size());
                 }
                 Collections.sort(scores,new Comparator<ScoreClass>() {
                     @Override
                     public int compare(ScoreClass scoreClass, ScoreClass t1) {
                         if(scoreClass.getScore() < t1.getScore())
                         {
-                            return -1;
+                            return 1;
                         }
-                        return 1;
+                        return -1;
                     }
                 });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
