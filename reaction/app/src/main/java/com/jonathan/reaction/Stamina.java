@@ -18,7 +18,7 @@ import android.widget.TextView;
 public class Stamina extends AppCompatActivity {
 
     //init des données membres
-    TextView mTvTime;
+    TextView mTvTime, guide;
     RelativeLayout mlw;
     Player player = new Player();
     ImageView hearth, hearth1, hearth2;
@@ -52,6 +52,7 @@ public class Stamina extends AppCompatActivity {
         setContentView(R.layout.activity_stamina);
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
+        guide = (TextView) findViewById(R.id.guide);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         hearth = (ImageView) findViewById(R.id.heatrh);
         hearth1 = (ImageView) findViewById(R.id.heatrh1);
@@ -146,6 +147,7 @@ public class Stamina extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
+                    guide.setText("NOW !");
                     sharedPreferences.edit().putString("ecran", "vert").apply();
                 }
                 if (since > losetime) {

@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class Speed extends AppCompatActivity {
 
     //init des données membres
-    TextView mTvTime;
+    TextView mTvTime, guide;
     RelativeLayout mlw;
     Player player = new Player();
 
@@ -50,6 +50,7 @@ public class Speed extends AppCompatActivity {
         setContentView(R.layout.activity_speed);
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
+        guide = (TextView) findViewById(R.id.guide2);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         String time = "";
 
@@ -128,6 +129,7 @@ public class Speed extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
+                    guide.setText("NOW !");
                     sharedPreferences.edit().putString("ecran", "vert").apply();
 
                 }
