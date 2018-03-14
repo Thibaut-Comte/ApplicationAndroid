@@ -43,6 +43,7 @@ public class Average extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        sharedPreferences.edit().putInt("Average", 0).apply();
         vibrateTest = sharedPreferences.getBoolean("vibrate", true);
         soundTest = sharedPreferences.getBoolean("sound", true);
 
@@ -184,5 +185,6 @@ public class Average extends AppCompatActivity {
         super.onPause();
         kill = true;
     }
+    public void onBackPressed() {}
 
 }
