@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvlogin, tvpw, error;
     private EditText login, pw;
     private Button connection, create;
+    private Profile p;
 
     protected Player player = new Player("Billy", "test");
 
@@ -60,7 +61,17 @@ public class MainActivity extends AppCompatActivity {
         connection = findViewById(R.id.connection);
         create = findViewById(R.id.createAccount);
 
+
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+
+        p = Profile.getCurrentProfile();
+
+        if (p != null)
+        {
+            sharedPreferences.edit().putString("username", p.getName()).apply();
+            Intent i = new Intent(MainActivity.this, Menu.class);
+            startActivity(i);
+        }
 
         /*Intent intent = new Intent(MainActivity.this, Menu.class);
         startActivity(intent);*/
@@ -82,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 
-        sharedPreferences.edit().putString("username", player.getUsername()).apply();
+        //sharedPreferences.edit().putString("username", player.getUsername()).apply();
 
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //Assignation du profile facebook dans l'objet Profile pour pouvoir utiliser ses attributs
-                Profile p = Profile.getCurrentProfile();
+                p = Profile.getCurrentProfile();
 
                 String userID = loginResult.getAccessToken().getUserId();
                 Log.e("id", userID);
@@ -160,6 +171,11 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setReadPermissions("email");
     }
 
+    //Action de l'appui du bouton "physique" retour
+    public void onBackPressed()
+    {
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
