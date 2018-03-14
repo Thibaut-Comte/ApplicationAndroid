@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_SHORT).show();
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
                     FirebaseDatabase DB = FirebaseDatabase.getInstance();
@@ -131,12 +132,11 @@ public class MainActivity extends AppCompatActivity {
                                     if(pwd.equals(playerTemp.getPassword()))
                                     {
                                         connOk = true;
+                                        Toast.makeText(getBaseContext(), "Connexion réussie", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
                             if (connOk) {
-                                Player player = new Player("", pwd);
-                                Toast.makeText(getBaseContext(), "Connecté", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getBaseContext(), Menu.class);
                                 startActivity(i);
                             }
