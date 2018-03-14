@@ -203,10 +203,6 @@ public class Stamina extends AppCompatActivity {
         kill = true;
     }
 
-    public void onBackPressed() {
-        Intent i = new Intent(Stamina.this, Menu.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        startActivity(i);
-    }
+    public void onBackPressed() {}
 
 }

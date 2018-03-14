@@ -48,8 +48,10 @@ public class EndGameAverage extends AppCompatActivity {
 
 
         //Gestion du résultat de l'utilisateur
-        if (sharedPreferences.getString("ecran", "").equals("vert"))
-        {
+        if (sharedPreferences.getString("ecran", "").equals("rouge")) {
+            result.setText(R.string.defaite);
+            sharedPreferences.edit().putInt("Average", 0).apply();
+        } else if (sharedPreferences.getString("ecran", "").equals("vert")) {
             nmbr = sharedPreferences.getInt("Average", 0);
             if (nmbr < 10) {
                 // Si on est en dessous des 10 try
@@ -57,23 +59,19 @@ public class EndGameAverage extends AppCompatActivity {
                 Ascore = sharedPreferences.getLong("Ascore", 0);
                 sharedPreferences.edit().putInt("Average", nmbr).apply();
                 Mscore = sharedPreferences.getLong("score", 0);
-                Ascore = Ascore*(nmbr - 1);
+                Ascore = Ascore * (nmbr - 1);
                 Ascore = (Ascore + Mscore) / nmbr;
-                score.setText(""+Mscore);
-                result.setText("Game: "+nmbr+" of 10   Average: "+Ascore);
+                score.setText("" + Mscore);
+                result.setText("Game: " + nmbr + " of 10   Average: " + Ascore);
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
-            } if(nmbr == 10)
-            {
+            }
+            if (nmbr == 10) {
                 //Si 10 try on été fais
-                result.setText("Your average score is: "+Ascore);
+                result.setText("Your average score is: " + Ascore);
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
             }
 
-        } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
-        {
-            result.setText(R.string.defaite);
-            sharedPreferences.edit().putInt("Average", 0).apply();
         }
 
 
@@ -117,8 +115,7 @@ public class EndGameAverage extends AppCompatActivity {
 
     }
 
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent i = new Intent(EndGameAverage.this, Menu.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
@@ -130,7 +127,7 @@ public class EndGameAverage extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         try {
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

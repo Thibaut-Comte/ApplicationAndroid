@@ -82,6 +82,8 @@ public class Menu extends AppCompatActivity {
         sharedPreferences.edit().putInt("Average", 0).apply();
         sharedPreferences.edit().putInt("Stamina", 0).apply();
         sharedPreferences.edit().putInt("StaminaLives", 3).apply();
+        sharedPreferences.edit().putString("ecran", "rouge").apply();
+
 
 
         // On récupère le sharedPreferences "player"
