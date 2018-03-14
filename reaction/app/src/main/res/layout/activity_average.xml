@@ -7,7 +7,8 @@
     android:layout_weight="1"
     android:clickable="true"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:background="#000000">
 
     <TextView
         android:id="@+id/textchrono"
@@ -19,7 +20,7 @@
         android:fontFamily="@font/press_start_2p"
         android:text="00:00:000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="30dp" />
 
     <TextView
@@ -33,7 +34,7 @@
         android:text="0 of 10"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/guide3"
@@ -43,7 +44,7 @@
         android:layout_centerVertical="true"
         android:fontFamily="@font/press_start_2p"
         android:text="Ready ?"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="30sp" />
 
 </RelativeLayout>

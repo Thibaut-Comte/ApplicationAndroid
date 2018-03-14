@@ -7,7 +7,8 @@
     android:layout_weight="1"
     android:clickable="true"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:background="#000000">
 
     <TextView
         android:id="@+id/guide2"
@@ -17,7 +18,7 @@
         android:layout_centerVertical="true"
         android:fontFamily="@font/press_start_2p"
         android:text="Ready ?"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="30sp" />
 
     <TextView
@@ -29,7 +30,7 @@
         android:layout_marginTop="94dp"
         android:fontFamily="@font/press_start_2p"
         android:text="00:00:000"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="30dp" />
 
 </RelativeLayout>

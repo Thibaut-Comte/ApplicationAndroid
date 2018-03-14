@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,10 +54,10 @@
                     android:id="@+id/welcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/press_start_2p"
                     android:gravity="center"
                     android:text="TextView"
-                    android:textColor="#000000"
-                    android:fontFamily="@font/press_start_2p"
+                    android:textColor="@android:color/white"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -81,11 +82,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@null"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:fontFamily="@font/press_start_2p"
                     android:text="Speed"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:background="@null"/>
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,11 +102,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@null"
                     android:backgroundTint="?android:attr/colorPrimary"
                     android:fontFamily="@font/press_start_2p"
                     android:text="@string/Average"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:background="@null"/>
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
 
@@ -130,7 +133,7 @@
                     android:fontFamily="@font/press_start_2p"
                     android:text="Stamina"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -149,7 +152,7 @@
                     android:fontFamily="@font/press_start_2p"
                     android:text="Scores"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
 
@@ -171,7 +174,7 @@
                 android:fontFamily="@font/press_start_2p"
                 android:text="Settings"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>
