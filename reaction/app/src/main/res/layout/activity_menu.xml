@@ -78,12 +78,14 @@
                 <Button
                     android:id="@+id/btnSpeed"
                     style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/press_start_2p"
                     android:backgroundTint="?android:attr/colorPrimary"
-                    android:text="Speed" />
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="Speed"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:background="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -95,12 +97,14 @@
                 <Button
                     android:id="@+id/btnAverage"
                     style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/press_start_2p"
                     android:backgroundTint="?android:attr/colorPrimary"
-                    android:text="@string/Average" />
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="@string/Average"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:background="@null"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -118,13 +122,15 @@
 
                 <Button
                     android:id="@+id/btnStamina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@null"
                     android:backgroundTint="?android:attr/colorPrimary"
-                    android:text="Stamina"
                     android:fontFamily="@font/press_start_2p"
-                    android:textColor="@android:color/white" />
+                    android:text="Stamina"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -135,13 +141,15 @@
 
                 <Button
                     android:id="@+id/btnScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:background="@null"
                     android:backgroundTint="?android:attr/colorPrimary"
-                    android:text="Scores"
                     android:fontFamily="@font/press_start_2p"
-                    android:textColor="@android:color/white" />
+                    android:text="Scores"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
         </LinearLayout>
 
@@ -158,10 +166,12 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:layout_weight="1"
+                android:background="@null"
                 android:backgroundTint="?android:attr/colorPrimary"
-                android:text="Settings"
                 android:fontFamily="@font/press_start_2p"
-                android:textColor="@android:color/white" />
+                android:text="Settings"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
     </LinearLayout>
