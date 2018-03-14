@@ -90,9 +90,10 @@
             android:label="@string/Stamina"
             android:screenOrientation="portrait"/>
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider{2008884382717534}"
+        <provider android:authorities="com.facebook.app.FacebookContentProvider2008884382717534"
             android:name="com.facebook.FacebookContentProvider"
             android:exported="true"/>
+
     </application>
 
 </manifest>

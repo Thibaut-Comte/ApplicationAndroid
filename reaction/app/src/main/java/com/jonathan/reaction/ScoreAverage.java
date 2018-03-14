@@ -13,9 +13,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ScoreAverage extends AppCompatActivity {
@@ -63,9 +66,6 @@ public class ScoreAverage extends AppCompatActivity {
         lw = findViewById(R.id.lw);
 
         List<ScoreClass> scores = genererScores();
-
-        ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
-        lw.setAdapter(adapter);
     }
 
     public void onBackPressed()
@@ -104,6 +104,16 @@ public class ScoreAverage extends AppCompatActivity {
                     scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
                     Log.e("debug", "nb_elem_scores : "+scores.size());
                 }
+                Collections.sort(scores,new Comparator<ScoreClass>() {
+                    @Override
+                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
+                        if(scoreClass.getScore() < t1.getScore())
+                        {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
                 lw.setAdapter(adapter);
 
@@ -113,27 +123,6 @@ public class ScoreAverage extends AppCompatActivity {
             }
         });
 
-//        scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", "Thibaut", 253));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Jonathan", 243));
-//        scores.add(new ScoreClass("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg", "Antoine", 234));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Émillie", 231));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Caroline", 230));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Emmanuelle", 224));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Steven", 204));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Sophie", 102));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Lison", 96));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Willy", 88));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Logan", 59));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Florent", 57));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Mathieu", 25));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Tom", 23));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Lea", 16));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Steve", 14));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Tim", 12));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Fleur", 9));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Thomas", 7));
-//        scores.add(new ScoreClass("http://www.voyage-sponsorise.com/wp-content/uploads/2017/09/image-slider2.jpg", "Lisa", 4));
-//
         scores.add(new ScoreClass(imgAvatar, name, scoreP));
 
         return scores;
