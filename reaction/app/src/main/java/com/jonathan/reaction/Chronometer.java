@@ -63,16 +63,16 @@ public class Chronometer implements Runnable {
 
 
             if (mode.equals("Speed")) {
-                ((Speed) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
-                        , hours, minutes, seconds, millis), since);
+                ((Speed) mContext).updateTimerText(String.format("%02d:%02d:%03d"
+                        , minutes, seconds, millis), since);
             }
             if (mode.equals("Average")) {
-                ((Average) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
-                        , hours, minutes, seconds, millis), since);
+                ((Average) mContext).updateTimerText(String.format("%02d:%02d:%03d"
+                        , minutes, seconds, millis), since);
             }
             if (mode.equals("Stamina")) {
-                ((Stamina) mContext).updateTimerText(String.format("%02d:%02d:%02d:%03d"
-                        , hours, minutes, seconds, millis), since);
+                ((Stamina) mContext).updateTimerText(String.format("%02d:%02d:%03d"
+                        , minutes, seconds, millis), since);
             }
             try {
                 Thread.sleep(15);

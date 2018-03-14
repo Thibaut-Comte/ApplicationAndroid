@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class Average extends AppCompatActivity {
 
     //init des données membres
-    TextView mTvTime, lvl;
+    TextView mTvTime, lvl, guide;
     RelativeLayout mlw;
     Player player = new Player();
 
@@ -43,6 +43,7 @@ public class Average extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        sharedPreferences.edit().putInt("Average", 0).apply();
         vibrateTest = sharedPreferences.getBoolean("vibrate", true);
         soundTest = sharedPreferences.getBoolean("sound", true);
 
@@ -50,6 +51,7 @@ public class Average extends AppCompatActivity {
         setContentView(R.layout.activity_average);
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
+        guide = (TextView) findViewById(R.id.guide3);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         lvl = (TextView) findViewById(R.id.twlvl);
         String time = "";
@@ -130,6 +132,7 @@ public class Average extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
+                    guide.setText("NOW !");
                     sharedPreferences.edit().putString("ecran", "vert").apply();
 
                 }
@@ -184,5 +187,6 @@ public class Average extends AppCompatActivity {
         super.onPause();
         kill = true;
     }
+    public void onBackPressed() {}
 
 }

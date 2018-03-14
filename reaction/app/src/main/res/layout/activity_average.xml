@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="00:00:00:000"
         android:fontFamily="@font/press_start_2p"
+        android:text="00:00:000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/black"
         android:textSize="30dp" />
@@ -33,5 +33,17 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/guide3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textchrono"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp"
+        android:fontFamily="@font/press_start_2p"
+        android:text="Ready ?"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
 
 </RelativeLayout>
