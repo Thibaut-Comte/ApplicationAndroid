@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,20 +14,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.facebook.*;
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONObject;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Random;
 
 
 public class Menu extends AppCompatActivity {
@@ -52,7 +37,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String profilepicture = sharedPreferences.getString("avatarP", "http://");
         String username = sharedPreferences.getString("username", "undefined");
 
@@ -107,6 +92,7 @@ public class Menu extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(Menu.this, Settings.class);
                 startActivity(intent);
             }
@@ -123,7 +109,8 @@ public class Menu extends AppCompatActivity {
         average.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, Average.class);
+                sharedPreferences.edit().putString("ruleRedirect", "Average").apply();
+                Intent intent = new Intent(Menu.this, Decompte.class);
                 startActivity(intent);
             }
         });
@@ -131,7 +118,8 @@ public class Menu extends AppCompatActivity {
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, Speed.class);
+                sharedPreferences.edit().putString("ruleRedirect", "Speed").apply();
+                Intent intent = new Intent(Menu.this, Decompte.class);
                 startActivity(intent);
             }
         });
@@ -139,7 +127,8 @@ public class Menu extends AppCompatActivity {
         stamina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, Stamina.class);
+                sharedPreferences.edit().putString("ruleRedirect", "Stamina").apply();
+                Intent intent = new Intent(Menu.this, Decompte.class);
                 startActivity(intent);
             }
         });
