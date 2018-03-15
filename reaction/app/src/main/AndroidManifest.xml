@@ -50,8 +50,8 @@
             android:name=".Average"
             android:label="@string/Average"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".MainActivity" >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,50 +62,59 @@
             android:name=".ScoreSpeed"
             android:label="@string/ScoreSpeed"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScoreStamina"
             android:label="@string/ScoreStamina"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScoreAverage"
             android:label="@string/ScoreAverage"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Speed"
             android:label="@string/Speed"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CreateAccount"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreateAccount"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".EndGame"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EndGame"
             android:label="@string/Speed"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Settings"
             android:label="@string/Settings"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".EndGameAverage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EndGameAverage"
             android:label="@string/Average"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Stamina"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Stamina"
             android:label="@string/Stamina"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".EndGameStamina"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EndGameStamina"
             android:label="@string/Stamina"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider2008884382717534"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider2008884382717534"
+            android:exported="true" />
 
+        <activity android:name=".Rules"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

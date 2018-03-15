@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 public class Settings extends AppCompatActivity {
 
     private Switch sound, vibrate;
+    private Button rules;
     private SharedPreferences sharedPreferences;
     private Boolean soundTest, vibrateTest;
     private Button logout;
@@ -40,6 +41,7 @@ public class Settings extends AppCompatActivity {
 
         sound = findViewById(R.id.sound);
         vibrate = findViewById(R.id.vibrate);
+        rules = findViewById(R.id.rules);
 
         //Met les boutons sur on ou off suivant les valeurs en mémoire
         if (!soundTest) {
@@ -77,6 +79,14 @@ public class Settings extends AppCompatActivity {
                 {
                     sharedPreferences.edit().putBoolean("vibrate", false).apply();
                 }
+            }
+        });
+
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Settings.this, Rules.class);
+                startActivity(i);
             }
         });
 
