@@ -14,9 +14,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
         android:fontFamily="@font/press_start_2p"
-        android:text="Perdu !"
+        android:text="Game Over"
         android:textColor="@android:color/white"
-        android:textSize="50dp" />
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/result"
@@ -39,7 +39,7 @@
         android:layout_marginStart="33dp"
         android:background="@null"
         android:fontFamily="@font/press_start_2p"
-        android:text="Rejouer"
+        android:text="Retry"
         android:textColor="@android:color/white" />
 
     <Button
@@ -59,8 +59,8 @@
         android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/result"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
         android:background="@null"
         android:fontFamily="@font/press_start_2p"
