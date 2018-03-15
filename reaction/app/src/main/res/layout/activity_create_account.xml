@@ -78,6 +78,7 @@
                     android:fontFamily="@font/press_start_2p"
                     android:hint="Login"
                     android:textColorHint="#AAAAAA"
+                    android:textColor="@android:color/white"
                     android:inputType="textPersonName" />
             </RelativeLayout>
 
@@ -126,6 +127,7 @@
                     android:hint="password"
                     android:fontFamily="@font/press_start_2p"
                     android:textColorHint="#AAAAAA"
+                    android:textColor="@android:color/white"
                     android:inputType="textPassword" />
             </RelativeLayout>
 
@@ -174,6 +176,7 @@
                     android:fontFamily="@font/press_start_2p"
                     android:hint="password"
                     android:textColorHint="#AAAAAA"
+                    android:textColor="@android:color/white"
                     android:inputType="textPassword" />
             </RelativeLayout>
 

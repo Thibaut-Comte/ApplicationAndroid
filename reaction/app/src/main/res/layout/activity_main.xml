@@ -104,8 +104,9 @@
                     android:fontFamily="@font/press_start_2p"
                     android:hint="Login"
                     android:inputType="textPersonName"
+                    android:textColor="@android:color/white"
                     android:textColorHint="#AAAAAA"
-                    android:textSize="10sp" />
+                    android:textSize="14sp" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -155,8 +156,9 @@
                     android:fontFamily="@font/press_start_2p"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:textColor="@android:color/white"
                     android:textColorHint="#AAAAAA"
-                    android:textSize="10sp" />
+                    android:textSize="14sp" />
             </RelativeLayout>
 
         </LinearLayout>
