@@ -37,15 +37,8 @@ public class Database implements Runnable {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //System.out.print(dataSnapshot.getValue());
                 Player player = dataSnapshot.getValue(Player.class);
-                String text = "";
+                String text = "Bonjour "+dataSnapshot.getKey();
 
-                if(player.getFirstname().equals("") && player.getLastname().equals("")) {
-                    text = "Bonjour "+dataSnapshot.getKey();
-                }
-                else
-                {
-                    text = "Bonjour "+player.getLastname()+" "+player.getFirstname();
-                }
                 Log.e("debug",text);
 
             }
@@ -80,8 +73,6 @@ public class Database implements Runnable {
                     Log.e("debug","nbObjallUser : "+players.size());
                     Log.e("debug","NewPlayer : "+truc.toString());
                     truc.setPassword("");
-                    truc.setFirstname("");
-                    truc.setLastname("");
                     players.add(truc);
 
 

@@ -113,8 +113,6 @@ public class ScoreAverage extends AppCompatActivity {
             }
         });
 
-        scores.add(new ScoreClass(imgAvatar, name, scoreP));
-
         return scores;
     }
 }
