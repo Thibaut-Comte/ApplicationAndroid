@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jonathan.reaction.MainActivity">
+    tools:context="com.jonathan.reaction.MainActivity"
+    android:background="#000000">
 
 
 
@@ -17,34 +18,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="vertical">
+            tools:layout_editor_absoluteY="71dp">
 
-            <TextView
-                android:id="@+id/error"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="43dp"
-                android:text=""
-                android:fontFamily="@font/press_start_2p"
-                android:layout_marginLeft="5dp"/>
+                android:layout_height="match_parent">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="71dp">
+            android:orientation="vertical">
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="30dp" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/press_start_2p"
+                    android:text=""
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -55,36 +66,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp">
 
-            <TextView
-                android:id="@+id/tvlogin"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/login"
-                android:layout_centerVertical="true"
-                android:text="Login : "
-                android:fontFamily="@font/press_start_2p"
-                android:layout_marginLeft="5dp"/>
-        </LinearLayout>
+                android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="511dp">
-
-            <EditText
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/tvlogin"
-                android:layout_below="@+id/tvlogin"
-                android:layout_marginTop="25dp"
-                android:ems="10"
-                android:hint="Entrez votre login"
-                android:inputType="textPersonName"
-                android:fontFamily="@font/press_start_2p"
-                android:layout_marginLeft="5dp"/>
+                <TextView
+                    android:id="@+id/tvlogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="Login : "
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -95,15 +90,24 @@
             android:orientation="vertical"
             tools:layout_editor_absoluteY="511dp">
 
-            <TextView
-                android:id="@+id/tvpw"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/login"
-                android:layout_centerVertical="true"
-                android:text="Mot de Passe :"
-                android:fontFamily="@font/press_start_2p"
-                android:layout_marginLeft="5dp"/>
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:fontFamily="@font/press_start_2p"
+                    android:hint="Login"
+                    android:inputType="textPersonName"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -113,49 +117,95 @@
             android:orientation="vertical"
             tools:layout_editor_absoluteY="511dp">
 
-            <EditText
-                android:id="@+id/pw"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/tvpw"
-                android:layout_below="@+id/tvpw"
-                android:layout_marginTop="22dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:fontFamily="@font/press_start_2p"
-                android:layout_marginLeft="5dp"/>
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvpw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="Password :"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="511dp">
 
-            <Button
-                android:id="@+id/connection"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pw"
-                android:layout_marginTop="49dp"
-                android:layout_toEndOf="@+id/tvlogin"
-                android:text="Se Connecter" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:fontFamily="@font/press_start_2p"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:layout_weight="2">
 
-            <Button
-                android:id="@+id/createAccount"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/connection"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="14dp"
-                android:text="Créer un compte" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/connection"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/pw"
+                    android:layout_toEndOf="@+id/tvlogin"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="Login"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/createAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/connection"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/press_start_2p"
+                    android:text="Create an acount"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
