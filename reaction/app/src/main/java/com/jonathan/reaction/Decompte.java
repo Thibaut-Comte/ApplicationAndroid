@@ -7,58 +7,67 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Decompte extends AppCompatActivity implements Runnable {
+public class Decompte extends AppCompatActivity {
 
     private TextView compteur;
     private SharedPreferences sharedPreferences;
-    private int cpt = 5;
+    private int cpt = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rules);
+        setContentView(R.layout.activity_decompte);
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String mode = sharedPreferences.getString("ruleRedirect", "error");
 
         compteur = findViewById(R.id.cpt);
 
-        run();
+        compteur.setText(""+cpt);
 
-
+        t.start();
 
     }
 
-    @Override
-    public void run() {
+    //@Override
+    Thread t = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+            String mode = sharedPreferences.getString("ruleRedirect", "error");
 
-        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-        String mode = sharedPreferences.getString("ruleRedirect", "error");
-
+            //decompte
         do {
             try {
-                compteur.setText(""+cpt);
-                Thread.sleep(1000);
+                Thread.sleep(700);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        compteur.setText(""+cpt);
+                    }
+                });
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             cpt -= 1;
         } while (cpt > 0);
 
-        switch (mode) {
-            case "Average" :
-                Intent average = new Intent(Decompte.this, Average.class);
-                startActivity(average);
-                break;
-            case "Speed" :
-                Intent speed = new Intent(Decompte.this, Speed.class);
-                startActivity(speed);
-                break;
-            case "Stamina" :
-                Intent stamina = new Intent(Decompte.this, Stamina.class);
-                startActivity(stamina);
-                break;
-            default:
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            switch (mode) {
+                case "Average" :
+                    Intent average = new Intent(Decompte.this, Average.class);
+                    startActivity(average);
+                    break;
+                case "Speed" :
+                    Intent speed = new Intent(Decompte.this, Speed.class);
+                    startActivity(speed);
+                    break;
+                case "Stamina" :
+                    Intent stamina = new Intent(Decompte.this, Stamina.class);
+                    startActivity(stamina);
+                    break;
+                default:
+                    //Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            }
         }
-    }
+    });
+
 }
