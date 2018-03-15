@@ -38,7 +38,7 @@ public class Decompte extends AppCompatActivity {
             //decompte
         do {
             try {
-                Thread.sleep(700);
+                Thread.sleep(500);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -54,14 +54,17 @@ public class Decompte extends AppCompatActivity {
             switch (mode) {
                 case "Average" :
                     Intent average = new Intent(Decompte.this, Average.class);
+                    average.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(average);
                     break;
                 case "Speed" :
                     Intent speed = new Intent(Decompte.this, Speed.class);
+                    speed.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(speed);
                     break;
                 case "Stamina" :
                     Intent stamina = new Intent(Decompte.this, Stamina.class);
+                    stamina.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(stamina);
                     break;
                 default:

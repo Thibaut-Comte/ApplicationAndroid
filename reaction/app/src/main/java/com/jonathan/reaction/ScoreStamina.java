@@ -90,7 +90,9 @@ public class ScoreStamina extends AppCompatActivity {
                 for ( DataSnapshot obj : Ids) {
                     Player truc = obj.getValue(Player.class);
 
-                    scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreStamina()));
+                    if(truc.getHightscoreStamina() != 0) {
+                        scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", obj.getKey(), (int) truc.getHightscoreStamina()));
+                    }
                 }
                 Collections.sort(scores,new Comparator<ScoreClass>() {
                     @Override

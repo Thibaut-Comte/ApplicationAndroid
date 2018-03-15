@@ -46,10 +46,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Average"
-            android:label="@string/Average"
-            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity" >
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -100,6 +96,11 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Average"
+            android:label="@string/Average"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Stamina"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/Stamina"
@@ -118,7 +119,7 @@
 
         <activity android:name=".Decompte"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".Rules"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
