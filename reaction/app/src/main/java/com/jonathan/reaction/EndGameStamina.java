@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class EndGameStamina extends AppCompatActivity {
     private int lvl = 0;
     private int lives = 0;
     private View main;
+    private Database DataB = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,8 @@ public class EndGameStamina extends AppCompatActivity {
                 result.setText(R.string.defaite);
                 rejouer.setVisibility(View.INVISIBLE);
                 //Check si hightscore et mise en BDD
+                DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
+                DataB.user.checkHightscore(lvl, "stamina");
             }
             if (lives > 1) {
                 // - une vie

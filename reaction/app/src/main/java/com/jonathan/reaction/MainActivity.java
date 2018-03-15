@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_LONG).show();
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
                     FirebaseDatabase DB = FirebaseDatabase.getInstance();
@@ -132,7 +132,15 @@ public class MainActivity extends AppCompatActivity {
                                     if(pwd.equals(playerTemp.getPassword()))
                                     {
                                         connOk = true;
-                                        Toast.makeText(getBaseContext(), "Connexion réussie", Toast.LENGTH_SHORT).show();
+                                        sharedPreferences.edit().putString("username", userName).apply();
+                                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
+                                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
+                                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
+                                        Log.e("debug","userName"+userName);
+                                        Log.e("debug","hsAv "+playerTemp.getHightscoreAverage());
+                                        Log.e("debug","hsSp "+playerTemp.getHightscoreSpeed());
+                                        Log.e("debug","hsSt "+playerTemp.getHightscoreStamina());
+                                        Toast.makeText(getBaseContext(), "Connexion réussie", Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class EndGameAverage extends AppCompatActivity {
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
     private View main;
+    private Database DataB = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,8 @@ public class EndGameAverage extends AppCompatActivity {
                 result.setText("Your average score is: " + Ascore);
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
+                DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,sharedPreferences.getLong("hsAv",0),0);
+                DataB.user.checkHightscore(Ascore, "average");
             }
 
         }

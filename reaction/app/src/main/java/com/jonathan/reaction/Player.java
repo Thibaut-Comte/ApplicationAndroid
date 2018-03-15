@@ -1,5 +1,10 @@
 package com.jonathan.reaction;
 
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Created by jonathan on 18/01/18.
  */
@@ -12,8 +17,6 @@ public class Player {
     private long hightscoreSpeed = 0;
     private long hightscoreAverage = 0;
     private long hightscoreStamina = 0;
-    private String firstname = "";
-    private String lastname = "";
 
     public Player(String username, String password, String actualscore, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
         this.username = username;
@@ -22,37 +25,21 @@ public class Player {
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
-        this.lastname = "";
-        this.firstname = "";
 
     }
-
 
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
         this.actualscore = "";
-        this.hightscoreSpeed = 0;
-        this.hightscoreAverage = 0;
+        this.hightscoreSpeed = 2000;
+        this.hightscoreAverage = 2000;
         this.hightscoreStamina = 0;
-        this.lastname = "";
-        this.firstname = "";
-    }
-
-    public Player(String username, String password, String firstname, String lastname) {
-        this.username = username;
-        this.password = password;
-        this.actualscore = "";
-        this.hightscoreSpeed = 0;
-        this.hightscoreAverage = 0;
-        this.hightscoreStamina = 0;
-        this.lastname = lastname;
-        this.firstname = firstname;
     }
 
     public Player() {
-        this.username = "Mario";
-        this.password = "Luigi";
+        this.username = "";
+        this.password = "";
         this.actualscore = "";
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
@@ -73,22 +60,6 @@ public class Player {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -123,21 +94,38 @@ public class Player {
         this.hightscoreStamina = hightscoreStamina;
     }
 
-    public boolean checkHightscoreSpeed(long score) {
-        if (score > this.hightscoreSpeed) {
-            hightscoreSpeed = score;
-            return true;
-        } else {
-            return false;
-        }
+    public void checkHightscore(long score, String modeJeu) {
+        FirebaseDatabase DB = FirebaseDatabase.getInstance();
+        final DatabaseReference DBRef = DB.getReference("users");
+        switch(modeJeu) {
+            case "speed":
+                if (score < this.hightscoreSpeed) {
+//                    hightscoreSpeed = score;
+                    Log.e("debug", "new high score Speed!");
+                    DBRef.child(username).child("hightscoreSpeed").setValue(score);
+                }
+                break;
+            case "stamina":
+                if (score > this.hightscoreStamina) {
+//                    hightscoreStamina = score;
+                    Log.e("debug","new high score Stamina!");
+                    DBRef.child(username).child("hightscoreStamina").setValue(score);
 
+                }
+                break;
+            case "average":
+                if (score < this.hightscoreAverage) {
+//                    hightscoreAverage = score;
+                    Log.e("debug","new high score Average!");
+                    DBRef.child(username).child("hightscoreAverage").setValue(score);
+                }
+                break;
+        }
     }
 
     @Override
     public String toString() {
         return "Player{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", actualscore='" + actualscore + '\'' +

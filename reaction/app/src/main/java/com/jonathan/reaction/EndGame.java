@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ private Button rejouer, menu, share;
 private ShareDialog shareDialog;
 private CallbackManager callbackManager;
 private View main;
+private Database DataB = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,8 @@ private View main;
             result.setText(R.string.victoire);
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
+            DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
+            DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed");
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
             result.setText(R.string.defaite);
