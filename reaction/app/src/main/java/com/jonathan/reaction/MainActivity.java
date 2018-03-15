@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_SHORT).show();
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
                     FirebaseDatabase DB = FirebaseDatabase.getInstance();
@@ -136,17 +136,21 @@ public class MainActivity extends AppCompatActivity {
                                         sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
                                         sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
                                         sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
-                                        Log.e("debug","userName"+userName);
-                                        Log.e("debug","hsAv "+playerTemp.getHightscoreAverage());
-                                        Log.e("debug","hsSp "+playerTemp.getHightscoreSpeed());
-                                        Log.e("debug","hsSt "+playerTemp.getHightscoreStamina());
-                                        Toast.makeText(getBaseContext(), "Connexion réussie", Toast.LENGTH_LONG).show();
+                                        String test2 = sharedPreferences.getString("username", null);
+                                        Toast.makeText(getBaseContext(), "Bonjour "+test2, Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }
                             if (connOk) {
-                                Intent i = new Intent(getBaseContext(), Menu.class);
-                                startActivity(i);
+                                if (sharedPreferences.getBoolean("firstUse", true))
+                                {
+                                    sharedPreferences.edit().putBoolean("firstUse", false).apply();
+                                    Intent i = new Intent(MainActivity.this, Rules.class);
+                                    startActivity(i);
+                                } else {
+                                    Intent i = new Intent(getBaseContext(), Menu.class);
+                                    startActivity(i);
+                                }
                             }
                             else
                             {
@@ -195,8 +199,16 @@ public class MainActivity extends AppCompatActivity {
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
                 sharedPreferences.edit().putString("token", loginResult.getAccessToken().getToken()).apply();
 
-                Intent i = new Intent(MainActivity.this, Menu.class);
-                startActivity(i);
+
+                if (sharedPreferences.getBoolean("firstUse", true))
+                {
+                    sharedPreferences.edit().putBoolean("firstUse", false).apply();
+                    Intent i = new Intent(MainActivity.this, Rules.class);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(MainActivity.this, Menu.class);
+                    startActivity(i);
+                }
             }
 
             @Override

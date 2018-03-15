@@ -45,7 +45,13 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.pseudo.setText(scoreClass.getPseudo());
-        viewHolder.score.setText(Integer.toString(scoreClass.getScore()));
+        if(scoreClass.getScore() != 0)
+        {
+            viewHolder.score.setText(Integer.toString(scoreClass.getScore()));
+        }
+        else{
+            viewHolder.score.setText("not played yet");
+        }
         Picasso.with(getContext()).load(scoreClass.getUrl()).into(viewHolder.avatar);
 
         return convertView;
