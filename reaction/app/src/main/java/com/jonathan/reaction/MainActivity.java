@@ -145,8 +145,15 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             if (connOk) {
-                                Intent i = new Intent(getBaseContext(), Menu.class);
-                                startActivity(i);
+                                if (sharedPreferences.getBoolean("firstUse", true))
+                                {
+                                    sharedPreferences.edit().putBoolean("firstUse", false).apply();
+                                    Intent i = new Intent(MainActivity.this, Rules.class);
+                                    startActivity(i);
+                                } else {
+                                    Intent i = new Intent(getBaseContext(), Menu.class);
+                                    startActivity(i);
+                                }
                             }
                             else
                             {
@@ -195,8 +202,16 @@ public class MainActivity extends AppCompatActivity {
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
                 sharedPreferences.edit().putString("token", loginResult.getAccessToken().getToken()).apply();
 
-                Intent i = new Intent(MainActivity.this, Menu.class);
-                startActivity(i);
+
+                if (sharedPreferences.getBoolean("firstUse", true))
+                {
+                    sharedPreferences.edit().putBoolean("firstUse", false).apply();
+                    Intent i = new Intent(MainActivity.this, Rules.class);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(MainActivity.this, Menu.class);
+                    startActivity(i);
+                }
             }
 
             @Override
