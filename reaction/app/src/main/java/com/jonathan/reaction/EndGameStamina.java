@@ -60,6 +60,7 @@ public class EndGameStamina extends AppCompatActivity {
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 result.setText(R.string.defaite);
                 rejouer.setVisibility(View.INVISIBLE);
+                //Check si hightscore et mise en BDD
             }
             if (lives > 1) {
                 // - une vie

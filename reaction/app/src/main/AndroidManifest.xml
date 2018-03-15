@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Menu"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -49,28 +50,33 @@
             android:name=".Average"
             android:label="@string/Average"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ScoreSpeed"
             android:label="@string/ScoreSpeed"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ScoreStamina"
             android:label="@string/ScoreStamina"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ScoreAverage"
             android:label="@string/ScoreAverage"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Speed"
             android:label="@string/Speed"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CreateAccount"
@@ -78,23 +84,28 @@
         <activity
             android:name=".EndGame"
             android:label="@string/Speed"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Settings"
             android:label="@string/Settings"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".EndGameAverage"
             android:label="@string/Average"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Stamina"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/Stamina"
             android:screenOrientation="portrait" />
         <activity
             android:name=".EndGameStamina"
             android:label="@string/Stamina"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" 
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
