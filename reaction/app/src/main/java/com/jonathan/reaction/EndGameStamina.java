@@ -43,8 +43,9 @@ public class EndGameStamina extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);
 
-        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String victoire = sharedPreferences.getString("victoire", "error system");
+        rejouer.setText("Continue");
 
 
         //Gestion du résultat de l'utilisateur
@@ -61,10 +62,11 @@ public class EndGameStamina extends AppCompatActivity {
                 //Lose
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 result.setText(R.string.defaite);
-                rejouer.setVisibility(View.INVISIBLE);
+                rejouer.setText("Retry ?");
                 //Check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
                 DataB.user.checkHightscore(lvl, "stamina");
+
             }
             if (lives > 1) {
                 // - une vie
@@ -81,6 +83,12 @@ public class EndGameStamina extends AppCompatActivity {
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (rejouer.getText().toString().equals("Retry ?"))
+                {
+                    sharedPreferences.edit().putInt("StaminaLives", 3).apply();
+                    sharedPreferences.edit().putLong("score", 0).apply();
+                    sharedPreferences.edit().putInt("Stamina", 0).apply();
+                }
                 Intent i = new Intent(EndGameStamina.this, Stamina.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(i);
