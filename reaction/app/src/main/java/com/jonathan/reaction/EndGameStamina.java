@@ -58,6 +58,7 @@ public class EndGameStamina extends AppCompatActivity {
             if (lives == 1) {
                 //Lose
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
+                twlvl.setText("Game Over");
                 result.setText(R.string.defaite);
                 rejouer.setVisibility(View.INVISIBLE);
                 //Check si hightscore et mise en BDD
@@ -95,7 +96,6 @@ public class EndGameStamina extends AppCompatActivity {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EndGameStamina.this, "Coucou twa", Toast.LENGTH_SHORT).show();
                 Bitmap b = Screenshot.takeScreenShotRootView(main);
 
                 if (shareDialog.canShow(SharePhotoContent.class)) {
