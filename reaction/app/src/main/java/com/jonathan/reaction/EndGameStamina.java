@@ -59,11 +59,13 @@ public class EndGameStamina extends AppCompatActivity {
             lives = sharedPreferences.getInt("StaminaLives", lives);
             if (lives == 1) {
                 //Lose
+                lvl = sharedPreferences.getInt("Stamina", 0);
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 result.setText(R.string.defaite);
                 rejouer.setVisibility(View.INVISIBLE);
                 //Check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
+                Log.e("debug","lvl "+lvl+" ; hsSt "+DataB.user.getHightscoreStamina());
                 DataB.user.checkHightscore(lvl, "stamina");
             }
             if (lives > 1) {

@@ -73,9 +73,7 @@ public class Menu extends AppCompatActivity {
 
 
         // On récupère le sharedPreferences "player"
-        String test2 = sharedPreferences.getString("username", null);
         String urlAvatar = sharedPreferences.getString("avatar", null);
-        Toast.makeText(this, "Bonjour "+test2, Toast.LENGTH_LONG).show();
 
         settings = findViewById(R.id.btnSettings);
         score = findViewById(R.id.btnScore);
@@ -85,9 +83,7 @@ public class Menu extends AppCompatActivity {
         stamina = findViewById(R.id.btnStamina);
         welcome = findViewById(R.id.welcome);
 
-
         welcome.setText(username);
-
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

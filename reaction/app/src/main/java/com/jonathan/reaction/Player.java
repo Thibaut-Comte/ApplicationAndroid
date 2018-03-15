@@ -100,23 +100,16 @@ public class Player {
         switch(modeJeu) {
             case "speed":
                 if (score < this.hightscoreSpeed) {
-//                    hightscoreSpeed = score;
-                    Log.e("debug", "new high score Speed!");
                     DBRef.child(username).child("hightscoreSpeed").setValue(score);
                 }
                 break;
             case "stamina":
                 if (score > this.hightscoreStamina) {
-//                    hightscoreStamina = score;
-                    Log.e("debug","new high score Stamina!");
                     DBRef.child(username).child("hightscoreStamina").setValue(score);
-
                 }
                 break;
             case "average":
                 if (score < this.hightscoreAverage) {
-//                    hightscoreAverage = score;
-                    Log.e("debug","new high score Average!");
                     DBRef.child(username).child("hightscoreAverage").setValue(score);
                 }
                 break;
