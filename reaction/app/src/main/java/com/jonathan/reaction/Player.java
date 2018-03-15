@@ -32,8 +32,8 @@ public class Player {
         this.username = username;
         this.password = password;
         this.actualscore = "";
-        this.hightscoreSpeed = 2000;
-        this.hightscoreAverage = 2000;
+        this.hightscoreSpeed = 0;
+        this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
     }
 
@@ -99,17 +99,17 @@ public class Player {
         final DatabaseReference DBRef = DB.getReference("users");
         switch(modeJeu) {
             case "speed":
-                if (score < this.hightscoreSpeed) {
+                if (score < this.hightscoreSpeed || this.hightscoreSpeed == 0) {
                     DBRef.child(username).child("hightscoreSpeed").setValue(score);
                 }
                 break;
             case "stamina":
-                if (score > this.hightscoreStamina) {
+                if (score > this.hightscoreStamina || this.hightscoreStamina == 0) {
                     DBRef.child(username).child("hightscoreStamina").setValue(score);
                 }
                 break;
             case "average":
-                if (score < this.hightscoreAverage) {
+                if (score < this.hightscoreAverage || this.hightscoreStamina == 0) {
                     DBRef.child(username).child("hightscoreAverage").setValue(score);
                 }
                 break;
