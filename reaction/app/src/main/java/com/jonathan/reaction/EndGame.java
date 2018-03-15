@@ -82,6 +82,7 @@ private View main;
         {
             result.setText(R.string.victoire);
             score.setText(""+sharedPreferences.getLong("score", 0));
+            //Check si hight score et mise en BDD
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
             result.setText(R.string.defaite);

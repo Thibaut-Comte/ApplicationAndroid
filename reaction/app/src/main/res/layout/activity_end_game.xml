@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="27dp"
         android:background="@null"
         android:fontFamily="@font/press_start_2p"
         android:text="Share"
