@@ -27,7 +27,7 @@ public class Rules extends AppCompatActivity {
         if (language.equals("French"))
         {
             speedR.setText("Dès que l'écran passe vert, appuyez le plus vite possible !");
-            averageR.setText("Dès que l'écran passe vert, appuiyez le plus vite possible ! Recommencez 10 fois pour avoir votre temps de réaction moyen !");
+            averageR.setText("Dès que l'écran passe vert, appuyez le plus vite possible ! Recommencez 10 fois pour avoir votre temps de réaction moyen !");
             staminaR.setText("Dès que l'écran passe vert, appuiyez sur l'écran avant qui'il ne devienne bleu ! Faites le le plus vite possible, vous n'aurez que 3 vies !");
         }
 
