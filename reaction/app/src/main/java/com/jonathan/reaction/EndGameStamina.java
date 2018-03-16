@@ -46,17 +46,27 @@ public class EndGameStamina extends AppCompatActivity {
 
         final SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String victoire = sharedPreferences.getString("victoire", "error system");
-        rejouer.setText("Continue");
+        String lan = sharedPreferences.getString("Language", "English");
+
+        if (lan.equals("French")) {
+            rejouer.setText("Continuer");
+        } else {
+            rejouer.setText("Continue");
+        }
 
 
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("vert")) {
-            result.setText(R.string.victoire);
+            if (lan.equals("French")) {
+                result.setText("Bien jouer ! Voulez-vous ameliorer ton score ?");
+            } else {
+                result.setText(R.string.victoire);
+            }
             score.setText("" + sharedPreferences.getLong("score", 0));
+            twlvl.setText("" + lvl);
             lvl = sharedPreferences.getInt("Stamina", 0);
             lvl = lvl + 1;
             sharedPreferences.edit().putInt("Stamina", lvl).apply();
-            twlvl.setText("" + lvl);
         } else if (sharedPreferences.getString("ecran", "").equals("rouge")) {
             lives = sharedPreferences.getInt("StaminaLives", lives);
             if (lives == 1) {
@@ -64,8 +74,13 @@ public class EndGameStamina extends AppCompatActivity {
                 lvl = sharedPreferences.getInt("Stamina", 0);
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 twlvl.setText("Game Over");
-                result.setText(R.string.defaite);
-                rejouer.setText("Retry ?");
+                if (lan.equals("French")) {
+                    result.setText("Oh non, rejouer ?");
+                    rejouer.setText("Rejouer ?");
+                } else {
+                    result.setText(R.string.defaite);
+                    rejouer.setText("Retry ?");
+                }
                 //Check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
                 Log.e("debug","lvl "+lvl+" ; hsSt "+DataB.user.getHightscoreStamina());
@@ -76,18 +91,21 @@ public class EndGameStamina extends AppCompatActivity {
                 // - une vie
                 lives = lives - 1;
                 sharedPreferences.edit().putInt("StaminaLives", lives).apply();
-                result.setText("You just lot one life, only " + lives + " left");
+                if (lan.equals("French")) {
+                    result.setText("Vous avez perdu une vie, il vous en reste plus que "+lives);
+                } else {
+                    result.setText("You just lot one life, only " + lives + " left");
+                }
             }
             lvl = sharedPreferences.getInt("Stamina", 0);
             score.setText("" + lvl);
         }
 
-
         //Redirection pour rejouer ou retourner au menu
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (rejouer.getText().toString().equals("Retry ?"))
+                if (rejouer.getText().toString().equals("Retry ?") || rejouer.getText().toString().equals("Rejouer ?"))
                 {
                     sharedPreferences.edit().putInt("StaminaLives", 3).apply();
                     sharedPreferences.edit().putLong("score", 0).apply();
@@ -113,6 +131,9 @@ public class EndGameStamina extends AppCompatActivity {
         if (p == null)
         {
             share.setVisibility(View.INVISIBLE);
+        }
+        if (lan.equals("French")) {
+            share.setText("Partager");
         }
         share.setOnClickListener(new View.OnClickListener() {
             @Override

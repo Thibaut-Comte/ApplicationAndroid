@@ -48,11 +48,16 @@ public class EndGameAverage extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String victoire = sharedPreferences.getString("victoire", "error system");
+        String lan = sharedPreferences.getString("Language", "English");
 
 
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("rouge")) {
-            result.setText(R.string.defaite);
+            if (lan.equals("French")) {
+                result.setText("Oh non, vous avez perdu. Rejouer ?");
+            } else {
+                result.setText(R.string.defaite);
+            }
             sharedPreferences.edit().putInt("Average", 0).apply();
         } else if (sharedPreferences.getString("ecran", "").equals("vert")) {
             nmbr = sharedPreferences.getInt("Average", 0);
@@ -65,12 +70,20 @@ public class EndGameAverage extends AppCompatActivity {
                 Ascore = Ascore * (nmbr - 1);
                 Ascore = (Ascore + Mscore) / nmbr;
                 score.setText("" + Mscore);
-                result.setText("Game: " + nmbr + " of 10   Average: " + Ascore);
+                if (lan.equals("French")) {
+                    result.setText("Partie : "+ nmbr + " sur 10. Moyenne : "+ Ascore);
+                } else {
+                    result.setText("Game: " + nmbr + " of 10   Average: " + Ascore);
+                }
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
             }
             if (nmbr == 10) {
                 //Si 10 try on été fais
-                result.setText("Your average score is: " + Ascore);
+                if (lan.equals("French")) {
+                    result.setText("Votre moyenne est de : "+ Ascore);
+                } else {
+                    result.setText("Your average score is: " + Ascore);
+                }
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,sharedPreferences.getLong("hsAv",0),0);
@@ -81,6 +94,9 @@ public class EndGameAverage extends AppCompatActivity {
 
 
         //Redirection pour rejouer ou retourner au menu
+        if (lan.equals("French")) {
+            rejouer.setText("Continuer");
+        }
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +120,9 @@ public class EndGameAverage extends AppCompatActivity {
         if (p == null)
         {
             share.setVisibility(View.INVISIBLE);
+        }
+        if (lan.equals("French")) {
+            share.setText("Partager");
         }
         share.setOnClickListener(new View.OnClickListener() {
             @Override

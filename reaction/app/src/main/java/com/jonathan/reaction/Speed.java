@@ -37,6 +37,7 @@ public class Speed extends AppCompatActivity {
     private Thread mThreadChrono;
     private SharedPreferences sharedPreferences;
     private Boolean vibrateTest, soundTest;
+    private String lan;
 
 
     @Override
@@ -45,6 +46,9 @@ public class Speed extends AppCompatActivity {
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         vibrateTest = sharedPreferences.getBoolean("vibrate", true);
         soundTest = sharedPreferences.getBoolean("sound", true);
+        lan = sharedPreferences.getString("Language", "English");
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speed);
@@ -53,6 +57,11 @@ public class Speed extends AppCompatActivity {
         guide = (TextView) findViewById(R.id.guide2);
         mlw = (RelativeLayout) findViewById(R.id.lw);
         String time = "";
+
+        if (lan.equals("French"))
+        {
+            guide.setText("Pret ?");
+        }
 
 /*
         time = sharedPreferences.getString("actualscore", "Pas cool");
@@ -129,7 +138,11 @@ public class Speed extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
-                    guide.setText("NOW !");
+                    if (lan.equals("French")) {
+                        guide.setText("Maintenant !");
+                    } else {
+                        guide.setText("NOW !");
+                    }
                     sharedPreferences.edit().putString("ecran", "vert").apply();
 
                 }

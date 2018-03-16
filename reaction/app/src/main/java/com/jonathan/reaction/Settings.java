@@ -26,6 +26,7 @@ public class Settings extends AppCompatActivity {
     private CallbackManager callbackManager;
     private Profile p;
     private LoginManager loginManager;
+    private TextView soundt, vibratet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,15 @@ public class Settings extends AppCompatActivity {
         sound = findViewById(R.id.sound);
         vibrate = findViewById(R.id.vibrate);
         rules = findViewById(R.id.rules);
+        soundt = findViewById(R.id.soundt);
+        vibratet = findViewById(R.id.vibratet);
+
+        if (sharedPreferences.getString("Language", "English").equals("French")) {
+            soundt.setText("Son");
+            vibratet.setText("Vibreur");
+            rules.setText("Regles");
+            logout.setText("Deconexion");
+        }
 
         //Met les boutons sur on ou off suivant les valeurs en mémoire
         if (!soundTest) {
@@ -53,6 +63,7 @@ public class Settings extends AppCompatActivity {
         }
 
         //Assignation de on ou off pour le reste de l'appli
+
         sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +75,6 @@ public class Settings extends AppCompatActivity {
                 }
             }
         });
-
 
         vibrate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +88,28 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        if (sharedPreferences.getString("Language", "English").equals("French")) {
+            lan.setText("English");
+        } else {
+            lan.setText("French");
+        }
         lan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Changement de langue
+                if (lan.getText().toString().equals("French")) {
+                    sharedPreferences.edit().putString("Language", "French").apply();
+                    lan.setText("English");
+                    Intent i = new Intent(Settings.this, Settings.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(i);
+                } else {
+                    sharedPreferences.edit().putString("Language", "English").apply();
+                    lan.setText("French");
+                    Intent i = new Intent(Settings.this, Settings.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(i);
+                }
 
             }
         });
