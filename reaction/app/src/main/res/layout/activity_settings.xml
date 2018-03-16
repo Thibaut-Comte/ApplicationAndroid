@@ -172,7 +172,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:fontFamily="@font/press_start_2p"
-                    android:text="language"
+                    android:text="French"
                     android:textColor="@android:color/white" />
             </LinearLayout>
 

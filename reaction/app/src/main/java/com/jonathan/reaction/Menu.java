@@ -85,6 +85,10 @@ public class Menu extends AppCompatActivity {
 
         welcome.setText(username);
 
+
+        if (sharedPreferences.getString("Language", "English").equals("French")) {
+            settings.setText("Parametres");
+        }
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

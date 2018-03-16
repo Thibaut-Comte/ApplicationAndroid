@@ -28,12 +28,15 @@ private ShareDialog shareDialog;
 private CallbackManager callbackManager;
 private View main;
 private Database DataB = new Database();
+private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
         main = findViewById(R.id.main);
+        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        String lan = sharedPreferences.getString("Language", "English");
 
         score = findViewById(R.id.score);
         result = findViewById(R.id.result);
@@ -88,17 +91,29 @@ private Database DataB = new Database();
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("vert"))
         {
-            result.setText(R.string.victoire);
+            if (lan.equals("French")) {
+                result.setText("Bien jouer ! Voulez-vous ameliorer votre score !");
+            } else {
+                result.setText(R.string.victoire);
+            }
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
             DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
             DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed");
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
-            result.setText(R.string.defaite);
+            if (lan.equals("French")) {
+                result.setText("Oh non ! Vous avez perdu");
+            } else {
+                result.setText(R.string.defaite);
+            }
         }
 
 
+        if (lan.equals("French")) {
+            rejouer.setText("Rejouer");
+            share.setText("Partager");
+        }
         //Redirection pour rejouer ou retourner au menu
         rejouer.setOnClickListener(new View.OnClickListener() {
             @Override

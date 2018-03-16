@@ -37,6 +37,7 @@ public class Average extends AppCompatActivity {
     private Thread mThreadChrono;
     private SharedPreferences sharedPreferences;
     private Boolean vibrateTest, soundTest;
+    private  String lan;
 
 
     @Override
@@ -45,6 +46,9 @@ public class Average extends AppCompatActivity {
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         vibrateTest = sharedPreferences.getBoolean("vibrate", true);
         soundTest = sharedPreferences.getBoolean("sound", true);
+        lan = sharedPreferences.getString("Language", "English");
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_average);
@@ -54,6 +58,10 @@ public class Average extends AppCompatActivity {
         mlw = (RelativeLayout) findViewById(R.id.lw);
         lvl = (TextView) findViewById(R.id.twlvl);
         String time = "";
+
+        if (lan.equals("French")) {
+            guide.setText("Pret ?");
+        }
 
 /*
         time = sharedPreferences.getString("actualscore", "Pas cool");
@@ -79,7 +87,11 @@ public class Average extends AppCompatActivity {
         nombreAleatoire = 2000 + (long) (Math.random() * ((nombreAleatoireMax - 2000) + 1));
 
         nmbr = sharedPreferences.getInt("Average", 0);
-        lvl.setText(""+nmbr+" of 10");
+        if (lan.equals("French")) {
+            lvl.setText(""+nmbr+ "sur 10");
+        } else {
+            lvl.setText("" + nmbr + " of 10");
+        }
 
 
         //Thread pour la vibration
@@ -131,7 +143,11 @@ public class Average extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
-                    guide.setText("NOW !");
+                    if (lan.equals("French")) {
+                        guide.setText("Maintenant !");
+                    } else {
+                        guide.setText("NOW !");
+                    }
                     sharedPreferences.edit().putString("ecran", "vert").apply();
 
                 }

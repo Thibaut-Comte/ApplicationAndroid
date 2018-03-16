@@ -27,6 +27,7 @@ public class Stamina extends AppCompatActivity {
     boolean touch = false;//true si touch de l'écran
     boolean game = false;//true si gagner
     boolean sound = false;//true si son joué
+    String lan;
 
     long nombreAleatoire, nombreAleatoireMax = 0;
     long losetime = 0;
@@ -50,6 +51,9 @@ public class Stamina extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stamina);
+        sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+        lan = sharedPreferences.getString("Language", "English");
+
         mContext = this;
         mTvTime = (TextView) findViewById(R.id.textchrono);
         guide = (TextView) findViewById(R.id.guide);
@@ -58,6 +62,11 @@ public class Stamina extends AppCompatActivity {
         hearth1 = (ImageView) findViewById(R.id.heatrh1);
         hearth2 = (ImageView) findViewById(R.id.heatrh2);
         String time = "";
+
+        if (lan.equals("French"))
+        {
+            guide.setText("Pret ?");
+        }
 
         if (mChronometer == null) {
             mChronometer = new Chronometer(mContext);
@@ -147,7 +156,11 @@ public class Stamina extends AppCompatActivity {
 
                 if (since > nombreAleatoire) {
                     mlw.setBackgroundColor(Color.GREEN);
-                    guide.setText("NOW !");
+                    if (lan.equals("French")) {
+                        guide.setText("Maintenant !");
+                    } else {
+                        guide.setText("NOW !");
+                    }
                     sharedPreferences.edit().putString("ecran", "vert").apply();
                 }
                 if (since > losetime) {
