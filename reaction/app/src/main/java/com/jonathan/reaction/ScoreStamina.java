@@ -80,7 +80,7 @@ public class ScoreStamina extends AppCompatActivity {
         spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         final String name = sharedPreferences.getString("username", "undefined");
-        String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
+        final String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
         int scoreP = sharedPreferences.getInt("scoreSpeed", 0);
 
         final List<ScoreClass> scores = new ArrayList<ScoreClass>();
@@ -123,7 +123,7 @@ public class ScoreStamina extends AppCompatActivity {
                 }
                 if(!find)
                 {
-                    scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",name,0));
+                    scores.add(new ScoreClass(imgAvatar,name,0));
                 }
                 spinner.setVisibility(View.GONE);
                 lw.setAdapter(adapter);
