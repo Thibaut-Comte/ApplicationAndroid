@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,7 @@ public class ScoreStamina extends AppCompatActivity {
 
     private ListView lw;
     Button speed, stamina, average;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class ScoreStamina extends AppCompatActivity {
         speed = findViewById(R.id.speed);
         stamina = findViewById(R.id.stamina);
         average = findViewById(R.id.average);
+        spinner = findViewById(R.id.progressBar);
 
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +77,9 @@ public class ScoreStamina extends AppCompatActivity {
     }
 
     private List<ScoreClass> genererScores() {
+        spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-        String name = sharedPreferences.getString("username", "undefined");
+        final String name = sharedPreferences.getString("username", "undefined");
         String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
         int scoreP = sharedPreferences.getInt("scoreSpeed", 0);
 
@@ -105,6 +109,23 @@ public class ScoreStamina extends AppCompatActivity {
                     }
                 });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
+                while(scores.size() > 10)
+                {
+                    scores.remove(10);
+                }
+                boolean find = false;
+                for(int i=0;i<scores.size();i++)
+                {
+                    if (scores.get(i).getPseudo().equals(name))
+                    {
+                        find = true;
+                    }
+                }
+                if(!find)
+                {
+                    scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",name,0));
+                }
+                spinner.setVisibility(View.GONE);
                 lw.setAdapter(adapter);
 
             }

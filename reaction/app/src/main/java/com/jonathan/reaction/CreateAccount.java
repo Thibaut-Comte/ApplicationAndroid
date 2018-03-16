@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class CreateAccount extends AppCompatActivity {
     private TextView tvlogin, tvpw, error;
     private EditText login, pw, confirmpw;
     private Button create;
+    private ProgressBar spinner;
 
     private Database DataB = new Database();
 
@@ -40,10 +42,13 @@ public class CreateAccount extends AppCompatActivity {
         pw = findViewById(R.id.pw);
         confirmpw = findViewById(R.id.confirmpw);
         create = findViewById(R.id.create);
+        spinner = findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                spinner.setVisibility(View.VISIBLE);
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0) {
                     if (pw.getText().toString().equals(confirmpw.getText().toString())) {
 
@@ -92,6 +97,7 @@ public class CreateAccount extends AppCompatActivity {
                 } else {
                     error.setText("Veuillez renseigner les deux champs svp");
                 }
+                spinner.setVisibility(View.GONE);
             }
         });
     }

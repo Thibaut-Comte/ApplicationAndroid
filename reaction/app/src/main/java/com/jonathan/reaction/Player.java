@@ -109,7 +109,7 @@ public class Player {
                 }
                 break;
             case "average":
-                if (score < this.hightscoreAverage || this.hightscoreStamina == 0) {
+                if (score < this.hightscoreAverage || this.hightscoreAverage == 0) {
                     DBRef.child(username).child("hightscoreAverage").setValue(score);
                 }
                 break;
