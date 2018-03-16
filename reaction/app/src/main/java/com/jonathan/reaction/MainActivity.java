@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvlogin, tvpw, error;
     private EditText login, pw;
     private Button connection, create;
+    private ProgressBar spinner;
 
     Database DataB = new Database();
 
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         pw = findViewById(R.id.pw);
         connection = findViewById(R.id.connection);
         create = findViewById(R.id.createAccount);
+        spinner = findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
 
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         connection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                spinner.setVisibility(View.VISIBLE);
                 Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_SHORT).show();
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
@@ -167,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     error.setText("Veuillez renseigner les deux champs svp");
                 }
+                spinner.setVisibility(View.GONE);
             }
         });
 
