@@ -1,6 +1,7 @@
 package com.jonathan.reaction;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -27,6 +28,9 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("player", Context.MODE_PRIVATE);
+        String lan = sharedPreferences.getString("Language", "English");
+
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_layout,parent, false);
         }
@@ -50,7 +54,11 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
             viewHolder.score.setText(Integer.toString(scoreClass.getScore()));
         }
         else{
-            viewHolder.score.setText("not played yet");
+            if (lan.equals("French")) {
+                viewHolder.score.setText("Vous n'avez pas encore jouer");
+            } else {
+                viewHolder.score.setText("not played yet");
+            }
         }
         Picasso.with(getContext()).load(scoreClass.getUrl()).into(viewHolder.avatar);
 
