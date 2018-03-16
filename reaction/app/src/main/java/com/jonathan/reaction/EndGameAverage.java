@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.Profile;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
@@ -98,6 +99,12 @@ public class EndGameAverage extends AppCompatActivity {
             }
         });
 
+        Profile p = Profile.getCurrentProfile();
+
+        if (p == null)
+        {
+            share.setVisibility(View.INVISIBLE);
+        }
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

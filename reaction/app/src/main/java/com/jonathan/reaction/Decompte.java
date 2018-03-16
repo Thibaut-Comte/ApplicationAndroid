@@ -38,18 +38,19 @@ public class Decompte extends AppCompatActivity {
             //decompte
         do {
             try {
-                Thread.sleep(500);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         compteur.setText(""+cpt);
                     }
                 });
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             cpt -= 1;
-        } while (cpt > 0);
+        } while (cpt >= 1);
 
             switch (mode) {
                 case "Average" :
@@ -72,5 +73,9 @@ public class Decompte extends AppCompatActivity {
             }
         }
     });
+
+    public void onBackPressed() {
+
+    }
 
 }
