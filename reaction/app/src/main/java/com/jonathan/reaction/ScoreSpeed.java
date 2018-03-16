@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.View;
 
@@ -32,6 +33,8 @@ public class ScoreSpeed extends AppCompatActivity {
 
     Button speed, stamina, average;
 
+    private ProgressBar spinner;
+
     Database DataB = new Database();
 
     @Override
@@ -42,6 +45,7 @@ public class ScoreSpeed extends AppCompatActivity {
         speed = findViewById(R.id.speed);
         stamina = findViewById(R.id.stamina);
         average = findViewById(R.id.average);
+        spinner = findViewById(R.id.progressBar);
 
         //DataB.RecupDB();
 
@@ -87,6 +91,7 @@ public class ScoreSpeed extends AppCompatActivity {
     }
 
     private List<ScoreClass> genererScores() {
+        spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String name = sharedPreferences.getString("username", "undefined");
         String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
@@ -118,6 +123,7 @@ public class ScoreSpeed extends AppCompatActivity {
                     }
                 });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
+                spinner.setVisibility(View.GONE);
                 lw.setAdapter(adapter);
 
             }

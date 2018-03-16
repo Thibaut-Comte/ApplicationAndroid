@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +28,8 @@ public class ScoreAverage extends AppCompatActivity {
 
     Button speed, stamina, average;
 
+    private ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class ScoreAverage extends AppCompatActivity {
         speed = findViewById(R.id.speed);
         stamina = findViewById(R.id.stamina);
         average = findViewById(R.id.average);
+        spinner= findViewById(R.id.progressBar);
 
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +80,7 @@ public class ScoreAverage extends AppCompatActivity {
     }
 
     private List<ScoreClass> genererScores() {
+        spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         String name = sharedPreferences.getString("username", "undefined");
         String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
@@ -84,8 +89,9 @@ public class ScoreAverage extends AppCompatActivity {
         final List<ScoreClass> scores = new ArrayList<ScoreClass>();
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
+        Query queryScoreAverage = DBRef.orderByChild("hightscoreAverage").startAt(3);
 
-        DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        queryScoreAverage.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
@@ -97,19 +103,19 @@ public class ScoreAverage extends AppCompatActivity {
                         scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
                     }
                 }
-                Collections.sort(scores,new Comparator<ScoreClass>() {
-                    @Override
-                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
-                        if(scoreClass.getScore() < t1.getScore())
-                        {
-                            return -1;
-                        }
-                        return 1;
-                    }
-                });
+//                Collections.sort(scores,new Comparator<ScoreClass>() {
+//                    @Override
+//                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
+//                        if(scoreClass.getScore() < t1.getScore())
+//                        {
+//                            return -1;
+//                        }
+//                        return 1;
+//                    }
+//                });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
+                spinner.setVisibility(View.GONE);
                 lw.setAdapter(adapter);
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
