@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#000000">
 
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:background="#AAA" />
+        tools:background="#484848" />
 
     <TextView
         android:id="@+id/pseudo"
@@ -15,7 +20,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/avatar"
         android:fontFamily="@font/press_start_2p"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         tools:text="Pseudo" />
 
@@ -23,10 +28,10 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_alignLeft="@+id/pseudo"
         android:layout_below="@+id/pseudo"
         android:fontFamily="@font/press_start_2p"
+        android:textColor="@android:color/white"
         tools:text="Mon score" />
 
 </RelativeLayout>
