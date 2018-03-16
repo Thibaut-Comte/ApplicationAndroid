@@ -63,9 +63,9 @@ public class EndGameStamina extends AppCompatActivity {
                 result.setText(R.string.victoire);
             }
             score.setText("" + sharedPreferences.getLong("score", 0));
-            twlvl.setText("" + lvl);
             lvl = sharedPreferences.getInt("Stamina", 0);
             lvl = lvl + 1;
+            twlvl.setText("" + lvl);
             sharedPreferences.edit().putInt("Stamina", lvl).apply();
         } else if (sharedPreferences.getString("ecran", "").equals("rouge")) {
             lives = sharedPreferences.getInt("StaminaLives", lives);
