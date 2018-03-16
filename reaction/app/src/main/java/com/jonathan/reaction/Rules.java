@@ -28,7 +28,7 @@ public class Rules extends AppCompatActivity {
         {
             speedR.setText("Dès que l'écran passe vert, appuyez le plus vite possible !");
             averageR.setText("Dès que l'écran passe vert, appuyez le plus vite possible ! Recommencez 10 fois pour avoir votre temps de réaction moyen !");
-            staminaR.setText("Dès que l'écran passe vert, appuiyez sur l'écran avant qui'il ne devienne bleu ! Faites le le plus vite possible, vous n'aurez que 3 vies !");
+            staminaR.setText("Dès que l'écran passe vert, appuyez sur l'écran avant qui'il ne devienne bleu ! Faites le le plus vite possible, vous n'aurez que 3 vies !");
         }
 
         btn = (Button) findViewById(R.id.btn);
