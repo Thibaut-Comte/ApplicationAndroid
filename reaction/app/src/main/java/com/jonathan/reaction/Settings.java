@@ -19,7 +19,7 @@ import org.w3c.dom.Text;
 public class Settings extends AppCompatActivity {
 
     private Switch sound, vibrate;
-    private Button rules;
+    private Button rules, lan;
     private SharedPreferences sharedPreferences;
     private Boolean soundTest, vibrateTest;
     private Button logout;
@@ -38,7 +38,7 @@ public class Settings extends AppCompatActivity {
         soundTest = sharedPreferences.getBoolean("sound", true);
         vibrateTest = sharedPreferences.getBoolean("vibrate", true);
 
-
+        lan = findViewById(R.id.lan);
         sound = findViewById(R.id.sound);
         vibrate = findViewById(R.id.vibrate);
         rules = findViewById(R.id.rules);
@@ -57,11 +57,9 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-                if (sound.isChecked())
-                {
+                if (sound.isChecked()) {
                     sharedPreferences.edit().putBoolean("sound", true).apply();
-                } else if (!sound.isChecked())
-                {
+                } else if (!sound.isChecked()) {
                     sharedPreferences.edit().putBoolean("sound", false).apply();
                 }
             }
@@ -72,13 +70,18 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-                if (vibrate.isChecked())
-                {
+                if (vibrate.isChecked()) {
                     sharedPreferences.edit().putBoolean("vibrate", true).apply();
-                } else if (!vibrate.isChecked())
-                {
+                } else if (!vibrate.isChecked()) {
                     sharedPreferences.edit().putBoolean("vibrate", false).apply();
                 }
+            }
+        });
+
+        lan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
@@ -92,8 +95,7 @@ public class Settings extends AppCompatActivity {
 
         p = Profile.getCurrentProfile();
 
-        if (p == null)
-        {
+        if (p == null) {
             logout.setVisibility(View.INVISIBLE);
         }
 
@@ -109,8 +111,7 @@ public class Settings extends AppCompatActivity {
     }
 
     //Action de l'appui du bouton "physique" retour
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent i = new Intent(Settings.this, Menu.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
