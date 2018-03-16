@@ -99,7 +99,14 @@ public class ScoreAverage extends AppCompatActivity {
 
                     if(truc.getHightscoreAverage() != 0)
                     {
-                        scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
+                        if(name.equals(obj.getKey()))
+                        {
+                            scores.add(new ScoreClass(imgAvatar, name, (int) truc.getHightscoreAverage()));
+                        }
+                        else
+                        {
+                            scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
+                        }
                     }
                 }
                 Collections.sort(scores,new Comparator<ScoreClass>() {

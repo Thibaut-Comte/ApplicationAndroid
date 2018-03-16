@@ -95,7 +95,14 @@ public class ScoreStamina extends AppCompatActivity {
                     Player truc = obj.getValue(Player.class);
 
                     if(truc.getHightscoreStamina() != 0) {
-                        scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", obj.getKey(), (int) truc.getHightscoreStamina()));
+                        if(name.equals(obj.getKey()))
+                        {
+                            scores.add(new ScoreClass(imgAvatar, name, (int) truc.getHightscoreStamina()));
+                        }
+                        else
+                        {
+                            scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", obj.getKey(), (int) truc.getHightscoreStamina()));
+                        }
                     }
                 }
                 Collections.sort(scores,new Comparator<ScoreClass>() {
