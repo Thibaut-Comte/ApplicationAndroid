@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jonathan.reaction.ScoreSpeed">
+    tools:context="com.jonathan.reaction.ScoreSpeed"
+    android:background="#000000">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/press_start_2p"
-                    android:text="Score Speed" />
+                    android:text="Score Speed"
+                    android:textColor="@android:color/white"
+                    android:background="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -44,7 +47,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/press_start_2p"
-                    android:text="Score Stamina" />
+                    android:text="Score Stamina"
+                    android:textColor="@android:color/white"
+                    android:background="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -59,7 +64,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/press_start_2p"
-                    android:text="Score Average" />
+                    android:text="Score Average"
+                    android:textColor="@android:color/white"
+                    android:background="@null"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -79,12 +86,19 @@
 
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="47dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="272dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            tools:layout_editor_absoluteX="169dp"
+            tools:layout_editor_absoluteY="272dp" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
