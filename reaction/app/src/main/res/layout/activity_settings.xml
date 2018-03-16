@@ -93,6 +93,7 @@
                         android:fontFamily="@font/press_start_2p"
                         android:textAlignment="viewStart"
                         android:textColor="@android:color/white" />
+
                 </RelativeLayout>
 
             </LinearLayout>
