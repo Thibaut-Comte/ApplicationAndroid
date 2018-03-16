@@ -82,16 +82,15 @@ public class ScoreAverage extends AppCompatActivity {
     private List<ScoreClass> genererScores() {
         spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
-        String name = sharedPreferences.getString("username", "undefined");
+        final String name = sharedPreferences.getString("username", "undefined");
         String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
         int scoreP = sharedPreferences.getInt("scoreSpeed", 0);
 
         final List<ScoreClass> scores = new ArrayList<ScoreClass>();
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
-        Query queryScoreAverage = DBRef.orderByChild("hightscoreAverage").startAt(3);
 
-        queryScoreAverage.addListenerForSingleValueEvent(new ValueEventListener() {
+        DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
@@ -103,17 +102,33 @@ public class ScoreAverage extends AppCompatActivity {
                         scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
                     }
                 }
-//                Collections.sort(scores,new Comparator<ScoreClass>() {
-//                    @Override
-//                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
-//                        if(scoreClass.getScore() < t1.getScore())
-//                        {
-//                            return -1;
-//                        }
-//                        return 1;
-//                    }
-//                });
+                Collections.sort(scores,new Comparator<ScoreClass>() {
+                    @Override
+                    public int compare(ScoreClass scoreClass, ScoreClass t1) {
+                        if(scoreClass.getScore() < t1.getScore())
+                        {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
                 ScoreAdapter adapter = new ScoreAdapter(lw.getContext(), scores);
+                while(scores.size() > 10)
+                {
+                    scores.remove(10);
+                }
+                boolean find = false;
+                for(int i=0;i<scores.size();i++)
+                {
+                    if (scores.get(i).getPseudo().equals(name))
+                    {
+                        find = true;
+                    }
+                }
+                if(!find)
+                {
+                    scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",name,0));
+                }
                 spinner.setVisibility(View.GONE);
                 lw.setAdapter(adapter);
             }
