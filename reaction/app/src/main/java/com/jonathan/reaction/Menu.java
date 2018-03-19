@@ -55,7 +55,7 @@ public class Menu extends AppCompatActivity {
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.fitCenter();
         requestOptions.override(500, 500);
-        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.placeholder(R.drawable.placeholder   );
         requestOptions.circleCrop();
 
 
