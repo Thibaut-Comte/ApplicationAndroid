@@ -87,7 +87,10 @@ public class EndGameAverage extends AppCompatActivity {
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,sharedPreferences.getLong("hsAv",0),0);
-                DataB.user.checkHightscore(Ascore, "average");
+                if(DataB.user.checkHightscore(Ascore, "average"))
+                {
+                    sharedPreferences.edit().putLong("hsAv",DataB.user.getHightscoreAverage()).apply();
+                }
             }
 
         }

@@ -99,7 +99,10 @@ private SharedPreferences sharedPreferences;
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
             DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
-            DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed");
+            if(DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed"))
+            {
+                sharedPreferences.edit().putLong("hsSp",DataB.user.getHightscoreSpeed()).apply();
+            }
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
             if (lan.equals("French")) {

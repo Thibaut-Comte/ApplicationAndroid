@@ -83,8 +83,10 @@ public class EndGameStamina extends AppCompatActivity {
                 }
                 //Check si hightscore et mise en BDD
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
-                Log.e("debug","lvl "+lvl+" ; hsSt "+DataB.user.getHightscoreStamina());
-                DataB.user.checkHightscore(lvl, "stamina");
+                if(DataB.user.checkHightscore(lvl, "stamina"))
+                {
+                    sharedPreferences.edit().putLong("hsSt",DataB.user.getHightscoreStamina()).apply();
+                }
 
             }
             if (lives > 1) {
