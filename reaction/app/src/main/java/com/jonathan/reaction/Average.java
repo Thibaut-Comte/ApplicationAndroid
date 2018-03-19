@@ -88,7 +88,7 @@ public class Average extends AppCompatActivity {
 
         nmbr = sharedPreferences.getInt("Average", 0);
         if (lan.equals("French")) {
-            lvl.setText(""+nmbr+ "sur 10");
+            lvl.setText("" +nmbr+ "sur 10");
         } else {
             lvl.setText("" + nmbr + " of 10");
         }
