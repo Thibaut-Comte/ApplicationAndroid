@@ -175,12 +175,10 @@ public class Stamina extends AppCompatActivity {
                         touch = true;
                         if (since < nombreAleatoire || losetime < since) {
                             //lose
-                            final MediaPlayer OOFSound = MediaPlayer.create(Stamina.this, R.raw.death);
 
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
                             if (!sound) {
-                                OOFSound.start();
                                 sound = true;
                                 Intent i = new Intent(Stamina.this, EndGameStamina.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

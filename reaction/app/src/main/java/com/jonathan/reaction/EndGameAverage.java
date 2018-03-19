@@ -3,6 +3,7 @@ package com.jonathan.reaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,6 +54,8 @@ public class EndGameAverage extends AppCompatActivity {
 
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("rouge")) {
+            final MediaPlayer Sound = MediaPlayer.create(EndGameAverage.this, R.raw.you_lose);
+            Sound.start();
             if (lan.equals("French")) {
                 result.setText("Oh non, vous avez perdu. Rejouer ?");
             } else {
@@ -78,6 +81,8 @@ public class EndGameAverage extends AppCompatActivity {
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
             }
             if (nmbr == 10) {
+                final MediaPlayer Sound1 = MediaPlayer.create(EndGameAverage.this, R.raw.congratulations);
+                Sound1.start();
                 //Si 10 try on été fais
                 if (lan.equals("French")) {
                     result.setText("Votre moyenne est de : "+ Ascore);
@@ -86,6 +91,8 @@ public class EndGameAverage extends AppCompatActivity {
                 }
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
+                final MediaPlayer Sound2 = MediaPlayer.create(EndGameAverage.this, R.raw.new_highscore);
+                Sound2.start();
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,sharedPreferences.getLong("hsAv",0),0);
                 DataB.user.checkHightscore(Ascore, "average");
             }
