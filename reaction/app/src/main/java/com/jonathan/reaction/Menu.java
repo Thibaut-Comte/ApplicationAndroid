@@ -51,21 +51,21 @@ public class Menu extends AppCompatActivity {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
 
-        if(DBRef.child(sharedPreferences.getString("username","undefined")) == null)
-        {
-            DBRef.child(sharedPreferences.getString("username","undefined")).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Player newPlayer = dataSnapshot.getValue(Player.class);
-                    sharedPreferences.edit().putLong("hsSt",newPlayer.getHightscoreStamina());
-                    sharedPreferences.edit().putLong("hsSp",newPlayer.getHightscoreSpeed());
-                    sharedPreferences.edit().putLong("hsAv",newPlayer.getHightscoreAverage());
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-        }
+//        if(DBRef.child(sharedPreferences.getString("username","undefined")) == null)
+//        {
+//            DBRef.child(sharedPreferences.getString("username","undefined")).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    Player newPlayer = dataSnapshot.getValue(Player.class);
+//                    sharedPreferences.edit().putLong("hsSt",newPlayer.getHightscoreStamina());
+//                    sharedPreferences.edit().putLong("hsSp",newPlayer.getHightscoreSpeed());
+//                    sharedPreferences.edit().putLong("hsAv",newPlayer.getHightscoreAverage());
+//                }
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                }
+//            });
+//        }
 
 
         pp = findViewById(R.id.pp);

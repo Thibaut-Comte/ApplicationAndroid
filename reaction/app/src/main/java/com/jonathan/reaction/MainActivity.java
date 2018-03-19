@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Profile p;
 
+    FirebaseDatabase DB = FirebaseDatabase.getInstance();
+    final DatabaseReference DBRef = DB.getReference("users");
 
     protected Player player = new Player("Billy", "test");
 
@@ -82,6 +84,26 @@ public class MainActivity extends AppCompatActivity {
         if (p != null && sharedPreferences.getBoolean("firstUse", true) == false)
         {
             sharedPreferences.edit().putString("username", p.getName()).apply();
+            DBRef.child(p.getName()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Player playerTemp = dataSnapshot.getValue(Player.class);
+                    Log.e("debug","dataSnaphot : "+dataSnapshot.getValue());
+                    if(dataSnapshot.getValue() != null)
+                    {
+                        Log.e("debug","newPlayer : "+playerTemp.toString());
+                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
+                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
+                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
+                    }
+                    String test2 = sharedPreferences.getString("username", null);
+                    Toast.makeText(getBaseContext(), "Bonjour "+test2, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
             Intent i = new Intent(MainActivity.this, Menu.class);
             startActivity(i);
         } else if (p != null && sharedPreferences.getBoolean("firstUse", true) == true)
@@ -118,9 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Connexion en cours", Toast.LENGTH_SHORT).show();
                 if (login.getText().toString().length() > 0 && pw.getText().toString().length() > 0)
                 {
-                    FirebaseDatabase DB = FirebaseDatabase.getInstance();
-                    final DatabaseReference DBRef = DB.getReference("users");
-
                     DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -141,9 +160,9 @@ public class MainActivity extends AppCompatActivity {
                                     {
                                         connOk = true;
                                         sharedPreferences.edit().putString("username", userName).apply();
-//                                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
-//                                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
-//                                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
+                                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
+                                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
+                                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
                                         String test2 = sharedPreferences.getString("username", null);
                                         Toast.makeText(getBaseContext(), "Bonjour "+test2, Toast.LENGTH_LONG).show();
                                     }
