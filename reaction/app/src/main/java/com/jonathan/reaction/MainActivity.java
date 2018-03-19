@@ -141,9 +141,9 @@ public class MainActivity extends AppCompatActivity {
                                     {
                                         connOk = true;
                                         sharedPreferences.edit().putString("username", userName).apply();
-                                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
-                                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
-                                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
+//                                        sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
+//                                        sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
+//                                        sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
                                         String test2 = sharedPreferences.getString("username", null);
                                         Toast.makeText(getBaseContext(), "Bonjour "+test2, Toast.LENGTH_LONG).show();
                                     }
@@ -207,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
                 sharedPreferences.edit().putString("avatarP", p.getProfilePictureUri(500, 500).toString()).apply();
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
                 sharedPreferences.edit().putString("token", loginResult.getAccessToken().getToken()).apply();
-
 
                 if (sharedPreferences.getBoolean("firstUse", true))
                 {

@@ -94,26 +94,34 @@ public class Player {
         this.hightscoreStamina = hightscoreStamina;
     }
 
-    public void checkHightscore(long score, String modeJeu) {
+    public boolean checkHightscore(long score, String modeJeu) {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
+        boolean newHS = false;
         switch(modeJeu) {
             case "speed":
                 if (score < this.hightscoreSpeed || this.hightscoreSpeed == 0) {
+                    Log.e("debug","new HS Speed");
                     DBRef.child(username).child("hightscoreSpeed").setValue(score);
+                    newHS = true;
                 }
                 break;
             case "stamina":
                 if (score > this.hightscoreStamina || this.hightscoreStamina == 0) {
+                    Log.e("debug","new HS Stamina");
                     DBRef.child(username).child("hightscoreStamina").setValue(score);
+                    newHS = true;
                 }
                 break;
             case "average":
                 if (score < this.hightscoreAverage || this.hightscoreAverage == 0) {
+                    Log.e("debug","new HS Average");
                     DBRef.child(username).child("hightscoreAverage").setValue(score);
+                    newHS = true;
                 }
                 break;
         }
+        return newHS;
     }
 
     @Override

@@ -158,13 +158,11 @@ public class Average extends AppCompatActivity {
                         mChronometer.stop();
                         touch = true;
                         if (since < nombreAleatoire) {
-                            final MediaPlayer OOFSound = MediaPlayer.create(Average.this, R.raw.death);
 
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
                             if (!sound) {
                                 if (sound) {
-                                    OOFSound.start();
                                     sound = true;
                                 }
                                 Intent i = new Intent(Average.this, EndGameAverage.class);

@@ -153,13 +153,11 @@ public class Speed extends AppCompatActivity {
                         mChronometer.stop();
                         touch = true;
                         if (since < nombreAleatoire) {
-                            final MediaPlayer OOFSound = MediaPlayer.create(Speed.this, R.raw.death);
 
                             //mlw.setBackgroundColor(Color.RED);
                             sharedPreferences.edit().putString("ecran", "rouge").apply();
                             if (!sound){
                                 if (soundTest) {
-                                    OOFSound.start();
                                     sound = true;
                                 }
                                 Intent i = new Intent(Speed.this, EndGame.class);
