@@ -3,6 +3,7 @@ package com.jonathan.reaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,6 +72,8 @@ public class EndGameStamina extends AppCompatActivity {
             lives = sharedPreferences.getInt("StaminaLives", lives);
             if (lives == 1) {
                 //Lose
+                final MediaPlayer Sound = MediaPlayer.create(EndGameStamina.this, R.raw.you_lose);
+                Sound.start();
                 lvl = sharedPreferences.getInt("Stamina", 0);
                 sharedPreferences.edit().putInt("StaminaLives", 0).apply();
                 twlvl.setText("Game Over");
@@ -82,6 +85,8 @@ public class EndGameStamina extends AppCompatActivity {
                     rejouer.setText("Retry ?");
                 }
                 //Check si hightscore et mise en BDD
+                final MediaPlayer Sound2 = MediaPlayer.create(EndGameStamina.this, R.raw.new_highscore);
+                Sound2.start();
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
                 if(DataB.user.checkHightscore(lvl, "stamina"))
                 {

@@ -3,6 +3,7 @@ package com.jonathan.reaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,13 +92,18 @@ private SharedPreferences sharedPreferences;
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("vert"))
         {
+            final MediaPlayer Sound = MediaPlayer.create(EndGame.this, R.raw.congratulations);
+            Sound.start();
             if (lan.equals("French")) {
                 result.setText("Bien jouer ! Voulez-vous ameliorer votre score !");
+
             } else {
                 result.setText(R.string.victoire);
             }
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
+            final MediaPlayer Sound1 = MediaPlayer.create(EndGame.this, R.raw.new_highscore);
+            Sound1.start();
             DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
             if(DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed"))
             {
@@ -105,6 +111,8 @@ private SharedPreferences sharedPreferences;
             }
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
+            final MediaPlayer Sound2 = MediaPlayer.create(EndGame.this, R.raw.you_lose);
+            Sound2.start();
             if (lan.equals("French")) {
                 result.setText("Oh non ! Vous avez perdu");
             } else {
