@@ -79,13 +79,16 @@ public class MainActivity extends AppCompatActivity {
 
         p = Profile.getCurrentProfile();
 
-        if (p != null)
+        if (p != null && sharedPreferences.getBoolean("firstUse", true) == false)
         {
             sharedPreferences.edit().putString("username", p.getName()).apply();
             Intent i = new Intent(MainActivity.this, Menu.class);
             startActivity(i);
+        } else if (p != null && sharedPreferences.getBoolean("firstUse", true) == true)
+        {
+            loginManager.getInstance().logOut();
         }
-
+        
         /*Intent intent = new Intent(MainActivity.this, Menu.class);
         startActivity(intent);*/
 
