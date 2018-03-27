@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase DB = FirebaseDatabase.getInstance();
     final DatabaseReference DBRef = DB.getReference("users");
 
-    //protected Player player = new Player("Billy", "test");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Player playerTemp = dataSnapshot.getValue(Player.class);
+//                    Log.e("debug","hsAv : "+playerTemp.getHightscoreAverage()+", hsSp : "+playerTemp.getHightscoreSpeed()+", hsSt : "+playerTemp.getHightscoreStamina());
                     if(dataSnapshot.getValue() != null)
                     {
                         sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
