@@ -2,8 +2,10 @@ package com.jonathan.reaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,16 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.pseudo.setText(scoreClass.getPseudo());
+        Log.e("pseudoLaBAs", scoreClass.getPseudo());
+        Log.e("shared", sharedPreferences.getString("username", "undefined"));
+        viewHolder.pseudo.setTextColor(Color.parseColor("#FFFFFF"));
+        if (scoreClass.getPseudo().equals(sharedPreferences.getString("username", "undefined"))) {
+            viewHolder.pseudo.setTextColor(Color.parseColor("#FF0000"));
+            Log.e("color", "color");
+            Log.e("pseudo", scoreClass.getPseudo());
+            Log.e("shared", sharedPreferences.getString("username", "undefined"));
+
+        }
         if(scoreClass.getScore() != 0)
         {
             viewHolder.score.setText(Integer.toString(scoreClass.getScore()));
