@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase DB = FirebaseDatabase.getInstance();
     final DatabaseReference DBRef = DB.getReference("users");
 
-    protected Player player = new Player("Billy", "test");
+    //protected Player player = new Player("Billy", "test");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
 
         p = Profile.getCurrentProfile();
+        String ptmp = sharedPreferences.getString("username", null);
 
-        if (p != null && sharedPreferences.getBoolean("firstUse", true) == false)
+        if (ptmp != null && sharedPreferences.getBoolean("firstUse", true) == false)
         {
-            sharedPreferences.edit().putString("username", p.getName()).apply();
-            DBRef.child(p.getName()).addListenerForSingleValueEvent(new ValueEventListener() {
+            DBRef.child(ptmp).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Player playerTemp = dataSnapshot.getValue(Player.class);
