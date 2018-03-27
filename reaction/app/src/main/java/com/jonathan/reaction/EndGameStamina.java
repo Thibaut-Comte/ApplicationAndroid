@@ -90,6 +90,11 @@ public class EndGameStamina extends AppCompatActivity {
                 {
                     final MediaPlayer Sound2 = MediaPlayer.create(EndGameStamina.this, R.raw.new_highscore);
                     Sound2.start();
+                    if (lan.equals("French")) {
+                        result.setText("Nouveau record!");
+                    } else {
+                        result.setText("New hightscore!");
+                    }
                     sharedPreferences.edit().putLong("hsSt",DataB.user.getHightscoreStamina()).apply();
                 }
 
