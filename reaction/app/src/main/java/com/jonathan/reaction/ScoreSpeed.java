@@ -94,7 +94,7 @@ public class ScoreSpeed extends AppCompatActivity {
         spinner.setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
         final String name = sharedPreferences.getString("username", "undefined");
-        final String imgAvatar = sharedPreferences.getString("avatarP", "https://demo.phpgang.com/crop-images/demo_files/pool.jpg");
+        final String imgAvatar = sharedPreferences.getString("avatarP", "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png");
         int scoreP = sharedPreferences.getInt("scoreSpeed", 0);
 
         final List<ScoreClass> scores = new ArrayList<ScoreClass>();
@@ -115,7 +115,7 @@ public class ScoreSpeed extends AppCompatActivity {
                         }
                         else
                         {
-                            scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg", obj.getKey(), (int) truc.getHightscoreSpeed()));
+                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) truc.getHightscoreSpeed()));
                         }
                     }
                 }
