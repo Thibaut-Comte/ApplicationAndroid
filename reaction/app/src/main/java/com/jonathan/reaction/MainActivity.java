@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         {
             loginManager.getInstance().logOut();
         }
-        
+
         /*Intent intent = new Intent(MainActivity.this, Menu.class);
         startActivity(intent);*/
 

@@ -126,14 +126,16 @@ public class Settings extends AppCompatActivity {
 
         p = Profile.getCurrentProfile();
 
-        if (p == null) {
-            logout.setVisibility(View.INVISIBLE);
-        }
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginManager.getInstance().logOut();
+                sharedPreferences.edit().clear().apply();
+                sharedPreferences.edit().putBoolean("firstUse", false).apply();
+                if (p != null) {
+                    loginManager.getInstance().logOut();
+                }
                 Intent i = new Intent(Settings.this, MainActivity.class);
                 startActivity(i);
             }
