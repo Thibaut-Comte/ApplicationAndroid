@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -51,15 +53,9 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.pseudo.setText(scoreClass.getPseudo());
-        Log.e("pseudoLaBAs", scoreClass.getPseudo());
-        Log.e("shared", sharedPreferences.getString("username", "undefined"));
         viewHolder.pseudo.setTextColor(Color.parseColor("#FFFFFF"));
         if (scoreClass.getPseudo().equals(sharedPreferences.getString("username", "undefined"))) {
             viewHolder.pseudo.setTextColor(Color.parseColor("#FF0000"));
-            Log.e("color", "color");
-            Log.e("pseudo", scoreClass.getPseudo());
-            Log.e("shared", sharedPreferences.getString("username", "undefined"));
-
         }
         if(scoreClass.getScore() != 0)
         {
@@ -72,7 +68,16 @@ public class ScoreAdapter extends ArrayAdapter<ScoreClass>{
                 viewHolder.score.setText("not played yet");
             }
         }
-        Picasso.with(getContext()).load(scoreClass.getUrl()).into(viewHolder.avatar);
+
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+
+
+        Glide.with(getContext())
+                .load(scoreClass.getUrl())
+                .apply(requestOptions)
+                .into(viewHolder.avatar);
 
         return convertView;
     }

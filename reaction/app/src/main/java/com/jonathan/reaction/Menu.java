@@ -3,6 +3,7 @@ package com.jonathan.reaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class Menu extends AppCompatActivity {
@@ -49,6 +51,8 @@ public class Menu extends AppCompatActivity {
 
         p = Profile.getCurrentProfile();
 
+        Uri test = p.getProfilePictureUri(500, 500);
+
         pp = findViewById(R.id.pp);
 
         //Création et assignation de l'image d'accueil avec ses spécificités
@@ -60,9 +64,11 @@ public class Menu extends AppCompatActivity {
 
 
         Glide.with(getBaseContext())
-                .load(profilepicture)
+                .load(test)
                 .apply(requestOptions)
                 .into(pp);
+
+        Picasso.with(getBaseContext()).load(test).into(pp);
 
 
         //Remise à 0 pour average
