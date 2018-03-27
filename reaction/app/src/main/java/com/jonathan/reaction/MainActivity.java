@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Player playerTemp = dataSnapshot.getValue(Player.class);
-//                    Log.e("debug","hsAv : "+playerTemp.getHightscoreAverage()+", hsSp : "+playerTemp.getHightscoreSpeed()+", hsSt : "+playerTemp.getHightscoreStamina());
                     if(dataSnapshot.getValue() != null)
                     {
                         sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();

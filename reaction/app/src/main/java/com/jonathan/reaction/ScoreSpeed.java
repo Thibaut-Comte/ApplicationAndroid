@@ -106,16 +106,16 @@ public class ScoreSpeed extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
                 for ( DataSnapshot obj : Ids) {
-                    Player truc = obj.getValue(Player.class);
+                    Player pTemp = obj.getValue(Player.class);
 
-                    if(truc.getHightscoreSpeed() != 0) {
+                    if(pTemp.getHightscoreSpeed() != 0) {
                         if(name.equals(obj.getKey()))
                         {
-                            scores.add(new ScoreClass(imgAvatar, name, (int) truc.getHightscoreSpeed()));
+                            scores.add(new ScoreClass(imgAvatar, name, (int) pTemp.getHightscoreSpeed()));
                         }
                         else
                         {
-                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) truc.getHightscoreSpeed()));
+                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreSpeed()));
                         }
                     }
                 }
