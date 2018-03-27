@@ -95,6 +95,11 @@ public class EndGameAverage extends AppCompatActivity {
                     sharedPreferences.edit().putLong("hsAv",DataB.user.getHightscoreAverage()).apply();
                     final MediaPlayer Sound2 = MediaPlayer.create(EndGameAverage.this, R.raw.new_highscore);
                     Sound2.start();
+                    if (lan.equals("French")) {
+                        result.setText("Nouveau record!");
+                    } else {
+                        result.setText("New hightscore!");
+                    }
                 }
                 else{
                     final MediaPlayer Sound = MediaPlayer.create(EndGameAverage.this, R.raw.congratulations);

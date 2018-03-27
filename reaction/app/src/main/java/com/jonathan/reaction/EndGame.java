@@ -105,6 +105,11 @@ private SharedPreferences sharedPreferences;
                 final MediaPlayer Sound1 = MediaPlayer.create(EndGame.this, R.raw.new_highscore);
                 Sound1.start();
                 sharedPreferences.edit().putLong("hsSp",DataB.user.getHightscoreSpeed()).apply();
+                if (lan.equals("French")) {
+                    result.setText("Nouveau record!");
+                } else {
+                    result.setText("New hightscore!");
+                }
             }
             else{
                 final MediaPlayer Sound = MediaPlayer.create(EndGame.this, R.raw.congratulations);
