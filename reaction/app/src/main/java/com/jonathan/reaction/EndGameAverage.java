@@ -81,8 +81,6 @@ public class EndGameAverage extends AppCompatActivity {
                 sharedPreferences.edit().putLong("Ascore", Ascore).apply();
             }
             if (nmbr == 10) {
-                final MediaPlayer Sound1 = MediaPlayer.create(EndGameAverage.this, R.raw.congratulations);
-                Sound1.start();
                 //Si 10 try on été fais
                 if (lan.equals("French")) {
                     result.setText("Votre moyenne est de : "+ Ascore);
@@ -91,12 +89,16 @@ public class EndGameAverage extends AppCompatActivity {
                 }
                 sharedPreferences.edit().putInt("Average", 0).apply();
                 //check si hightscore et mise en BDD
-                final MediaPlayer Sound2 = MediaPlayer.create(EndGameAverage.this, R.raw.new_highscore);
-                Sound2.start();
                 DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,sharedPreferences.getLong("hsAv",0),0);
                 if(DataB.user.checkHightscore(Ascore, "average"))
                 {
                     sharedPreferences.edit().putLong("hsAv",DataB.user.getHightscoreAverage()).apply();
+                    final MediaPlayer Sound2 = MediaPlayer.create(EndGameAverage.this, R.raw.new_highscore);
+                    Sound2.start();
+                }
+                else{
+                    final MediaPlayer Sound = MediaPlayer.create(EndGameAverage.this, R.raw.congratulations);
+                    Sound.start();
                 }
             }
 

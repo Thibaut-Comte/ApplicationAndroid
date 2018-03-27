@@ -92,8 +92,6 @@ private SharedPreferences sharedPreferences;
         //Gestion du résultat de l'utilisateur
         if (sharedPreferences.getString("ecran", "").equals("vert"))
         {
-            final MediaPlayer Sound = MediaPlayer.create(EndGame.this, R.raw.congratulations);
-            Sound.start();
             if (lan.equals("French")) {
                 result.setText("Bien jouer ! Voulez-vous ameliorer votre score !");
             } else {
@@ -101,12 +99,16 @@ private SharedPreferences sharedPreferences;
             }
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
-            final MediaPlayer Sound1 = MediaPlayer.create(EndGame.this, R.raw.new_highscore);
-            Sound1.start();
             DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
             if(DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed"))
             {
+                final MediaPlayer Sound1 = MediaPlayer.create(EndGame.this, R.raw.new_highscore);
+                Sound1.start();
                 sharedPreferences.edit().putLong("hsSp",DataB.user.getHightscoreSpeed()).apply();
+            }
+            else{
+                final MediaPlayer Sound = MediaPlayer.create(EndGame.this, R.raw.congratulations);
+                Sound.start();
             }
         } else if (sharedPreferences.getString("ecran", "").equals("rouge"))
         {
