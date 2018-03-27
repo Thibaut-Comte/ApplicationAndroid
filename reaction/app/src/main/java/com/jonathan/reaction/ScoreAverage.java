@@ -95,17 +95,17 @@ public class ScoreAverage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> Ids = dataSnapshot.getChildren();
                 for ( DataSnapshot obj : Ids) {
-                    Player truc = obj.getValue(Player.class);
+                    Player pTemp = obj.getValue(Player.class);
 
-                    if(truc.getHightscoreAverage() != 0)
+                    if(pTemp.getHightscoreAverage() != 0)
                     {
                         if(name.equals(obj.getKey()))
                         {
-                            scores.add(new ScoreClass(imgAvatar, name, (int) truc.getHightscoreAverage()));
+                            scores.add(new ScoreClass(imgAvatar, name, (int) pTemp.getHightscoreAverage()));
                         }
                         else
                         {
-                            scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)truc.getHightscoreAverage()));
+                            scores.add(new ScoreClass("https://demo.phpgang.com/crop-images/demo_files/pool.jpg",obj.getKey(),(int)pTemp.getHightscoreAverage()));
                         }
                     }
                 }
