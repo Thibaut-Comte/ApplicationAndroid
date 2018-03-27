@@ -96,7 +96,6 @@ private SharedPreferences sharedPreferences;
             Sound.start();
             if (lan.equals("French")) {
                 result.setText("Bien jouer ! Voulez-vous ameliorer votre score !");
-
             } else {
                 result.setText(R.string.victoire);
             }
