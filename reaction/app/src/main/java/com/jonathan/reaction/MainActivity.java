@@ -38,7 +38,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
                         sharedPreferences.edit().putLong("hsAv", playerTemp.getHightscoreAverage()).apply();
                         sharedPreferences.edit().putLong("hsSp", playerTemp.getHightscoreSpeed()).apply();
                         sharedPreferences.edit().putLong("hsSt", playerTemp.getHightscoreStamina()).apply();
+                    }
+                    if(p != null)
+                    {
+                        if(!(playerTemp.equals(p.getProfilePictureUri(500, 500).toString())))
+                        {
+                            DBRef.child(p.getName()).child("url").setValue(p.getProfilePictureUri(500, 500).toString());
+                        }
                     }
                     String test2 = sharedPreferences.getString("username", null);
                     Toast.makeText(getBaseContext(), "Bonjour "+test2, Toast.LENGTH_LONG).show();
@@ -220,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("token", ""+loginResult.getAccessToken().getToken());
                 sharedPreferences.edit().putString("username", p.getName()).apply();
                 sharedPreferences.edit().putString("avatarP", p.getProfilePictureUri(500, 500).toString()).apply();
+                DBRef.child(p.getName()).child("url").setValue(p.getProfilePictureUri(500, 500).toString());
                 sharedPreferences.edit().putInt("scoreP", 52).apply();
                 sharedPreferences.edit().putString("token", loginResult.getAccessToken().getToken()).apply();
 

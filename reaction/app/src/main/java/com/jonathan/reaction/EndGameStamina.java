@@ -85,7 +85,7 @@ public class EndGameStamina extends AppCompatActivity {
                     rejouer.setText("Retry ?");
                 }
                 //Check si hightscore et mise en BDD
-                DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0));
+                DataB.user = new Player(sharedPreferences.getString("username",""),"","",0,0,sharedPreferences.getLong("hsSt",0),"");
                 if(DataB.user.checkHightscore(lvl, "stamina"))
                 {
                     final MediaPlayer Sound2 = MediaPlayer.create(EndGameStamina.this, R.raw.new_highscore);

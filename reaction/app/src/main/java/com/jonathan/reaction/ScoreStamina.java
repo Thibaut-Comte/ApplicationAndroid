@@ -99,9 +99,13 @@ public class ScoreStamina extends AppCompatActivity {
                         {
                             scores.add(new ScoreClass(imgAvatar, name, (int) pTemp.getHightscoreStamina()));
                         }
-                        else
-                        {
-                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreStamina()));
+                        else {
+                            if (pTemp.getUrl().equals("")) {
+                                scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreStamina()));
+                            }
+                            else{
+                                scores.add(new ScoreClass(pTemp.getUrl(), obj.getKey(), (int) pTemp.getHightscoreStamina()));
+                            }
                         }
                     }
                 }

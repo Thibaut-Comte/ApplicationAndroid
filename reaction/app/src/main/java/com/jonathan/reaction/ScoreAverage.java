@@ -103,9 +103,13 @@ public class ScoreAverage extends AppCompatActivity {
                         {
                             scores.add(new ScoreClass(imgAvatar, name, (int) pTemp.getHightscoreAverage()));
                         }
-                        else
-                        {
-                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",obj.getKey(),(int)pTemp.getHightscoreAverage()));
+                        else {
+                            if (pTemp.getUrl().equals("")) {
+                                scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreAverage()));
+                            }
+                            else{
+                                scores.add(new ScoreClass(pTemp.getUrl(), obj.getKey(), (int) pTemp.getHightscoreAverage()));
+                            }
                         }
                     }
                 }

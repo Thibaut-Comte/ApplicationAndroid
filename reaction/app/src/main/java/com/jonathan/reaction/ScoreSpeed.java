@@ -115,7 +115,13 @@ public class ScoreSpeed extends AppCompatActivity {
                         }
                         else
                         {
-                            scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreSpeed()));
+                            if(pTemp.getUrl().equals(""))
+                            {
+                                scores.add(new ScoreClass("https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", obj.getKey(), (int) pTemp.getHightscoreSpeed()));
+                            }
+                            else {
+                                scores.add(new ScoreClass(pTemp.getUrl(), obj.getKey(), (int) pTemp.getHightscoreSpeed()));
+                            }
                         }
                     }
                 }

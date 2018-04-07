@@ -17,15 +17,16 @@ public class Player {
     private long hightscoreSpeed = 0;
     private long hightscoreAverage = 0;
     private long hightscoreStamina = 0;
+    private String url = "";
 
-    public Player(String username, String password, String actualscore, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina) {
+    public Player(String username, String password, String actualscore, long hightscoreSpeed, long hightscoreAverage, long hightscoreStamina, String url) {
         this.username = username;
         this.password = password;
         this.actualscore = actualscore;
         this.hightscoreSpeed = hightscoreSpeed;
         this.hightscoreAverage = hightscoreAverage;
         this.hightscoreStamina = hightscoreStamina;
-
+        this.url = url;
     }
 
     public Player(String username, String password) {
@@ -44,6 +45,7 @@ public class Player {
         this.hightscoreSpeed = 0;
         this.hightscoreAverage = 0;
         this.hightscoreStamina = 0;
+        this.url = "";
     }
 
     public String getActualscore() {
@@ -94,6 +96,14 @@ public class Player {
         this.hightscoreStamina = hightscoreStamina;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public boolean checkHightscore(long score, String modeJeu) {
         FirebaseDatabase DB = FirebaseDatabase.getInstance();
         final DatabaseReference DBRef = DB.getReference("users");
@@ -133,6 +143,7 @@ public class Player {
                 ", hightscoreSpeed=" + hightscoreSpeed +
                 ", hightscoreAverage=" + hightscoreAverage +
                 ", hightscoreStamina=" + hightscoreStamina +
+                ", url=" + url +
                 '}';
     }
 }

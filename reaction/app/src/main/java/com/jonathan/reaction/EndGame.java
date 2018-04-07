@@ -99,7 +99,7 @@ private SharedPreferences sharedPreferences;
             }
             score.setText(""+sharedPreferences.getLong("score", 0));
             //Check si hight score et mise en BDD
-            DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0);
+            DataB.user = new Player(sharedPreferences.getString("username",""),"","",sharedPreferences.getLong("hsSp",0),0,0,"");
             if(DataB.user.checkHightscore(sharedPreferences.getLong("score", 0), "speed"))
             {
                 final MediaPlayer Sound1 = MediaPlayer.create(EndGame.this, R.raw.new_highscore);
