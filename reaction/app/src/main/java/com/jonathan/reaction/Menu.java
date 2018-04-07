@@ -51,12 +51,7 @@ public class Menu extends AppCompatActivity {
 
         p = Profile.getCurrentProfile();
 
-        Uri test = p.getProfilePictureUri(500, 500);
-
         pp = findViewById(R.id.pp);
-
-        // On récupère le sharedPreferences "player"
-        String urlAvatar = sharedPreferences.getString("avatar", null);
 
         //Création et assignation de l'image d'accueil avec ses spécificités
         RequestOptions requestOptions = new RequestOptions();
@@ -66,11 +61,11 @@ public class Menu extends AppCompatActivity {
         requestOptions.circleCrop();
 
         Glide.with(getBaseContext())
-                .load(test.toString())
+                .load(profilepicture)
                 .apply(requestOptions)
                 .into(pp);
 
-        Log.e("pp", test.toString());
+        Log.e("pp", profilepicture);
 
 
         //Remise à 0 pour average
