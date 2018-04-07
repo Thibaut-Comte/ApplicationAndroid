@@ -55,6 +55,9 @@ public class Menu extends AppCompatActivity {
 
         pp = findViewById(R.id.pp);
 
+        // On récupère le sharedPreferences "player"
+        String urlAvatar = sharedPreferences.getString("avatar", null);
+
         //Création et assignation de l'image d'accueil avec ses spécificités
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.fitCenter();
@@ -62,13 +65,12 @@ public class Menu extends AppCompatActivity {
         requestOptions.placeholder(R.drawable.placeholder);
         requestOptions.circleCrop();
 
-
         Glide.with(getBaseContext())
-                .load(test)
+                .load(test.toString())
                 .apply(requestOptions)
                 .into(pp);
 
-        Picasso.with(getBaseContext()).load(test).into(pp);
+        Log.e("pp", test.toString());
 
 
         //Remise à 0 pour average
@@ -78,10 +80,6 @@ public class Menu extends AppCompatActivity {
         sharedPreferences.edit().putInt("StaminaLives", 3).apply();
         sharedPreferences.edit().putString("ecran", "rouge").apply();
 
-
-
-        // On récupère le sharedPreferences "player"
-        String urlAvatar = sharedPreferences.getString("avatar", null);
 
         settings = findViewById(R.id.btnSettings);
         score = findViewById(R.id.btnScore);
