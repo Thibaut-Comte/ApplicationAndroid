@@ -1,6 +1,7 @@
 package com.jonathan.reaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,8 @@ public class CreateAccount extends AppCompatActivity {
         spinner = findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
 
+        final SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("player", MODE_PRIVATE);
+
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +80,7 @@ public class CreateAccount extends AppCompatActivity {
                                     Player player = new Player("", pwd);
                                     DBRef.child(userName).setValue(player);
                                     Toast.makeText(getBaseContext(), "Compte créer " + player.getUsername(), Toast.LENGTH_LONG).show();
+                                    sharedPreferences.edit().putString("username", userName).apply();
                                     Intent i = new Intent(getBaseContext(), Menu.class);
                                     startActivity(i);
                                 }
